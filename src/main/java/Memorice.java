@@ -3,9 +3,9 @@ Entrada: nombre de jugador, selecion de opcciones del menu, seleccion de carta d
 
 desarrollo:
 
-i. la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x5, 2x10 y 3x10
+Crear la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x5, 2x10 y 3x10
 
-ii. tener modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay un tiempo acotado para jugar y depende del avance se otorga un puntaje), un versus entre 2 jugadores o vs CPU
+ tener modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay un tiempo acotado para jugar y depende del avance se otorga un puntaje), un versus entre 2 jugadores o vs CPU
 
 Usando i y ii, definir niveles de dificultad, por ej. fácil, intermedio, difícil, muy difícil, experto, etc...
 
@@ -19,6 +19,7 @@ iii. deben poder crearse perfiles de jugador, que almacenen los datos, por ej co
  un tiempo acotado para jugar y depende del avance se otorga un puntaje),un versus entre 2 jugadores o vs CPU.
   celdas de filas y columnas
 
+estoy solo, no es divertido estar solo T_T.
  */
 
 
@@ -42,25 +43,39 @@ public class Memorice {
     }
 
     public static void mostarMenu() {
-                    System.out.println("*********************************************************");
         System.out.println("**********************************************************");
         System.out.println("*                      Iniciar Juego                     *");
         System.out.println("*   [a] Partida Nueva                                    *");
         System.out.println("*   [b] Cargar Partida                                   *");
         System.out.println("*   [c] Ver Estadisticas                                 *");
         System.out.println("*   [d] Configuraciones                                  *");
-        System.out.println("*   [d] Creditos                                         *");
+        System.out.println("*   [e] Creditos                                         *");
         System.out.println("*   [s] Salir                                            *");
         System.out.println("**********************************************************");
     }
 
+    public static void menuPartidaNueva(){
+        System.out.println("*********************************************************");
+        System.out.println("*             Selecione nivel de dificuatad             *");
+        System.out.println("*[a]facil(Columans y filas de 2X5,sin limite de tiempo) *");
+        System.out.println("*[b]intermedio(tablero de 3X5,limite de tiempo moderado)*");
+        System.out.println("*[c]difícil (Tablero de 2X10, Liite de tiempo corto )   *");
+        System.out.println("*[d]muy difícil (Tablero de 3X10, Liite de tiempo corto)*");
+        System.out.println("*[e]Experto  (Tablero de 5X10, Liite de tiempo corto )   *");
+        System.out.println("*[f]                  pesonalizado                      *");
+        System.out.println("*********************************************************");
+
+
+    }
+
+
     public String darNick(){
-        System.out.println(" nick:");
+        System.out.println("Ingrese un nuevo nick:");
         String nick= teclado.nextLine();
         return nick;
     }
 
-    public void crearPersona() {
+    public  void crearPersona() {
         String nombre = darNick();
         int nCeldas=0;
         int nCasillas=0;
@@ -102,15 +117,12 @@ public class Memorice {
     } // imprime un mensaje como String, en el cual se muestra el número en
 
 
-public void menu(){
-    while(true) {
-
-        mostarMenu();
-        var option = leerOpcion();
-
-        switch (option) {
-            case "a":
-                crearPersona();
+public void dificultad(){
+    String option;
+        while(true){
+            option = leerOpcion();
+            switch (option) {
+                case "a":
 
                 break;
             case "b":
@@ -120,21 +132,44 @@ public void menu(){
                 System.out.println("Error!");
                 break;
             case "s":
-return;
+                System.out.println("Err");
+
+            default:
+                System.out.println("La opcion ingresada es incorrecta");
+        }
+
+    }
+}
+
+public void menu(){
+
+
+    String option;
+    mostarMenu();
+
+    while(true) {
+        option = leerOpcion();
+
+        switch (option) {
+            case "a":
+                crearPersona();
+                menuPartidaNueva();
+                dificultad();
+
+                break;
+            case "b":
+                System.out.println("Error!");
+                break;
+            case "c":
+                System.out.println("Error!");
+                break;
+            case "s":
+                System.out.println("Err");
+
             default:
                 System.out.println("La opcion ingresada es incorrecta");
         }
     }
-
-
-
-}
-
-
-
-
-
-
-
-
+}//La ciclo while esta como true por efecto de comodidad par no estar abriendo
+// el programa nuevamente cuando se cierra porque no ay un validados
 }
