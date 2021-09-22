@@ -1,4 +1,18 @@
+/*vComentarios:
 
+- en estricto rigor, es una versión adaptada del juego conocido como memorice.
+
+- dado que esta propuesta se encuentra bastante trabajada y hay código fuente disponible, creo que se podría admitir como proyecto agregando como mínimo las siguiente adaptaciones/restricciones:
+
+i. la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x5, 2x10 y 3x10
+
+ii. tener modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay un tiempo acotado para jugar y depende del avance se otorga un puntaje), un versus entre 2 jugadores o vs CPU
+
+Usando i y ii, definir niveles de dificultad, por ej. fácil, intermedio, difícil, muy difícil, experto, etc...
+
+iii. deben poder crearse perfiles de jugador, que almacenen los datos, por ej con al menos un nombre y nick para asociarlo a sus puntajes, estadísticas (veces que ha jugado, niveles que ha jugado, etc...)
+ y algunas preferencias, como por ej. el tipo de imágenes para las "cartas"
+ */
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -19,31 +33,7 @@ public class Memorice {
     }
 
     public static void mostarMenu() {
-                    System.out.println("*********************************************************\n░░▄███▄███▄\n" +
-                                                                                               "░░█████████\n" +
-                                                                                               "░░▒▀█████▀░\n" +
-                                                                                               "░░▒░░▀█▀\n" +
-                                                                                               "░░▒░░█░\n" +
-                                                                                               "░░▒░█\n" +
-                                                                                               "░░░█\n" +
-                                                                                               "░░█░░░░███████\n" +
-                                                                                               "░██░░░██▓▓███▓██▒\n" +
-                                                                                               "██░░░█▓▓▓▓▓▓▓█▓████\n" +
-                                                                                               "██░░██▓▓▓(◐)▓█▓█▓█\n" +
-                                                                                               "███▓▓▓█▓▓▓▓▓█▓█▓▓▓▓█\n" +
-                                                                                               "▀██▓▓█░██▓▓▓▓██▓▓▓▓▓█\n" +
-                                                                                               "░▀██▀░░█▓▓▓▓▓▓▓▓▓▓▓▓▓█\n" +
-                                                                                               "░░░░▒░░░█▓▓▓▓▓█▓▓▓▓▓▓█\n" +
-                                                                                               "░░░░▒░░░█▓▓▓▓█▓█▓▓▓▓▓█\n" +
-                                                                                               "░▒░░▒░░░█▓▓▓█▓▓▓█▓▓▓▓█\n" +
-                                                                                               "░▒░░▒░░░█▓▓▓█░░░█▓▓▓█\n" +
-                                                                                              "░▒░░▒░░██▓██░░░██▓▓██\n" +
-                                                                                              "██████████████████████████\n"+
-                                                                                              "██  ████  █ ███ █  ████  █\n" +
-                                                                                              "███ █  █ ████ ████ █  █ ██\n" +
-                                                                                              "███ ████ ██ ███ ██ ████ ██\n" +
-                                                                                              "██████████████████████████\n");
-
+                    System.out.println("*********************************************************");
         System.out.println("**********************************************************");
         System.out.println("*                      Iniciar Juego                     *");
         System.out.println("*   [a] Partida Nueva                                    *");
@@ -79,7 +69,7 @@ public class Memorice {
     } //permite capturar el número ingresado por usuario
 
 
-    // simular el ingreso de datos con valores aleatorios entre 0.0 y 9.9 y retorna el arreglo.
+
 
     public static void imprimirNumero(double numero) {
         System.out.println("El numero es: " + numero);
@@ -112,6 +102,7 @@ public void menu(){
         switch (option) {
             case "a":
                 crearPersona();
+
                 break;
             case "b":
                 System.out.println("Error!");
