@@ -15,7 +15,7 @@ Por ahora se esta haciendo el usuario
 
 - tableros de juego:_______  ![50%](https://progress-bar.dev/35)
 
-- cronometro :____________![50%](https://progress-bar.dev/30)  **_logre hacer funcionar mi cronomtro :DDDD que felicidad:Dtujdf_**
+- cronometro :____________![50%](https://progress-bar.dev/30)**_logre hacer funcionar mi cronomtro :DDDD que felicidad:Dtujdf_**
 
 - modos de juego: ________    ![50%](https://progress-bar.dev/10)
 
