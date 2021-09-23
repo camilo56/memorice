@@ -25,9 +25,9 @@ Por ahora se esta haciendo el usuario
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
-- cargar partida anterior:____ ![50%](https://progress-bar.dev/0)
+- cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______          __   ![50%](https://progress-bar.dev/0)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/0)
 
 **prioridad desarrollo de sofware:** 
 
