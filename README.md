@@ -1,4 +1,4 @@
-# memorice
+# Memorice
 
 El readme es para la rama de desarrollo por las dudas, y es para estar al tanto con los avances y 
 desarrollo
@@ -19,4 +19,8 @@ falta los arreglo y modalidad de juego contra tiempo etc
 
 luego vincular todo pero por ahora hacer  los metodos atomicos.
 
+
+### ATENCIóN
+
+Se creo la rama desarrollo2 para el que quiera subir sus comitt y push sin temer a  joder la **_rama desarrollo_** que seria nuesta master temporal.
 
