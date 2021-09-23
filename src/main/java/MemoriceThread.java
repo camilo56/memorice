@@ -129,27 +129,26 @@ public class MemoriceThread extends Thread {
 
 
 public void dificultad(){
-
     String option;
-        while(true){
-            option = leerOpcion();
-            switch (option) {
-                case "a":
-                    int arr[][]=tablero();
-                    tableros.mostrarSimple(arr);
 
+    while(true){
+        option = leerOpcion();
 
-
-
-System.out.println("wa");
-
+        switch (option) {
+            case "a":
+                int arr[][]=tablero();
+                tableros.mostrarSimple(arr);
+                System.out.println("wa");
                 break;
+
             case "b":
                 System.out.println("Error!");
                 break;
+
             case "c":
                 System.out.println("Error!");
                 break;
+
             case "s":
                 System.out.println("Err");
 
@@ -158,7 +157,7 @@ System.out.println("wa");
         }
 
     }
-}
+}//Este metodo ejecuta el arrglo especifo y el cronometro especifo  de acuerdo a la difilcultad deseada
 
 public void menu(){
 
@@ -207,7 +206,9 @@ public void menu(){
             }
 
 
-        }
+        }//Todo el codigo agregado en este metodo es ejecuta en el main de manera independiente y en en otro hilo
+
+
 
 
     private static void delaySegundo(){
