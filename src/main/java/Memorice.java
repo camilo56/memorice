@@ -30,9 +30,11 @@ import java.util.Scanner;
 public class Memorice {
     Scanner teclado = new Scanner(System.in);
     private ArrayList<Persona> personas;
+    private Tableros tableros;
 
     public Memorice() {
         this.personas = new ArrayList<>();
+        this.tableros=new Tableros();
     }
 
 
@@ -102,14 +104,17 @@ public class Memorice {
 
 
 
-    public static double[] crearArreglo() {
+    public static int[][] tablero() {
         Random rnum = new Random();
+        int[][] arr = new int[10][10];
 
-        double[] arr = new double[70];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rnum.nextDouble();
+            for (int j=0; j< arr[i].length;j++){
+                arr[i][j]=rnum.nextInt(100)+1;
+            }
 
         }
+
         return arr;
     }
     public static void imprimirNumDecimal(int numero) {
@@ -118,11 +123,19 @@ public class Memorice {
 
 
 public void dificultad(){
+
     String option;
         while(true){
             option = leerOpcion();
             switch (option) {
                 case "a":
+                    int arr[][]=tablero();
+                    tableros.mostrarSimple(arr);
+
+
+
+
+System.out.println("wa");
 
                 break;
             case "b":
@@ -143,7 +156,7 @@ public void dificultad(){
 
 public void menu(){
 
-
+    String tableros[][];
     String option;
     mostarMenu();
 
