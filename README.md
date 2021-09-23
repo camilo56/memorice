@@ -27,7 +27,7 @@ Por ahora se esta haciendo el usuario
 
 - cargar partida anterior:____ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______           ![50%](https://progress-bar.dev/0)
+- validaciones_______          __   ![50%](https://progress-bar.dev/0)
 
 **prioridad desarrollo de sofware:** 
 
