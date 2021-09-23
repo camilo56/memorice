@@ -27,12 +27,18 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Memorice {
+public class MemoriceThread extends Thread {
+
+
     Scanner teclado = new Scanner(System.in);
     private ArrayList<Persona> personas;
     private Tableros tableros;
 
-    public Memorice() {
+
+
+
+
+        public MemoriceThread() {
         this.personas = new ArrayList<>();
         this.tableros=new Tableros();
     }
@@ -185,4 +191,33 @@ public void menu(){
     }
 }//La ciclo while esta como true por efecto de comodidad par no estar abriendo
 // el programa nuevamente cuando se cierra porque no ay un validados
+
+    public void run() {
+
+
+
+            int minutos = 0;
+            int segundo = 0;
+
+
+            for (segundo = 0; segundo < 60; segundo++) {
+                System.out.println(minutos + ":" + segundo);
+                delaySegundo();
+
+            }
+
+
+        }
+
+
+    private static void delaySegundo(){
+        try{Thread.sleep(1000);
+        }catch(InterruptedException e){}
+    }
+
+
+
+
+
 }
+
