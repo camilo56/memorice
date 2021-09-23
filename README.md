@@ -15,7 +15,7 @@ Por ahora se esta haciendo el usuario
 
 - tableros de juego:_______  ![50%](https://progress-bar.dev/35)
 
-- cronometro :____________![50%](https://progress-bar.dev/0)
+- cronometro :____________![50%](https://progress-bar.dev/20)
 
 - modos de juego: ________    ![50%](https://progress-bar.dev/10)
 
