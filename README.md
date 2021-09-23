@@ -9,7 +9,7 @@ desarrollo:
 
 Por ahora se esta haciendo el usuario 70%,llegue a hacer la parte de agregar el tablero para el jugador especifico.
 pero me falta hacer jugar el tablero osea hacer un tablero dinamico ahora voy a hacer el cronometro y refinar la clase tablero con objetos tableros
-que cree pero no se si manterla o sacarla y crea solo una clase con metodos de tableros a vere cual es la mejor opcion en el avance del programa .
+que cree pero no se si manterla o sacarla, y crear solo una clase con metodos de tableros, ay vere cual es la mejor opcion en el avance del programa .
 
 
 faltan:
