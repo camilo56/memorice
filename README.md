@@ -23,7 +23,7 @@ quieren avanzar o hacerse comité pueden trabajar en eso.
 
 - cronometro :____________   ![50%](https://progress-bar.dev/20) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/10)
+- modos de juego: ________    ![50%](https://progress-bar.dev/12)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
