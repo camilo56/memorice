@@ -7,7 +7,7 @@ integrantes: Camilo Painenao,coloquen sus nombre creo
 
 ### desarrollo:
 
-Por ahora se esta haciendo el usuario
+El usuario esta casi terminado, se esta trabajando tablero
 
 **AVANCE:** 
 
@@ -19,11 +19,11 @@ quieren avanzar o hacerse comité pueden trabajar en eso.
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/35)
+- tableros de juego:_______  ![50%](https://progress-bar.dev/35) **_no tan insano como cronometro_**
 
-- cronometro :____________   ![50%](https://progress-bar.dev/30) **_logre hacer funcionar mi cronomtro :DDDD que felicidad:Dtujdf_**
+- cronometro :____________   ![50%](https://progress-bar.dev/20) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/10)
+- modos de juego: ________    ![50%](https://progress-bar.dev/12)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
