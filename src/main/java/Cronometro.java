@@ -24,7 +24,7 @@ public class Cronometro extends Thread {
 
 
     private static void delaySegundo(){
-        try{Thread.sleep(10);
+        try{Thread.sleep(0,000001);
         }catch(InterruptedException e){}
     }//1000 velocidad normal
 }

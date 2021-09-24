@@ -2,50 +2,68 @@ import java.util.Random;
 
 public class Tableros {
 
-        private int[][] matriz;
+        private String[][] matriz;
         private int cartas;
-        private boolean enemigo;
         private String nombre;
 
         public Tableros() {
-            this.matriz = new int[10][10];
+            this.matriz = new String[10][10];
             this.cartas = 10;
             this.nombre = "";
         }
 
 
-        public void asignarCartas() {
+        public String[][] asignarCartas() {
             boolean[] arreglo = new boolean[100]; //asigno arreglo de 100
+            String[] cartas = { "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+            Random randomNum = new Random();
 
-            Random rnum = new Random();
 
             for (int i = 0; i < arreglo.length; i++) {   //esta lleno de falsos
                 arreglo[i] = false;
             }
 
 
-            for (int i = 0; i < 10;) {                  //solo 10 de ellos de forma aleatoria van a ser verdaderos
-                int aux = rnum.nextInt(arreglo.length);
-                if (!arreglo[aux]) {
-                    arreglo[aux]=true;
+            for (int i = 0; i < 50;) {//solo 50 de ellos de forma aleatoria van a ser verdaderos
+
+                int auxiliar = randomNum.nextInt(arreglo.length);
+
+                if (!arreglo[auxiliar]) {
+                    arreglo[auxiliar]=true;
                     i++;
-                }
+                }//asignaicon de verdaderos
             }
-            int contador = 0;
-            for (int i = 0; i < matriz.length; i++) {       //de los 10 valores verdaros los asigno con 1: en total de los 100 valores los asigno con 0 y 1
-                for (int j = 0; j < matriz.length; j++) {
-                    if (arreglo[contador]) {
-                        matriz[i][j] = 1;
+            int contador2=0;
+            int contador3=1;
+            int contador1=0;
+
+
+            for (int i = 0; i < 10; i++) {
+                String numero2 = Integer.toString(contador2++);
+                matriz[i][0]= numero2;
+            }
+
+            for (int i = 1; i < 10; i++) {
+                String numero3 = Integer.toString(contador3++);
+                matriz[0][i]=numero3;
+            }
+
+
+            for (int i = 1; i < matriz.length; i++) {       //de los 10 valores verdaros los asigno con : en total de los 100 valores los asigno con
+                for (int j = 1; j < matriz.length; j++) {
+                    if (arreglo[contador1]) {
+                        matriz[i][j] = cartas[randomNum.nextInt(26)];
                     } else {
-                        matriz[i][j] = 0;
+                        matriz[i][j] = cartas[randomNum.nextInt(26)];;
                     }
-                    contador++;
+                    contador1++;
                 }
             }
+            return matriz;
 
         }
 
-        public void mostrarSimple(int[][] matriz) {
+        public void mostrarSimple(String[][] matriz) {
 
             for (int i = 0; i < matriz.length; i++) {
                 for (int j = 0; j < matriz[i].length; j++) {
@@ -56,11 +74,11 @@ public class Tableros {
             }
         }
 
-        public int[][] getMatriz() {
+        public String[][] getMatriz() {
             return matriz;
         }
 
-        public void setMatriz(int[][] matriz) {
+        public void setMatriz(String[][] matriz) {
             this.matriz = matriz;
         }
 
