@@ -7,7 +7,7 @@ integrantes: Camilo Painenao,coloquen sus nombre creo
 
 ### desarrollo:
 
-Por ahora se esta haciendo el usuario
+El usuario esta casi terminado, se esta trabajando tablero
 
 **AVANCE:** 
 
