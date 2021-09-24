@@ -139,6 +139,7 @@ public void dificultad(){
                 int arr[][]=tablero();
                 tableros.mostrarSimple(arr);
                 System.out.println("wa");
+                run();
                 break;
 
             case "b":
