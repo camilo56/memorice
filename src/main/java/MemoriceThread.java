@@ -141,8 +141,7 @@ public void dificultad(){
 
         switch (option) {
             case "a":
-                int arr[][]=tablero();
-                tableros.mostrarSimple(arr);
+                tableros.mostrarSimple(tableros.asignarCartas());
                 System.out.println("wa");
 
 
