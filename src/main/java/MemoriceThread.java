@@ -133,12 +133,19 @@ public void dificultad(){
 
     while(true){
         option = leerOpcion();
+        if(leerOpcion().equals("a")){
+            Cronometro cronometro= new Cronometro();
+            cronometro.runa();
+
+        }
 
         switch (option) {
             case "a":
                 int arr[][]=tablero();
                 tableros.mostrarSimple(arr);
                 System.out.println("wa");
+
+
                 break;
 
             case "b":
@@ -191,30 +198,7 @@ public void menu(){
 }//La ciclo while esta como true por efecto de comodidad par no estar abriendo
 // el programa nuevamente cuando se cierra porque no ay un validados
 
-    public void run() {
 
-
-
-            int minutos = 0;
-            int segundo = 0;
-
-
-            for (segundo = 0; segundo < 60; segundo++) {
-                System.out.println(minutos + ":" + segundo);
-                delaySegundo();
-
-            }
-
-
-        }//Todo el codigo agregado en este metodo es ejecuta en el main de manera independiente y en en otro hilo
-
-
-
-
-    private static void delaySegundo(){
-        try{Thread.sleep(1000);
-        }catch(InterruptedException e){}
-    }
 
 
 
