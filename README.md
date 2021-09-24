@@ -7,23 +7,17 @@ integrantes: Camilo Painenao,coloquen sus nombre creo
 
 ### desarrollo:
 
-El usuario esta casi terminado, se esta trabajando tablero
+Por ahora se esta haciendo el usuario
 
 **AVANCE:** 
 
-23/09/21<----Cabros les informo que actualmente el trabajo esta estancado en dos problemas en agregar cronometro y hacer un tablero 
-dinámico que son dos clases aparte y se esta trabajando con la funcionalidad de doble hilo actualmente por ahora a menos que se 
-encuentre una mejor solución la documentación esta en la sección recursos en discor quien lo logre hacer tiene mi gratitud :D  si
-quieren avanzar o hacerse comité pueden trabajar en eso.
-- Documentacion:https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/
-
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/35) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/35)
 
-- cronometro :____________   ![50%](https://progress-bar.dev/20) **_muy dificil hacerlo mejor intente primero con el tablero_**
+- cronometro :____________![50%](https://progress-bar.dev/30)**_logre hacer funcionar mi cronomtro :DDDD que felicidad:Dtujdf_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/12)
+- modos de juego: ________    ![50%](https://progress-bar.dev/10)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
