@@ -3,7 +3,7 @@
 El readme es para la rama de desarrollo por las dudas, y es para estar al tanto con los avances y 
 desarrollo
 
-integrantes: Camilo Painenao,coloquen sus nombre creo
+integrantes: Camilo,sebatian,Pablo,German
 
 ### desarrollo:
 Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
