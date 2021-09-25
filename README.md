@@ -19,21 +19,21 @@ quieren avanzar o hacerse comité pueden trabajar en eso.
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/35) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/43) **_no tan insano como cronometro_**
 
-- cronometro :____________   ![50%](https://progress-bar.dev/20) **_muy dificil hacerlo mejor intente primero con el tablero_**
+- cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/12)
+- modos de juego: ________    ![50%](https://progress-bar.dev/20)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/2)
+- graficos: _______________ ![50%](https://progress-bar.dev/4)
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
 - cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/0)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/1)
 
 **prioridad desarrollo de sofware:** 
 
