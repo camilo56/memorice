@@ -3,7 +3,7 @@ public class Persona {
     int puntaje = 0;
     int nVeces=0;
 
-    public Persona(String nick) {
+    public Persona(String z) {
         this.nick = nick;
     }
 
