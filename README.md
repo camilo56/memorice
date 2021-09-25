@@ -14,12 +14,13 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 25/09/21<----en espera.
 
-24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.
+24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.:D
 
 23/09/21<----Cabros les informo que actualmente el trabajo esta estancado en dos problemas en agregar cronometro y hacer un tablero 
 dinámico que son dos clases aparte y se esta trabajando con la funcionalidad de doble hilo actualmente por ahora a menos que se 
 encuentre una mejor solución la documentación esta en la sección recursos en discor quien lo logre hacer tiene mi gratitud :D  si
-quieren avanzar o hacerse comité pueden trabajar en eso.
+quieren avanzar o hacerse comité pueden trabajar en eso.:x
+
 - Documentacion:https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
