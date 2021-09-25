@@ -6,7 +6,7 @@ desarrollo
 integrantes: Camilo Painenao,coloquen sus nombre creo
 
 ### desarrollo:
-Nos juntamos de las _8 de la tarde_ por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
+Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
 
 El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
