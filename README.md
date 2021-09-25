@@ -3,37 +3,43 @@
 El readme es para la rama de desarrollo por las dudas, y es para estar al tanto con los avances y 
 desarrollo
 
-integrantes: Camilo Painenao,coloquen sus nombre creo
+integrantes: Camilo,sebatian,Pablo,German
 
 ### desarrollo:
+Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
 
-El usuario esta casi terminado, se esta trabajando tablero
+El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
-**AVANCE:** 
+**AVANCE:**
+
+25/09/21<----en espera.
+
+24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.:D
 
 23/09/21<----Cabros les informo que actualmente el trabajo esta estancado en dos problemas en agregar cronometro y hacer un tablero 
 dinámico que son dos clases aparte y se esta trabajando con la funcionalidad de doble hilo actualmente por ahora a menos que se 
 encuentre una mejor solución la documentación esta en la sección recursos en discor quien lo logre hacer tiene mi gratitud :D  si
-quieren avanzar o hacerse comité pueden trabajar en eso.
+quieren avanzar o hacerse comité pueden trabajar en eso.:x
+
 - Documentacion:https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/35) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/43) **_no tan insano como cronometro_**
 
-- cronometro :____________   ![50%](https://progress-bar.dev/20) **_muy dificil hacerlo mejor intente primero con el tablero_**
+- cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/12)
+- modos de juego: ________    ![50%](https://progress-bar.dev/20)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/2)
+- graficos: _______________ ![50%](https://progress-bar.dev/4)
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
 - cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/0)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/1)
 
 **prioridad desarrollo de sofware:** 
 
