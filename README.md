@@ -6,10 +6,15 @@ desarrollo
 integrantes: Camilo Painenao,coloquen sus nombre creo
 
 ### desarrollo:
+Nos juntamos de las _8 de la tarde_ por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
 
-El usuario esta casi terminado, se esta trabajando tablero
+El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
-**AVANCE:** 
+**AVANCE:**
+
+25/09/21<----en espera.
+
+24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.
 
 23/09/21<----Cabros les informo que actualmente el trabajo esta estancado en dos problemas en agregar cronometro y hacer un tablero 
 dinámico que son dos clases aparte y se esta trabajando con la funcionalidad de doble hilo actualmente por ahora a menos que se 
