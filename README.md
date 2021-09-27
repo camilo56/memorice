@@ -27,21 +27,21 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/43) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/65) **_no tan insano como cronometro_**
 
 - cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/20)
+- modos de juego: ________    ![50%](https://progress-bar.dev/25)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/4)
+- graficos: _______________ ![50%](https://progress-bar.dev/20)
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
 - cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/1)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/3)
 
 **prioridad desarrollo de sofware:** 
 
