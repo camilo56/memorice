@@ -12,7 +12,9 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
-25/09/21<----en espera.
+26/09/21<----Se atomatizo algunos metodos de la clase Tablero, tambiense agrego la opcion de elegir coordenadas,aunque falta validaciones,se agregaron nuevos metodos a la clase tablero y se llego a un aposibe solucion al tema del cronometro pero aun falta trabajarlo, en resumen el codigo esta un poco disperos falta ordenarlo y dejarlo mas simple y legible, el modo facil es plenamente jugable :D Porfin.
+
+25/09/21<----nada.
 
 24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.:D
 
@@ -25,21 +27,21 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/43) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/65) **_no tan insano como cronometro_**
 
 - cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/20)
+- modos de juego: ________    ![50%](https://progress-bar.dev/25)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/4)
+- graficos: _______________ ![50%](https://progress-bar.dev/20)
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
 - cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/1)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/3)
 
 **prioridad desarrollo de sofware:** 
 
