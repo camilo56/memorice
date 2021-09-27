@@ -12,7 +12,9 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
-25/09/21<----en espera.
+26/09/21<----Se atomatizo algunos metodos de la clase Tablero, tambiense agrego la opcion de elegir coordenadas,aunque falta validaciones,se agregaron nuevos metodos a la clase tablero y se llego a un aposibe solucion al tema del cronometro pero aun falta trabajarlo, en resumen el codigo esta un poco disperos falta ordenarlo y dejarlo mas simple y legible, el modo facil es plenamente jugable :D Porfin.
+
+25/09/21<----nada.
 
 24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.:D
 
