@@ -34,15 +34,10 @@ public class MemoriceThread extends Thread {
     private ArrayList<Persona> personas;
     private Tableros tableros;
 
-
-
-
-
         public MemoriceThread() {
         this.personas = new ArrayList<>();
         this.tableros=new Tableros();
     }
-
 
     public static String leerOpcion() {
         var scanner = new Scanner(System.in);
@@ -72,11 +67,7 @@ public class MemoriceThread extends Thread {
         System.out.println("*[e]Experto  (Tablero de 5X10, Liite de tiempo corto )   *");
         System.out.println("*[f]                  pesonalizado                      *");
         System.out.println("*********************************************************");
-
-
     }
-
-
     public String darNick(){
         System.out.println("Ingrese un nuevo nick:");
         String nick= teclado.nextLine();
@@ -94,68 +85,71 @@ public class MemoriceThread extends Thread {
 
     }//Aun falta agregar contraseña y validar los datos ingresados
 
-    public static int leerNumero() {
-        var scanner = new Scanner(System.in);
-        System.out.println("Ingrese numero:");
-        return scanner.nextInt();
-    } //permite capturar el número ingresado por usuario
 
 
-
-
-    public static void imprimirNumero(double numero) {
-        System.out.println("El numero es: " + numero);
-
-    }
-
-
-
-    public static int[][] tablero() {
+    public static String[][] tablero() {
         Random rnum = new Random();
-        int[][] arr = new int[10][10];
+        String[][] arr = new String[10][10];
 
         for (int i = 0; i < arr.length; i++) {
             for (int j=0; j< arr[i].length;j++){
-                arr[i][j]=rnum.nextInt(100)+1;
+                arr[i][j]="*";
             }
-
         }
-
         return arr;
-    }
+    }//Actualmente no esta en uso si l van a usar por favor aclarar en este comentario
+
     public static void imprimirNumDecimal(int numero) {
         System.out.println("El numero en decimal es: " + numero);
     } // imprime un mensaje como String, en el cual se muestra el número en
-
 
 public void dificultad(){
     String option;
 
     while(true){
         option = leerOpcion();
-        if(leerOpcion().equals("a")){
+        if(leerOpcion().equals(option)){
             Cronometro cronometro= new Cronometro();
             cronometro.runa();
-
         }
 
         switch (option) {
             case "a":
-                tableros.mostrarSimple(tableros.asignarCartas());
-                System.out.println("wa");
+                Cronometro cronometro= new Cronometro();
+                String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
+                int x=1;
 
+                do{tableros.coordenadas(matrizCartas);
+                cronometro.runa();
+                tableros.mostrarSimple(matrizCartas);
 
+                }while(x==1);
+
+                System.out.println("aun falta agregar la opcion de elegir coordenadas");
                 break;
 
             case "b":
+                tableros.mostrarSimple(tableros.asignarCartas());
+                System.out.println("Actualmente esla misma que la dificultad facil:pronto estara listo esta version");
                 System.out.println("Error!");
                 break;
 
             case "c":
+                tableros.mostrarSimple(tableros.asignarCartas());
+                System.out.println("Actualmente esla misma que la dificultad facil:pronto estara listo este modod de juego");
                 System.out.println("Error!");
                 break;
 
-            case "s":
+            case "d":tableros.mostrarSimple(tableros.asignarCartas());
+                System.out.println("Actualmente esla misma que la dificultad facil:pronto estara listo esta version");
+                System.out.println("Err");
+
+            case "e":tableros.mostrarSimple(tableros.asignarCartas());
+                System.out.println("Actualmente esla misma que la dificultad facil:pronto estara listo esta version");
+                System.out.println("Err");
+
+            case "f":tableros.mostrarSimple(tableros.asignarCartas());
+                System.out.println("Actualmente esla misma que la dificultad facil:pronto estara listo esta version");
                 System.out.println("Err");
 
             default:
@@ -179,17 +173,18 @@ public void menu(){
                 crearPersona();
                 menuPartidaNueva();
                 dificultad();
-
                 break;
+
             case "b":
                 System.out.println("Error!");
                 break;
+
             case "c":
                 System.out.println("Error!");
                 break;
+
             case "s":
                 System.out.println("Err");
-
             default:
                 System.out.println("La opcion ingresada es incorrecta");
         }
