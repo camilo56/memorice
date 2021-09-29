@@ -129,11 +129,10 @@ public class MemoriceThread extends Thread {
         tableros.crearTablero(filas, columnas);
         String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
         int x=1;
-
-        do{tableros.coordenadas(matrizCartas);
+        do{
+            tableros.coordenadas(matrizCartas);
             cronometro.runa();
             tableros.mostrarSimple(matrizCartas);
-
         }while(x==1);
 
         System.out.println("aun falta agregar la opcion de elegir coordenadas");
@@ -150,24 +149,6 @@ public class MemoriceThread extends Thread {
     public void volverMenu() {
         System.out.println("Volviendo a menu...");
     }
-    /*
-    public static String[][] tablero() {
-        Random rnum = new Random();
-        String[][] arr = new String[10][10];
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int j=0; j< arr[i].length;j++){
-                arr[i][j]="*";
-            }
-        }
-        return arr;
-    }//Actualmente no esta en uso si l van a usar por favor aclarar en este comentario
-
-
-    public static void imprimirNumDecimal(int numero) {
-        System.out.println("El numero en decimal es: " + numero);
-    } // imprime un mensaje como String, en el cual se muestra el número en
-
-    */ //METODOS NO USADOS, PERO PORSIBLEMENTE A USAR2
 }
 

@@ -32,8 +32,6 @@ public class Tableros {
         boolean arregloFalsos[] = llenadoFalsos(arreglo);
         asignacionVerdaderos(arregloFalsos);
         matriz = llenarFilaColumnaExterna();
-        //filaExternas(matriz,true);
-        //columnaExternas(matriz,false);
         int contador = 0;
         for (int i = 1; i < matriz.length; i++) {
             for (int j = 1; j < matriz[i].length; j++) {
@@ -48,11 +46,11 @@ public class Tableros {
         return matriz;
     }//de los 50 valores verdaros los asigno con una letra aleatoria del alfabeto pronto agregare caracteres ascii.
 
-    public String[][] llenarFilaColumnaExterna() {
+    public String[][] llenarFilaColumnaExterna(){
         for (int i = 0; i < matriz.length; i++) {
             matriz[i][0] = Integer.toString(i);
         }
-        for (int i = 0; i < matriz[0].length; i++) {
+        for (int i = 0; i < matriz[0].length; i++){
             matriz[0][i] = Integer.toString(i);
         }
         return matriz;

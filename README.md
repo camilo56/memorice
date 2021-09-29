@@ -12,6 +12,8 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
+28/09/21<---- se trabajo en metodos, atomizacion y las buenas practicas. Se arreglo el menu para generar tableros NxM predefinidos.      
+
 26/09/21<----Se atomatizo algunos metodos de la clase Tablero, tambiense agrego la opcion de elegir coordenadas,aunque falta validaciones,se agregaron nuevos metodos a la clase tablero y se llego a un aposibe solucion al tema del cronometro pero aun falta trabajarlo, en resumen el codigo esta un poco disperos falta ordenarlo y dejarlo mas simple y legible, el modo facil es plenamente jugable :D Porfin.
 
 25/09/21<----nada.
