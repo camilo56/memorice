@@ -22,13 +22,10 @@ iii. deben poder crearse perfiles de jugador, que almacenen los datos, por ej co
 estoy solo, no es divertido estar solo T_T.
  */
 
-
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MemoriceThread extends Thread {
-
 
     Scanner teclado = new Scanner(System.in);
     private ArrayList<Persona> personas;
@@ -81,35 +78,55 @@ public class MemoriceThread extends Thread {
         System.out.println("Nick Creado");
     }//llama a darNick(). Aun falta agregar contraseña y validar los datos ingresados
 
+    public void menu(){
+        String opcion;
+        do {
+            mostarMenu();
+            opcion = leerOpcion();
+            switch (opcion) {
+                case "a" -> casoNuevaPartida();
+                case "b" -> desarrollo();
+                case "c" -> desarrollo();
+                case "d" -> desarrollo();
+                case "e" -> desarrollo();
+                case "s" -> casoSalir();
+                default -> System.out.println("La opcion ingresada es incorrecta");
+            }
+        } while(!opcion.equals("s"));
+    }
+
+    public void casoNuevaPartida(){
+        crearPersona();
+        menuPartidaNueva();
+        dificultad();
+    }
+
     public void dificultad(){
         Scanner scanner = new Scanner(System.in);
-        /* AUN NO COMPLETAMENTE FUNCIONAL
-        while(true){
-            opcion = leerOpcion();
-            if(leerOpcion().equals(opcion)){
-                Cronometro cronometro= new Cronometro();
-                cronometro.runa();
-            }
-         */
         String opcion;
+        int MxN[][] = arregloMxN();
         do{
             opcion = scanner.nextLine();
             switch (opcion) {
-                case "a" -> casoPartidaNuevaFacil();
-                case "b" -> casoPartidaNuevaIntermedio();
-                case "c" -> casoPartidaNuevaDificil();
-                case "d" -> casoPartidaNuevaMuyDificil();
-                case "e" -> casoPartidaNuevaExperto();
-                case "f" -> casoPartidaNuevaPersonalizado();
+                case "a" -> generarPartidaNueva(MxN[0][0], MxN[0][1]);
+                case "b" -> generarPartidaNueva(MxN[1][0], MxN[1][1]);
+                case "c" -> generarPartidaNueva(MxN[2][0], MxN[2][1]);
+                case "d" -> generarPartidaNueva(MxN[3][0], MxN[3][1]);
+                case "e" -> generarPartidaNueva(MxN[4][0], MxN[4][1]);
+                case "f" -> desarrollo();
                 case "s" -> volverMenu();
                 default -> System.out.println("La opcion ingresada es incorrecta");
             }
         }while(!opcion.equals("s"));
-    }//Este metodo ejecuta el arrglo especifo y el cronometro especifo  de acuerdo a la difilcultad deseada
-    //SE CREARON METODOS PARA CADA CASO, ESTE METODO EN ESTE PUNTO ES SOLO UN 'DIRECCIONADOR' POR DECIR ALGO
+    }
 
-    public void casoPartidaNuevaFacil(){
+    public static int [][] arregloMxN(){
+        return new int[][]{{2, 5}, {3, 5}, {2, 10}, {3, 10}, {5, 10}};
+    }
+
+    public void generarPartidaNueva(int filas, int columnas){
         Cronometro cronometro= new Cronometro();
+        tableros.crearTablero(filas, columnas);
         String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
         int x=1;
 
@@ -122,69 +139,7 @@ public class MemoriceThread extends Thread {
         System.out.println("aun falta agregar la opcion de elegir coordenadas");
     }
 
-    public void casoPartidaNuevaIntermedio(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoPartidaNuevaDificil(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoPartidaNuevaMuyDificil(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoPartidaNuevaExperto(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoPartidaNuevaPersonalizado(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void volverMenu() {
-        System.out.println("Volviendo a menu...");
-    }
-
-    public void menu(){
-        //String tableros[][]; // no se ocupa
-        String opcion;
-        do {
-            mostarMenu();
-            opcion = leerOpcion();
-            switch (opcion) {
-                case "a" -> casoNuevaPartida();
-                case "b" -> casoCargarPartida();
-                case "c" -> casoVerEstadisticas();
-                case "d" -> casoConfiguraciones();
-                case "e" -> casoCreditos();
-                case "s" -> casoSalir();
-                default -> System.out.println("La opcion ingresada es incorrecta");
-            }
-        } while(!opcion.equals("s"));
-    }//La ciclo while esta como true por efecto de comodidad par no estar abriendo
-    // el programa nuevamente cuando se cierra porque no ay un validados
-    //ARREGLE LO ANTERIOR, A CADA CASO LE ASIGNE UN METODO 'CONSTRUCTOR'
-
-    public void casoNuevaPartida(){
-        crearPersona();
-        menuPartidaNueva();
-        dificultad();
-    }
-
-    public void casoCargarPartida(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoVerEstadisticas(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoConfiguraciones(){
-        System.out.println("En desarrollo...");
-    }
-
-    public void casoCreditos(){
+    public void desarrollo(){
         System.out.println("En desarrollo...");
     }
 
@@ -192,6 +147,9 @@ public class MemoriceThread extends Thread {
         System.out.println("adios...");
     }
 
+    public void volverMenu() {
+        System.out.println("Volviendo a menu...");
+    }
     /*
     public static String[][] tablero() {
         Random rnum = new Random();

@@ -16,52 +16,58 @@ public class Tableros {
     private String nombre;
 
     public Tableros() {
-        this.matriz = new String[10][10];
         this.cartas = 10;
         this.nombre = "";
         this.coordenadas = coordenadas;
     }
 
-
-
+    public String[][] crearTablero(int fila, int columna){
+        this.matriz = new String[fila + 1][columna + 1];// mas 1 para poder colocar referencias
+        return matriz;
+    }
 
     public String[][] asignarCartas() {
-        boolean[] arreglo = new boolean[100]; //asigno arreglo de 100
+        boolean[] arreglo = new boolean[(matriz.length) * (matriz[0].length)]; //asigno arreglo de 100
         String[] cartas = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-
         boolean arregloFalsos[] = llenadoFalsos(arreglo);
         asignacionVerdaderos(arregloFalsos);
-        filaExternas(matriz,true);
-        filaExternas(matriz,false);
-
+        matriz = llenarFilaColumnaExterna();
+        //filaExternas(matriz,true);
+        //columnaExternas(matriz,false);
         int contador = 0;
-
         for (int i = 1; i < matriz.length; i++) {
-            for (int j = 1; j < matriz.length; j++) {
+            for (int j = 1; j < matriz[i].length; j++) {
                 if (arreglo[contador]) {
-                    matriz[i][j] = cartas[randomNum.nextInt(26)];
+                    matriz[i][j] = cartas[randomNum.nextInt(5)];
                 } else {
-                    matriz[i][j] = cartas[randomNum.nextInt(26)];
+                    matriz[i][j] = cartas[randomNum.nextInt(5)];
                 }
                 contador++;
             }
         }
         return matriz;
-
     }//de los 50 valores verdaros los asigno con una letra aleatoria del alfabeto pronto agregare caracteres ascii.
+
+    public String[][] llenarFilaColumnaExterna() {
+        for (int i = 0; i < matriz.length; i++) {
+            matriz[i][0] = Integer.toString(i);
+        }
+        for (int i = 0; i < matriz[0].length; i++) {
+            matriz[0][i] = Integer.toString(i);
+        }
+        return matriz;
+    }
 
     public boolean[] llenadoFalsos(boolean arreglo[]) {
         for (int i = 0; i < arreglo.length; i++) {
             arreglo[i] = false;
         }
         return arreglo;
-    }
+    }// llena todo el arreglo de boolean == false
 
     public boolean[] asignacionVerdaderos(boolean arreglo[]) {
-        for (int i = 0; i < 50; ) {
-
+        for (int i = 0; i < ((arreglo.length)/2);) {
             int auxiliar = randomNum.nextInt(arreglo.length);
-
             if (!arreglo[auxiliar]) {
                 arreglo[auxiliar] = true;
                 i++;
@@ -69,8 +75,7 @@ public class Tableros {
         }
 
         return arreglo;
-    }//solo 50 de ellos de forma aleatoria van a ser verdaderos
-
+    }// solo 50 de ellos de forma aleatoria van a ser verdaderos
 
     public String[][] mostrarSimple(String[][] matriz) {
 
@@ -82,21 +87,6 @@ public class Tableros {
         }
         return matriz;
     }
-
-    public String[][] filaExternas(String[][] matriz,boolean valor) {
-        int contador = 0;
-
-        for (int i = 0; i < 10; i++) {
-            if (valor == true) {
-                String numero = Integer.toString(contador++);
-                matriz[i][0] = numero;
-            }else{
-                String numero = Integer.toString(contador++);
-                matriz[0][i] = numero;
-                    }
-        }
-        return matriz;
-    }//Ingreso de los valores de las coordenadas tanto de la fila externa como la columna externa.
 
     public String[][] coordenadas(String[][] matriz){
         Scanner teclado =new Scanner(System.in);
@@ -123,12 +113,6 @@ public class Tableros {
 
         return matriz;
     }
-
-
-
-
-
-
 
     public Random getRandomNum() {
         return randomNum;
