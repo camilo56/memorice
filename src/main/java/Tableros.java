@@ -1,15 +1,10 @@
-/* Esta clase
-
-* */
-
-
-
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Tableros {
-    Random randomNum = new Random();
+
+    private Random randomNum = new Random();
     private String[][] matriz;
     private int coordenadas;
     private int cartas;
@@ -27,24 +22,68 @@ public class Tableros {
     }
 
     public String[][] asignarCartas() {
-        boolean[] arreglo = new boolean[(matriz.length) * (matriz[0].length)]; //asigno arreglo de 100
         String[] cartas = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        boolean arregloFalsos[] = llenadoFalsos(arreglo);
-        asignacionVerdaderos(arregloFalsos);
         matriz = llenarFilaColumnaExterna();
+
+        int cantidadParCartas = ((matriz.length - 1) * (matriz[0].length - 1)) / 2; //Esto considera un "par de cartas" se le resta uno ya que no se consideran fila y columna externa
+        int cartasTotales = cantidadParCartas * 2;
+
+        String [] arregloParCartas = new String[cantidadParCartas] ; // HACE QUE NO SE REPITAN LAS CARTAS EN EL ARREGLO DE LA MITAD DE LAS CARTAS TOTALES
+        arregloParCartas = generarArregloNoRepetido(arregloParCartas, cartas);
+
+        int[] arregloNumerosAleatorios = generarArregloInt(cartasTotales);
+        arregloNumerosAleatorios = generarNumeroAleatoriosNoRepetidos(arregloNumerosAleatorios);
+
+        int k = 0;
+        String[] asignarCartasTablero = new String[cartasTotales];
+        for (int i = 0; i < cartasTotales; i++) {
+            if(i < arregloParCartas.length){
+                asignarCartasTablero[arregloNumerosAleatorios[i]] = arregloParCartas[i];
+            }else{
+                asignarCartasTablero[arregloNumerosAleatorios[i]] = arregloParCartas[k];
+                k++;
+            }
+        }
+
         int contador = 0;
         for (int i = 1; i < matriz.length; i++) {
-            for (int j = 1; j < matriz[i].length; j++) {
-                if (arreglo[contador]) {
-                    matriz[i][j] = cartas[randomNum.nextInt(5)];
-                } else {
-                    matriz[i][j] = cartas[randomNum.nextInt(5)];
-                }
+            for (int j = 1; j < matriz[0].length ; j++) {
+                matriz[i][j] = asignarCartasTablero[contador];
                 contador++;
             }
         }
         return matriz;
-    }//de los 50 valores verdaros los asigno con una letra aleatoria del alfabeto pronto agregare caracteres ascii.
+    }
+
+    public int[] generarNumeroAleatoriosNoRepetidos(int[] arreglo) {
+        arreglo[0] = randomNum.nextInt(arreglo.length);
+        for (int i = 1; i <arreglo.length; i++) {
+            arreglo[i] = randomNum.nextInt(arreglo.length);
+            for (int j = 0; j < i; j++) {
+                if(arreglo[i] == arreglo[j]){
+                    i--;
+                }
+            }
+        }
+        return arreglo;
+    }
+
+    public int[] generarArregloInt(int cantidad) {
+        return new int [cantidad];
+    }
+
+    public String[] generarArregloNoRepetido(String[] arregloCartas, String[] cartas) {
+        arregloCartas[0] = cartas[randomNum.nextInt(cartas.length)];
+        for (int i = 1; i <arregloCartas.length; i++) {
+            arregloCartas[i] = cartas[randomNum.nextInt(cartas.length)];
+            for (int j = 0; j < i; j++) {
+                if(arregloCartas[i] == arregloCartas[j]){
+                    i--;
+                }
+            }
+        }
+        return arregloCartas;
+    } //BIEN
 
     public String[][] llenarFilaColumnaExterna(){
         for (int i = 0; i < matriz.length; i++) {
@@ -54,29 +93,9 @@ public class Tableros {
             matriz[0][i] = Integer.toString(i);
         }
         return matriz;
-    }
-
-    public boolean[] llenadoFalsos(boolean arreglo[]) {
-        for (int i = 0; i < arreglo.length; i++) {
-            arreglo[i] = false;
-        }
-        return arreglo;
-    }// llena todo el arreglo de boolean == false
-
-    public boolean[] asignacionVerdaderos(boolean arreglo[]) {
-        for (int i = 0; i < ((arreglo.length)/2);) {
-            int auxiliar = randomNum.nextInt(arreglo.length);
-            if (!arreglo[auxiliar]) {
-                arreglo[auxiliar] = true;
-                i++;
-            }
-        }
-
-        return arreglo;
-    }// solo 50 de ellos de forma aleatoria van a ser verdaderos
+    } //BIEN
 
     public String[][] mostrarSimple(String[][] matriz) {
-
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 System.out.print("[" + matriz[i][j] + "]");
@@ -84,7 +103,7 @@ public class Tableros {
             System.out.println("");
         }
         return matriz;
-    }
+    } // NO USADO ACTUALMENTE
 
     public String[][] coordenadas(String[][] matriz){
         Scanner teclado =new Scanner(System.in);
@@ -110,7 +129,13 @@ public class Tableros {
         }
 
         return matriz;
-    }
+    }// MUCHAS FUNCIONES --> HACERLO MAS CORTO Y FUNCIONAL (SE CAE CUANDO INPUT != NUMERO)
+
+
+
+
+
+
 
     public Random getRandomNum() {
         return randomNum;

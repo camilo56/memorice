@@ -3,7 +3,7 @@ Entrada: nombre de jugador, selecion de opcciones del menu, seleccion de carta d
 
 desarrollo:
 
-Crear la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x5, 2x10 y 3x10
+Crear la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x4, 2x10 y 3x10
 
  tener modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay un tiempo acotado para jugar y depende del avance se otorga un puntaje), un versus entre 2 jugadores o vs CPU
 
@@ -58,7 +58,7 @@ public class MemoriceThread extends Thread {
         System.out.println("***********************************************************");
         System.out.println("*             Selecione nivel de dificuatad               *");
         System.out.println("*[a]facil(Tablero de 2X5,sin limite de tiempo)            *");
-        System.out.println("*[b]intermedio(Tablero de 3X5,limite de tiempo moderado)  *");
+        System.out.println("*[b]intermedio(Tablero de 3X4,limite de tiempo moderado)  *");
         System.out.println("*[c]difícil (Tablero de 2X10, limite de tiempo corto )    *");
         System.out.println("*[d]muy difícil (Tablero de 3X10, limite de tiempo corto) *");
         System.out.println("*[e]Experto  (Tablero de 5X10, limite de tiempo corto )   *");
@@ -121,17 +121,17 @@ public class MemoriceThread extends Thread {
     }
 
     public static int [][] arregloMxN(){
-        return new int[][]{{2, 5}, {3, 5}, {2, 10}, {3, 10}, {5, 10}};
+        return new int[][]{{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
     }
 
     public void generarPartidaNueva(int filas, int columnas){
-        Cronometro cronometro= new Cronometro();
+        //Cronometro cronometro= new Cronometro();
         tableros.crearTablero(filas, columnas);
         String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
         int x=1;
         do{
             tableros.coordenadas(matrizCartas);
-            cronometro.runa();
+            //cronometro.runa();
             tableros.mostrarSimple(matrizCartas);
         }while(x==1);
 
