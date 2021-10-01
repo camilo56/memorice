@@ -23,7 +23,7 @@ public class Tableros {
 
     public String[][] crearTablero(int fila, int columna){
         this.matriz = new String[fila + 1][columna + 1];// mas 1 para poder colocar referencias (eje X, eje Y)
-        matriz = llenarFilaColumnaExterna();
+        matriz = llenarFilaColumnaExterna(matriz);
         return matriz;
     }
 
@@ -77,10 +77,6 @@ public class Tableros {
         return new int [cantidad];
     }
 
-    public String [] generarArregloString(int cantidad){
-        return new String [cantidad];
-    }
-
     public String[] generarArregloNoRepetido(String[] arregloCartas, String[] cartas) {
         arregloCartas[0] = cartas[randomNum.nextInt(cartas.length)];
         for (int i = 1; i <arregloCartas.length; i++) {
@@ -94,7 +90,7 @@ public class Tableros {
         return arregloCartas;
     } //BIEN
 
-    public String[][] llenarFilaColumnaExterna(){
+    public String[][] llenarFilaColumnaExterna(String[][] matriz){
         for (int i = 0; i < matriz.length; i++) {
             matriz[i][0] = Integer.toString(i);
         }
@@ -104,18 +100,16 @@ public class Tableros {
         return matriz;
     } //BIEN
 
-    public String[][] mostrarSimple(String[][] matriz) {
+    public void mostrarSimple(String[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
                 System.out.print("[" + matriz[i][j] + "]");
             }
             System.out.println("");
         }
-        return matriz;
     }
 
     public String[][] coordenadas(String[][] matriz){
-
         System.out.println("ingrese las coordenas1 x");
         int coordenadas1_1 = validar.pedirNumeroLimitado(1,matriz[0].length - 1);
         System.out.println("ingrese las coordenas1 y");
@@ -137,9 +131,7 @@ public class Tableros {
             matriz[coordenadas2_2][coordenadas1_2]="=";
         }
         return matriz;
-    }// MUCHAS FUNCIONES --> HACERLO MAS CORTO Y FUNCIONAL (SE CAE CUANDO INPUT != NUMERO)
-    //ARREGLE EL PROBLEMA DEL INPUT
-
+    }// MUCHAS FUNCIONES --> HACERLO MAS CORTO
 
 
 
