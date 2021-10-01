@@ -11,6 +11,7 @@ Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al d
 El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
+01/10/21<---- clases de test y su composicion subidos falta rellenar los test pero es dificil ya que muchos metodos importantes estan en void , y los metodos que tienen retorno les falta mejorarlo mas para recien hacer los test ya que nuestro trabajo esta muy avanzado y con muchos cambios como para hacer test por ahora. esto podemos decir en el video o en el informe ya que es verdad. 
 
 30/09/21<----3.- se agrego modo de juego personalizado, con esto se tiene cubierto todos las opciones del menu (todas las combinaciones MxN del menu)
 
