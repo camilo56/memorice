@@ -179,7 +179,7 @@ public class MemoriceThread extends Thread {
         } else{
             System.out.println("ingrese cantidad de columnas (debe ser numero par)");
             do {
-                columnas = validar.pedirNumeroLimitado(0, 10);
+                columnas = validar.pedirNumeroLimitado(1, 10);
             }while (!((columnas % 2) == 0));
         }
         generarPartidaNueva(filas,columnas);
