@@ -35,9 +35,9 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - Documentacion:https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/
 
-- Usuario: ______________           ![50%](https://progress-bar.dev/70) 
+- Usuario: _______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/80) 
+- tableros de juego:________  ![50%](https://progress-bar.dev/80) 
 
 - cronometro :____________   ![50%](https://progress-bar.dev/15) **_se esta tratando de hacer por medio de doble hilo y codigo  cliente/servidor
   pero trabajarlo con timepo y dejarlo al final_**
@@ -48,9 +48,9 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - graficos: _______________ ![50%](https://progress-bar.dev/5)
 
-- configuracones: _________    ![50%](https://progress-bar.dev/5)
+- configuracones: _________   ![50%](https://progress-bar.dev/5)
 
-- cargar partida anterior:___ ![50%](https://progress-bar.dev/8)
+- cargar partida anterior:____ ![50%](https://progress-bar.dev/8)
 
 - validaciones_______   __    __   ![50%](https://progress-bar.dev/34)
 
