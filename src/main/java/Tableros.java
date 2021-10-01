@@ -1,6 +1,5 @@
 
 import java.util.Random;
-import java.util.Scanner;
 
 public class Tableros {
 
@@ -10,7 +9,7 @@ public class Tableros {
 
     private String[][] matriz;
     private int coordenadas;
-    private int cartas;
+    private String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};;
     private String nombre;
 
     public Tableros() {
@@ -28,17 +27,29 @@ public class Tableros {
     }
 
     public String[][] asignarCartas() {
-        String[] cartas = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        int cantidadCartasTotales = cantidadCartasTotalesTablero(matriz);
+        String[] cantidadParCartas = generarArregloCartasPares(cantidadCartasTotales);
+        int[] arregloNumerosNoRepetidos = generarArregloNumerosNoRepetidos(cantidadCartasTotales);
+        String[] asignarCartasTablero = asignarCartasTableroTemporal(cantidadCartasTotales, cantidadParCartas, arregloNumerosNoRepetidos);
+        matriz = llenarMatrizGlobal(asignarCartasTablero, matriz);
+        return matriz;
+    }
 
-        int cantidadParCartas = ((matriz.length - 1) * (matriz[0].length - 1)) / 2; //Esto considera un "par de cartas" se le resta uno ya que no se consideran fila y columna externa
-        int cartasTotales = cantidadParCartas * 2;
+    public int cantidadCartasTotalesTablero(String[][] matriz){
+        return ((matriz.length - 1) * (matriz[0].length - 1));
+    }
 
-        String [] arregloParCartas = new String[cantidadParCartas] ; // HACE QUE NO SE REPITAN LAS CARTAS EN EL ARREGLO DE LA MITAD DE LAS CARTAS TOTALES
-        arregloParCartas = generarArregloNoRepetido(arregloParCartas, cartas);
+    public String[] generarArregloCartasPares(int cantidadCartasTotales){
+        String[] arregloParCartas = new String[cantidadCartasTotales / 2];
+        return generarArregloNoRepetido(arregloParCartas, cartas);
+    }// genera la mitad (no repetidas) de las cartas totales del tablero
 
-        int[] arregloNumerosAleatorios = generarArregloInt(cartasTotales);
-        arregloNumerosAleatorios = generarNumeroAleatoriosNoRepetidos(arregloNumerosAleatorios);
+    public int[] generarArregloNumerosNoRepetidos(int cantidad){
+        int[] arregloNumAleat = crearArregloInt(cantidad);
+        return (generarNumeroAleatoriosNoRepetidos(arregloNumAleat));
+    }// genera arreglo int de numeros aleatorios no repetidos
 
+    public String[] asignarCartasTableroTemporal(int cartasTotales, String[] arregloParCartas, int[] arregloNumerosAleatorios ){
         int k = 0;
         String[] asignarCartasTablero = new String[cartasTotales];
         for (int i = 0; i < cartasTotales; i++) {
@@ -49,7 +60,10 @@ public class Tableros {
                 k++;
             }
         }
+        return  asignarCartasTablero;
+    }
 
+    public String[][] llenarMatrizGlobal(String[] asignarCartasTablero, String[][] matriz){
         int contador = 0;
         for (int i = 1; i < matriz.length; i++) {
             for (int j = 1; j < matriz[0].length ; j++) {
@@ -73,7 +87,7 @@ public class Tableros {
         return arreglo;
     }
 
-    public int[] generarArregloInt(int cantidad) {
+    public int[] crearArregloInt(int cantidad) {
         return new int [cantidad];
     }
 
@@ -100,15 +114,6 @@ public class Tableros {
         return matriz;
     } //BIEN
 
-    public void mostrarSimple(String[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print("[" + matriz[i][j] + "]");
-            }
-            System.out.println("");
-        }
-    }
-
     public String[][] coordenadas(String[][] matriz){
         System.out.println("ingrese las coordenas1 x");
         int coordenadas1_1 = validar.pedirNumeroLimitado(1,matriz[0].length - 1);
@@ -133,6 +138,21 @@ public class Tableros {
         return matriz;
     }// MUCHAS FUNCIONES --> HACERLO MAS CORTO
 
+    public String[][] mostrarSimple(String[][] matriz) {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print("[" + matriz[i][j] + "]");
+            }
+            System.out.println("");
+        }
+        return matriz;
+    }
+
+
+
+
+
+
 
 
 
@@ -153,11 +173,11 @@ public class Tableros {
         this.matriz = matriz;
     }
 
-    public int getCartas() {
+    public String[] getCartas() {
         return cartas;
     }
 
-    public void setCartas(int cartas) {
+    public void setCartas(String[] cartas) {
         this.cartas = cartas;
     }
 

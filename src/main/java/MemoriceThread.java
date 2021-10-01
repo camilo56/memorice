@@ -148,7 +148,7 @@ public class MemoriceThread extends Thread {
         Cronometro cronometro= new Cronometro();
         cronometro.runa();
         tableros.crearTablero(filas, columnas);
-        String[][] matrizCartas = tableros.asignarCartas();
+        String[][] matrizCartas = tableros.mostrarSimple(tableros.asignarCartas());
         int x = 1;
         do{
             tableros.coordenadas(matrizCartas);
@@ -178,7 +178,7 @@ public class MemoriceThread extends Thread {
         } else{
             System.out.println("ingrese cantidad de columnas (debe ser numero par)");
             do {
-                columnas = validar.pedirNumeroLimitado(1, 64);
+                columnas = validar.pedirNumeroLimitado(1, 6);
             }while (!((columnas % 2) == 0));
         }
         generarPartidaNueva(filas,columnas);

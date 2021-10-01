@@ -38,7 +38,7 @@ class TablerosTest {
     @Test
     public void testGenerarArregloInt(){
         int largo = 100;
-        assertArrayEquals(new int[largo], tablero.generarArregloInt(largo));
+        assertArrayEquals(new int[largo], tablero.crearArregloInt(largo));
     }
 
     @Test
