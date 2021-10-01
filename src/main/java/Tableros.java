@@ -1,8 +1,9 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Tableros {
 
-        private String[][] matriz;
+        public String[][] matriz;
         private int cartas;
         private String nombre;
 
@@ -76,7 +77,25 @@ public class Tableros {
         public String[][] getMatriz() {
             return matriz;
         }
-
+        public void busquedaCF(String [][] matriz){
+            Scanner teclado= new Scanner(System.in);
+            System.out.println("----Digite las coordenadas a comparar  ----");
+            System.out.println("----Comienze digitando la columna ----");
+            int columna1=teclado.nextInt();
+            System.out.println("----     Ahora digite la fila     ----");
+            int fila1=teclado.nextInt();
+            System.out.println("----Digite las segundas coordenadas a comparar   ----");
+            System.out.println("----Comienze digitando la columna ----");
+            int columna2=teclado.nextInt();
+            System.out.println("----     Ahora digite la fila     ----");
+            int fila2=teclado.nextInt();
+            if(matriz[fila1][columna1].equals(matriz[fila2][columna2])){
+                System.out.println("Desbloqueado, son pareja");
+            }
+            else{
+                System.out.println("No son pareja");
+            }
+        }
         public void setMatriz(String[][] matriz) {
             this.matriz = matriz;
         }

@@ -136,7 +136,8 @@ public void dificultad(){
 
         switch (option) {
             case "a":
-                tableros.mostrarSimple(tableros.asignarCartas());
+                int arr[][]=tablero();
+                tableros.mostrarSimple(arr);
                 System.out.println("wa");
                 break;
 
@@ -191,8 +192,7 @@ public void menu(){
 // el programa nuevamente cuando se cierra porque no ay un validados
 
     public void run() {
-
-
+                run();
 
             int minutos = 0;
             int segundo = 0;
