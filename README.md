@@ -3,7 +3,7 @@
 El readme es para la rama de desarrollo por las dudas, y es para estar al tanto con los avances y 
 desarrollo
 
-integrantes: Camilo,sebatian,Pablo,German
+integrantes: Camilo,sebatian,Pablo
 
 ### desarrollo:
 Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
@@ -12,7 +12,9 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
-01/10/21<---- clases de test y su composicion subidos falta rellenar los test pero es dificil ya que muchos metodos importantes estan en void , y los metodos que tienen retorno les falta mejorarlo mas para recien hacer los test ya que nuestro trabajo esta muy avanzado y con muchos cambios como para hacer test por ahora. esto podemos decir en el video o en el informe ya que es verdad. 
+01/10/21<----2.- se agregaron pruebas unitarias, se mejoraron metodos.
+
+01/10/21<----1.- clases de test y su composicion subidos falta rellenar los test pero es dificil ya que muchos metodos importantes estan en void , y los metodos que tienen retorno les falta mejorarlo mas para recien hacer los test ya que nuestro trabajo esta muy avanzado y con muchos cambios como para hacer test por ahora. esto podemos decir en el video o en el informe ya que es verdad. 
 
 30/09/21<----3.- se agrego modo de juego personalizado, con esto se tiene cubierto todos las opciones del menu (todas las combinaciones MxN del menu)
 
