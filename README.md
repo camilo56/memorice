@@ -46,13 +46,13 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/0)
+- graficos: _______________ ![50%](https://progress-bar.dev/5)
 
-- configuracones: _________    ![50%](https://progress-bar.dev/0)
+- configuracones: _________    ![50%](https://progress-bar.dev/5)
 
-- cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
+- cargar partida anterior:___ ![50%](https://progress-bar.dev/8)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/30)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/34)
 
 **prioridad desarrollo de sofware:** 
 
