@@ -4,26 +4,31 @@ import java.util.Scanner;
 
 public class Tableros {
 
+    Validaciones validar = new  Validaciones();
+
     private Random randomNum = new Random();
+
     private String[][] matriz;
     private int coordenadas;
     private int cartas;
     private String nombre;
 
     public Tableros() {
+        /*
         this.cartas = 10;
         this.nombre = "";
         this.coordenadas = coordenadas;
-    }
+        */
+    } // NO OCUPADO ACTUALMENTE
 
     public String[][] crearTablero(int fila, int columna){
-        this.matriz = new String[fila + 1][columna + 1];// mas 1 para poder colocar referencias
+        this.matriz = new String[fila + 1][columna + 1];// mas 1 para poder colocar referencias (eje X, eje Y)
+        matriz = llenarFilaColumnaExterna();
         return matriz;
     }
 
     public String[][] asignarCartas() {
         String[] cartas = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-        matriz = llenarFilaColumnaExterna();
 
         int cantidadParCartas = ((matriz.length - 1) * (matriz[0].length - 1)) / 2; //Esto considera un "par de cartas" se le resta uno ya que no se consideran fila y columna externa
         int cartasTotales = cantidadParCartas * 2;
@@ -72,6 +77,10 @@ public class Tableros {
         return new int [cantidad];
     }
 
+    public String [] generarArregloString(int cantidad){
+        return new String [cantidad];
+    }
+
     public String[] generarArregloNoRepetido(String[] arregloCartas, String[] cartas) {
         arregloCartas[0] = cartas[randomNum.nextInt(cartas.length)];
         for (int i = 1; i <arregloCartas.length; i++) {
@@ -103,22 +112,22 @@ public class Tableros {
             System.out.println("");
         }
         return matriz;
-    } // NO USADO ACTUALMENTE
+    }
 
     public String[][] coordenadas(String[][] matriz){
-        Scanner teclado =new Scanner(System.in);
+
         System.out.println("ingrese las coordenas1 x");
-        int coordenadas1_1 = teclado.nextInt();
+        int coordenadas1_1 = validar.pedirNumeroLimitado(1,matriz[0].length - 1);
         System.out.println("ingrese las coordenas1 y");
-        int coordenadas2_1 = teclado.nextInt();
+        int coordenadas2_1 = validar.pedirNumeroLimitado(1, matriz.length - 1);
 
         String valorCoordenadas1=matriz[coordenadas2_1][coordenadas1_1];
         System.out.println(valorCoordenadas1);
 
         System.out.println("ingrese las coordenas2 x");
-        int coordenadas1_2 = teclado.nextInt();
+        int coordenadas1_2 = validar.pedirNumeroLimitado(1,matriz[0].length - 1);
         System.out.println("ingrese las coordenas2 y");
-        int coordenadas2_2 = teclado.nextInt();
+        int coordenadas2_2 = validar.pedirNumeroLimitado(1, matriz.length - 1);
 
         String valorCoordenadas2=matriz[coordenadas2_2][coordenadas1_2];
         System.out.println(valorCoordenadas2);
@@ -127,10 +136,9 @@ public class Tableros {
             matriz[coordenadas2_1][coordenadas1_1]="=";
             matriz[coordenadas2_2][coordenadas1_2]="=";
         }
-
         return matriz;
     }// MUCHAS FUNCIONES --> HACERLO MAS CORTO Y FUNCIONAL (SE CAE CUANDO INPUT != NUMERO)
-
+    //ARREGLE EL PROBLEMA DEL INPUT
 
 
 
