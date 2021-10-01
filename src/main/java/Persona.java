@@ -1,5 +1,6 @@
 public class Persona {
-    String nick = "";
+
+    String nick;
     int puntaje = 0;
     int nVeces=0;
 

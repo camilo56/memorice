@@ -192,7 +192,8 @@ public void menu(){
 // el programa nuevamente cuando se cierra porque no ay un validados
 
     public void run() {
-                run();
+
+
 
             int minutos = 0;
             int segundo = 0;
