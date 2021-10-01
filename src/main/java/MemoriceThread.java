@@ -56,13 +56,13 @@ public class MemoriceThread extends Thread {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }// VALIDADO
+    }
 
     public static String leerOpcion() {
         var scanner = new Scanner(System.in);
         System.out.println("Ingrese opcion:");
         return scanner.nextLine();
-    }//INPUT
+    }
 
     public static void mostarMenu() {
         System.out.println("***********************************************************");
@@ -74,7 +74,7 @@ public class MemoriceThread extends Thread {
         System.out.println("*   [e] Creditos                                          *");
         System.out.println("*   [s] Salir                                             *");
         System.out.println("***********************************************************");
-    }//MUESTRA MENU PRINCIPAL
+    }//listo, muestra menu principal
 
     public static void menuPartidaNueva(){
         System.out.println("***********************************************************");
@@ -87,13 +87,13 @@ public class MemoriceThread extends Thread {
         System.out.println("*[f]                  pesonalizado                        *");
         System.out.println("*[s]                volver al menu                        *");
         System.out.println("***********************************************************");
-    }//MUESTRA SUBMENU DE OPCION "a" DE MENU
+    }//listo, muestra submenu de mostrarMenu() opcion "a"
 
     public static String darNick(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese un nuevo nick:");
         return scanner.nextLine();
-    }//INPUT DE UN NOMBRE
+    }//listo, pide ingresar sobrenombre(nick) solamente
 
     public boolean crearPersona() {
         try {
@@ -105,7 +105,7 @@ public class MemoriceThread extends Thread {
             return false;
         }
         return true;
-    }
+    }//llama a darNick(). Aun falta agregar contraseña y validar los datos ingresados
 
     public void casoNuevaPartida(){
         try {
@@ -114,6 +114,7 @@ public class MemoriceThread extends Thread {
         } catch (Exception e){
             e.printStackTrace();
         }
+
     }
 
     public void dificultad(){
@@ -134,24 +135,25 @@ public class MemoriceThread extends Thread {
                     case "s" -> volverMenu();//volver a menu
                     default -> System.out.println("La opcion ingresada es incorrecta");
                 }
+
             }while(!opcion.equals("s"));
         }catch (Exception e){
             e.printStackTrace();
         }
-    }//VALIDADO
+    }
 
     public static int [][] arregloMxN(){
         return new int[][]{{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
     }
 
     public void generarPartidaNueva(int filas, int columnas){
-        Cronometro cronometro= new Cronometro();
-        cronometro.runa();
+        //Cronometro cronometro= new Cronometro();
         tableros.crearTablero(filas, columnas);
-        String[][] matrizCartas = tableros.mostrarSimple(tableros.asignarCartas());
+        String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
         int x = 1;
         do{
             tableros.coordenadas(matrizCartas);
+            //cronometro.runa();
             tableros.mostrarSimple(matrizCartas);
             for (int i = 1; i < matrizCartas.length; i++) {
                 for (int j = 1; j < matrizCartas[0].length; j++) {
@@ -164,21 +166,20 @@ public class MemoriceThread extends Thread {
                 }
             }
         } while(x==1);
-        System.out.println("\nFelicidades, has completado este nivel");
+        System.out.println("Felicidades, has completado este nivel");
     }
 
     public void generarPartidaPersonalizada(){
-        System.out.println("Debe ingresar filas y columnas (la multiplicaion de estas debe ser a lo mas de 52)");
         System.out.println("ingrese cantidad de filas");
-        int filas = validar.pedirNumeroLimitado(1, 7);
+        int filas = validar.pedirNumeroLimitado(1, 10);
         int columnas;
         if((filas % 2) == 0){
             System.out.println("ingrese cantidad de columnas");
-            columnas = validar.pedirNumeroLimitado(1, 6);
+            columnas = validar.pedirNumeroLimitado(1, 10);
         } else{
             System.out.println("ingrese cantidad de columnas (debe ser numero par)");
             do {
-                columnas = validar.pedirNumeroLimitado(1, 6);
+                columnas = validar.pedirNumeroLimitado(1, 10);
             }while (!((columnas % 2) == 0));
         }
         generarPartidaNueva(filas,columnas);
@@ -189,7 +190,7 @@ public class MemoriceThread extends Thread {
     }
 
     private static void casoSalir(){
-        System.out.println("Adios...");
+        System.out.println("adios...");
     }
 
     private static void volverMenu() {
