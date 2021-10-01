@@ -12,6 +12,14 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
+30/09/21<----3.- se agrego modo de juego personalizado, con esto se tiene cubierto todos las opciones del menu (todas las combinaciones MxN del menu)
+
+30/09/21<----2.- se arreglo problema de validaciones de coordenadas, falta atomizar metodos de clase "Tableros.java", ademas de aplicar pruebas unitarias para finalizar con lo solicitado para avance01 del proyecto
+
+30/09/21<----1.- efectividad de metodos--> se arreglo el problemas al generar el tablero (ahora no se repitan las 'cartas' mas que solo su carta par), se eliminaron, reemplazaron y arreglaron metodos poco efectivos, falta validar entrada de coordenada
+
+28/09/21<---- se trabajo en metodos, atomizacion y las buenas practicas. Se arreglo el menu para generar tableros NxM predefinidos.      
+
 26/09/21<----Se atomatizo algunos metodos de la clase Tablero, tambiense agrego la opcion de elegir coordenadas,aunque falta validaciones,se agregaron nuevos metodos a la clase tablero y se llego a un aposibe solucion al tema del cronometro pero aun falta trabajarlo, en resumen el codigo esta un poco disperos falta ordenarlo y dejarlo mas simple y legible, el modo facil es plenamente jugable :D Porfin.
 
 25/09/21<----nada.
@@ -27,21 +35,21 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/65) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/80) **_no tan insano como cronometro_**
 
 - cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/25)
+- modos de juego: ________    ![50%](https://progress-bar.dev/70)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/20)
+- graficos: _______________ ![50%](https://progress-bar.dev/0)
 
 - configuracones: _________    ![50%](https://progress-bar.dev/0)
 
 - cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/3)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/30)
 
 **prioridad desarrollo de sofware:** 
 

@@ -2,15 +2,43 @@ import java.util.Scanner;
 
 public class Validaciones {
 
+    // ESTE METODOS SON BASTANTE VIABLES AL QUERER VALIDAR EL INPUT DE LAS COORDENADAS DE CLASE "Tableros.java"
 
-    public static int leerNumero() {
-        var scanner = new Scanner(System.in);
-        System.out.println("Ingrese numero:");
-        return scanner.nextInt();
-    } //permite capturar el número ingresado por usuario
+    public int pedirNumero(){
+        Scanner teclado = new Scanner(System.in);
+        int numero;
+        do {
+            try {
+                numero = teclado.nextInt();
+                break;
+            } catch (Exception e){
+                System.out.println("Indique un número y/o carácter válido");
+                teclado.nextLine();
+            }
+        } while (true);
+        return  numero;
+    } // PIDE INPUT DE UN NUMERO, ESTA VALIDADO
 
+    public int pedirNumeroLimitado(int min, int max){
+        System.out.println("Indique un numero (entre: " + min + " y " + max + ")");
+        int num;
+        do {
+            num = pedirNumero();
+            if(!limitesNumero(num, min, max)){
+                System.out.println("Indique un número y/o carácter válido");
+            }
+        } while (!limitesNumero(num, min, max));
+        return num;
+    }// PIDE INPUT DE UN NUMERO, LLAMANDO A
+    //"pedirNumer()" PERO ESTE LIMITADO ENTRE DOS NUMEROS(LLAMANDO A "limitesNumero(min, max);")
+    // ESTA VALIDADO
 
-    public static void imprimirNumero(double numero) {
+    public boolean limitesNumero(int num, int min ,int max) {
+        return (min <= num && num <= max);
+    }
+    //RETORNA true O false SI EL NUMERO SE ENCUENTRA ENTRE "max" Y "min"
+
+    public void imprimirNumero(double numero) {
         System.out.println("El numero es: " + numero);
     }
 }
