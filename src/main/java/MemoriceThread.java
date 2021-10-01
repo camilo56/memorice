@@ -24,201 +24,179 @@ estoy solo, no es divertido estar solo T_T.
 
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MemoriceThread extends Thread {
 
+    Validaciones validar = new  Validaciones();
 
-    Scanner teclado = new Scanner(System.in);
     private ArrayList<Persona> personas;
     private Tableros tableros;
 
-
-
-
-
-        public MemoriceThread() {
+    public MemoriceThread() {
         this.personas = new ArrayList<>();
         this.tableros=new Tableros();
     }
 
+    public void menu(){
+        String opcion;
+        try {
+            do {
+                mostarMenu();
+                opcion = leerOpcion();
+                switch (opcion) {
+                    case "a" -> casoNuevaPartida();
+                    case "b" -> desarrollo();
+                    case "c" -> desarrollo();
+                    case "d" -> desarrollo();
+                    case "e" -> desarrollo();
+                    case "s" -> casoSalir();
+                    default -> System.out.println("La opcion ingresada es incorrecta");
+                }
+            } while(!opcion.equals("s"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public static String leerOpcion() {
         var scanner = new Scanner(System.in);
         System.out.println("Ingrese opcion:");
         return scanner.nextLine();
-    }
+    }//listo, input usuario
 
     public static void mostarMenu() {
-        System.out.println("**********************************************************");
-        System.out.println("*                      Iniciar Juego                     *");
-        System.out.println("*   [a] Partida Nueva                                    *");
-        System.out.println("*   [b] Cargar Partida                                   *");
-        System.out.println("*   [c] Ver Estadisticas                                 *");
-        System.out.println("*   [d] Configuraciones                                  *");
-        System.out.println("*   [e] Creditos                                         *");
-        System.out.println("*   [s] Salir                                            *");
-        System.out.println("**********************************************************");
-    }
+        System.out.println("***********************************************************");
+        System.out.println("*                      Iniciar Juego                      *");
+        System.out.println("*   [a] Partida Nueva                                     *");
+        System.out.println("*   [b] Cargar Partida                                    *");
+        System.out.println("*   [c] Ver Estadisticas                                  *");
+        System.out.println("*   [d] Configuraciones                                   *");
+        System.out.println("*   [e] Creditos                                          *");
+        System.out.println("*   [s] Salir                                             *");
+        System.out.println("***********************************************************");
+    }//listo, muestra menu principal
 
     public static void menuPartidaNueva(){
-        System.out.println("*********************************************************");
-        System.out.println("*             Selecione nivel de dificuatad             *");
-        System.out.println("*[a]facil(Columans y filas de 2X5,sin limite de tiempo) *");
-        System.out.println("*[b]intermedio(tablero de 3X5,limite de tiempo moderado)*");
-        System.out.println("*[c]difícil (Tablero de 2X10, Liite de tiempo corto )   *");
-        System.out.println("*[d]muy difícil (Tablero de 3X10, Liite de tiempo corto)*");
-        System.out.println("*[e]Experto  (Tablero de 5X10, Liite de tiempo corto )   *");
-        System.out.println("*[f]                  pesonalizado                      *");
-        System.out.println("*********************************************************");
+        System.out.println("***********************************************************");
+        System.out.println("*             Selecione nivel de dificuatad               *");
+        System.out.println("*[a]facil(Tablero de 2X5,sin limite de tiempo)            *");
+        System.out.println("*[b]intermedio(Tablero de 3X4,limite de tiempo moderado)  *");
+        System.out.println("*[c]difícil (Tablero de 2X10, limite de tiempo corto )    *");
+        System.out.println("*[d]muy difícil (Tablero de 3X10, limite de tiempo corto) *");
+        System.out.println("*[e]Experto  (Tablero de 5X10, limite de tiempo corto )   *");
+        System.out.println("*[f]                  pesonalizado                        *");
+        System.out.println("*[s]                volver al menu                        *");
+        System.out.println("***********************************************************");
+    }//listo, muestra submenu de mostrarMenu() opcion "a"
 
-
-    }
-
-
-    public String darNick(){
+    public static String darNick(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese un nuevo nick:");
-        String nick= teclado.nextLine();
-        return nick;
-    }
+        return scanner.nextLine();
+    }//listo, pide ingresar sobrenombre(nick) solamente
 
-    public  void crearPersona() {
-        String nombre = darNick();
-        int nCeldas=0;
-        int nCasillas=0;
-
-        Persona persona = new Persona(nombre);
-        personas.add(persona);
-        System.out.println("Nick Creado");
-
-    }//Aun falta agregar contraseña y validar los datos ingresados
-
-    public static int leerNumero() {
-        var scanner = new Scanner(System.in);
-        System.out.println("Ingrese numero:");
-        return scanner.nextInt();
-    } //permite capturar el número ingresado por usuario
-
-
-
-
-    public static void imprimirNumero(double numero) {
-        System.out.println("El numero es: " + numero);
-
-    }
-
-
-
-    public static int[][] tablero() {
-        Random rnum = new Random();
-        int[][] arr = new int[10][10];
-
-        for (int i = 0; i < arr.length; i++) {
-            for (int j=0; j< arr[i].length;j++){
-                arr[i][j]=rnum.nextInt(100)+1;
-            }
-
+    public boolean crearPersona() {
+        try {
+            Persona persona = new Persona(darNick());
+            personas.add(persona);
+            System.out.println("Nick Creado");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
+        return true;
+    }//llama a darNick(). Aun falta agregar contraseña y validar los datos ingresados
 
-        return arr;
-    }
-    public static void imprimirNumDecimal(int numero) {
-        System.out.println("El numero en decimal es: " + numero);
-    } // imprime un mensaje como String, en el cual se muestra el número en
-
-
-public void dificultad(){
-    String option;
-
-    while(true){
-        option = leerOpcion();
-
-        switch (option) {
-            case "a":
-                int arr[][]=tablero();
-                tableros.mostrarSimple(arr);
-                System.out.println("wa");
-                break;
-
-            case "b":
-                System.out.println("Error!");
-                break;
-
-            case "c":
-                System.out.println("Error!");
-                break;
-
-            case "s":
-                System.out.println("Err");
-
-            default:
-                System.out.println("La opcion ingresada es incorrecta");
+    public void casoNuevaPartida(){
+        try {
+            crearPersona();
+            dificultad();
+        } catch (Exception e){
+            e.printStackTrace();
         }
 
     }
-}//Este metodo ejecuta el arrglo especifo y el cronometro especifo  de acuerdo a la difilcultad deseada
 
-public void menu(){
-
-    String tableros[][];
-    String option;
-    mostarMenu();
-
-    while(true) {
-        option = leerOpcion();
-
-        switch (option) {
-            case "a":
-                crearPersona();
+    public void dificultad(){
+        Scanner scanner = new Scanner(System.in);
+        String opcion;
+        int[][] MxN = arregloMxN();
+        try {
+            do{
                 menuPartidaNueva();
-                dificultad();
+                opcion = scanner.nextLine();
+                switch (opcion) {
+                    case "a" -> generarPartidaNueva(MxN[0][0], MxN[0][1]);//2x10
+                    case "b" -> generarPartidaNueva(MxN[1][0], MxN[1][1]);//3x4
+                    case "c" -> generarPartidaNueva(MxN[2][0], MxN[2][1]);//2x10
+                    case "d" -> generarPartidaNueva(MxN[3][0], MxN[3][1]);//2x10
+                    case "e" -> generarPartidaNueva(MxN[4][0], MxN[4][1]);//5x10
+                    case "f" -> generarPartidaPersonalizada();//personalizada
+                    case "s" -> volverMenu();//volver a menu
+                    default -> System.out.println("La opcion ingresada es incorrecta");
+                }
 
-                break;
-            case "b":
-                System.out.println("Error!");
-                break;
-            case "c":
-                System.out.println("Error!");
-                break;
-            case "s":
-                System.out.println("Err");
-
-            default:
-                System.out.println("La opcion ingresada es incorrecta");
+            }while(!opcion.equals("s"));
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
-}//La ciclo while esta como true por efecto de comodidad par no estar abriendo
-// el programa nuevamente cuando se cierra porque no ay un validados
 
-    public void run() {
-
-
-
-            int minutos = 0;
-            int segundo = 0;
-
-
-            for (segundo = 0; segundo < 60; segundo++) {
-                System.out.println(minutos + ":" + segundo);
-                delaySegundo();
-
-            }
-
-
-        }//Todo el codigo agregado en este metodo es ejecuta en el main de manera independiente y en en otro hilo
-
-
-
-
-    private static void delaySegundo(){
-        try{Thread.sleep(1000);
-        }catch(InterruptedException e){}
+    public static int [][] arregloMxN(){
+        return new int[][]{{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
     }
 
+    public void generarPartidaNueva(int filas, int columnas){
+        //Cronometro cronometro= new Cronometro();
+        tableros.crearTablero(filas, columnas);
+        String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
+        int x = 1;
+        do{
+            tableros.coordenadas(matrizCartas);
+            //cronometro.runa();
+            tableros.mostrarSimple(matrizCartas);
+            for (int i = 1; i < matrizCartas.length; i++) {
+                for (int j = 1; j < matrizCartas[0].length; j++) {
+                    if(matrizCartas[i][j].equals("=")){
+                        x = 0;
+                    }else{
+                        x = 1;
+                        break;
+                    }
+                }
+            }
+        } while(x==1);
+        System.out.println("Felicidades, has completado este nivel");
+    }
 
+    public void generarPartidaPersonalizada(){
+        System.out.println("ingrese cantidad de filas");
+        int filas = validar.pedirNumeroLimitado(1, 10);
+        int columnas;
+        if((filas % 2) == 0){
+            System.out.println("ingrese cantidad de columnas");
+            columnas = validar.pedirNumeroLimitado(1, 10);
+        } else{
+            System.out.println("ingrese cantidad de columnas (debe ser numero par)");
+            do {
+                columnas = validar.pedirNumeroLimitado(1, 10);
+            }while (!((columnas % 2) == 0));
+        }
+        generarPartidaNueva(filas,columnas);
+    }
 
+    private static void desarrollo(){
+        System.out.println("En desarrollo...");
+    }
 
+    private static void casoSalir(){
+        System.out.println("adios...");
+    }
+
+    private static void volverMenu() {
+        System.out.println("Volviendo a menu...");
+    }
 
 }
 

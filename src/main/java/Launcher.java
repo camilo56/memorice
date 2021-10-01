@@ -6,6 +6,6 @@ public class Launcher {
         Cronometro cronometro = new Cronometro();
 
         memorice.menu();
-        //cronometro.start();//// el metodo start(si) es para iniciar el codigo en otro hilo que este dentro del metodo run() en la clase MemoriceThread
+        //cronometro.start();//// el metodo start() es para iniciar el codigo en otro hilo que este dentro del metodo run() en la clase MemoriceThread
     }
 }
