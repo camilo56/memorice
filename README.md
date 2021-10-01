@@ -12,6 +12,8 @@ El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
 
+30/09/21<----3.- se agrego modo de juego personalizado, con esto se tiene cubierto todos las opciones del menu (todas las combinaciones MxN del menu)
+
 30/09/21<----2.- se arreglo problema de validaciones de coordenadas, falta atomizar metodos de clase "Tableros.java", ademas de aplicar pruebas unitarias para finalizar con lo solicitado para avance01 del proyecto
 
 30/09/21<----1.- efectividad de metodos--> se arreglo el problemas al generar el tablero (ahora no se repitan las 'cartas' mas que solo su carta par), se eliminaron, reemplazaron y arreglaron metodos poco efectivos, falta validar entrada de coordenada
