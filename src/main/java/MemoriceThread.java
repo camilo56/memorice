@@ -62,7 +62,7 @@ public class MemoriceThread extends Thread {
         var scanner = new Scanner(System.in);
         System.out.println("Ingrese opcion:");
         return scanner.nextLine();
-    }//listo, input usuario
+    }
 
     public static void mostarMenu() {
         System.out.println("***********************************************************");

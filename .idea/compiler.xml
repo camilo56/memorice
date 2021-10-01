@@ -9,5 +9,8 @@
         <module name="drgdg" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="progCronometro" target="15" />
+    </bytecodeTargetLevel>
   </component>
 </project>
