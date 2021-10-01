@@ -37,9 +37,10 @@ quieren avanzar o hacerse comité pueden trabajar en eso.:x
 
 - Usuario: ______________           ![50%](https://progress-bar.dev/70) 
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/80) **_no tan insano como cronometro_**
+- tableros de juego:_______  ![50%](https://progress-bar.dev/80) 
 
-- cronometro :____________   ![50%](https://progress-bar.dev/15) **_muy dificil hacerlo mejor intente primero con el tablero_**
+- cronometro :____________   ![50%](https://progress-bar.dev/15) **_se esta tratando de hacer por medio de doble hilo y codigo  cliente/servidor
+  pero trabajarlo con timepo y dejarlo al final_**
 
 - modos de juego: ________    ![50%](https://progress-bar.dev/70)
 
