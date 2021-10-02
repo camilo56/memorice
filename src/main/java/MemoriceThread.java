@@ -147,13 +147,13 @@ public class MemoriceThread extends Thread {
     }
 
     public void generarPartidaNueva(int filas, int columnas){
-        //Cronometro cronometro= new Cronometro();
+        Cronometro cronometro= new Cronometro();
         tableros.crearTablero(filas, columnas);
         String[][] matrizCartas =tableros.mostrarSimple(tableros.asignarCartas());
         int x = 1;
         do{
             tableros.coordenadas(matrizCartas);
-            //cronometro.runa();
+            cronometro.runa();
             tableros.mostrarSimple(matrizCartas);
             for (int i = 1; i < matrizCartas.length; i++) {
                 for (int j = 1; j < matrizCartas[0].length; j++) {
