@@ -9,7 +9,7 @@ public class Tableros {
 
     private String[][] matriz;
     private int coordenadas;
-    private String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};;
+    private String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     private String nombre;
 
     public Tableros() {
@@ -28,7 +28,7 @@ public class Tableros {
 
     public String[][] asignarCartas() {
         int cantidadCartasTotales = cantidadCartasTotalesTablero(matriz);
-        String[] cantidadParCartas = generarArregloCartasPares(cantidadCartasTotales);
+        String[] cantidadParCartas = generarArregloCartasPares(cantidadCartasTotales, cartas);
         int[] arregloNumerosNoRepetidos = generarArregloNumerosNoRepetidos(cantidadCartasTotales);
         String[] asignarCartasTablero = asignarCartasTableroTemporal(cantidadCartasTotales, cantidadParCartas, arregloNumerosNoRepetidos);
         matriz = llenarMatrizGlobal(asignarCartasTablero, matriz);
@@ -39,14 +39,14 @@ public class Tableros {
         return ((matriz.length - 1) * (matriz[0].length - 1));
     }
 
-    public String[] generarArregloCartasPares(int cantidadCartasTotales){
+    public String[] generarArregloCartasPares(int cantidadCartasTotales, String[] cartas){
         String[] arregloParCartas = new String[cantidadCartasTotales / 2];
-        return generarArregloNoRepetido(arregloParCartas, cartas);
+        return arregloNoRepetido(arregloParCartas, cartas);
     }// genera la mitad (no repetidas) de las cartas totales del tablero
 
     public int[] generarArregloNumerosNoRepetidos(int cantidad){
         int[] arregloNumAleat = crearArregloInt(cantidad);
-        return (generarNumeroAleatoriosNoRepetidos(arregloNumAleat));
+        return (numeroAleatoriosNoRepetidos(arregloNumAleat));
     }// genera arreglo int de numeros aleatorios no repetidos
 
     public String[] asignarCartasTableroTemporal(int cartasTotales, String[] arregloParCartas, int[] arregloNumerosAleatorios ){
@@ -74,7 +74,7 @@ public class Tableros {
         return matriz;
     }
 
-    public int[] generarNumeroAleatoriosNoRepetidos(int[] arreglo) {
+    public int[] numeroAleatoriosNoRepetidos(int[] arreglo) {
         arreglo[0] = randomNum.nextInt(arreglo.length);
         for (int i = 1; i <arreglo.length; i++) {
             arreglo[i] = randomNum.nextInt(arreglo.length);
@@ -91,12 +91,12 @@ public class Tableros {
         return new int [cantidad];
     }
 
-    public String[] generarArregloNoRepetido(String[] arregloCartas, String[] cartas) {
+    public String[] arregloNoRepetido(String[] arregloCartas, String[] cartas) {
         arregloCartas[0] = cartas[randomNum.nextInt(cartas.length)];
         for (int i = 1; i <arregloCartas.length; i++) {
             arregloCartas[i] = cartas[randomNum.nextInt(cartas.length)];
             for (int j = 0; j < i; j++) {
-                if(arregloCartas[i] == arregloCartas[j]){
+                if(arregloCartas[i].equals(arregloCartas[j])){
                     i--;
                 }
             }
@@ -139,11 +139,11 @@ public class Tableros {
     }// MUCHAS FUNCIONES --> HACERLO MAS CORTO
 
     public String[][] mostrarSimple(String[][] matriz) {
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print("[" + matriz[i][j] + "]");
+        for (String[] strings : matriz) {
+            for (String string : strings) {
+                System.out.print("[" + string + "]");
             }
-            System.out.println("");
+            System.out.println();
         }
         return matriz;
     }

@@ -19,9 +19,55 @@ class TablerosTest {
     //  crear indices para acceder a matriz)
 
     @Test
-    public void testGenerarNumeroAleatoriosNoRepetidos(){
+    public void testCantidadCartasTotalesTablero(){
+        String[][] matriz = new String [10][12];
+        int esperado = 9 * 11;
+        assertEquals(esperado, tablero.cantidadCartasTotalesTablero(matriz));
+    }// metodo que devuelve (filas - 1) * (columnas -1)
+
+    @Test
+    public void testGenerarArregloCartasPares(){
+        String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+        int cartasTotales = 52;
+        boolean verificar = true;
+        String[] cartasNoRepetidas = tablero.generarArregloCartasPares(cartasTotales, cartas);
+
+        for (int i = 0; i < cartasNoRepetidas.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if(cartasNoRepetidas[i].equals(cartasNoRepetidas[j])){
+                    verificar = false;
+                    break;
+                }
+            }
+        }
+        assertTrue(verificar);
+    }// ES SOLO UN CONSTRUCTOR, crea un arreglo y llama a otro metodo para llenarlo
+    //  (genera arreglo aleatorio de largo N donde todas las cartas son diferentes)
+
+    @Test
+    public void testGenerarArregloNumerosNoRepetidos(){
+        int cantidad = 845;
+        boolean verificar = true;
+        int[] arreglo =tablero.generarArregloNumerosNoRepetidos(cantidad);
+
+        for (int i = 0; i < arreglo.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (arreglo[i] == arreglo[j]) {
+                    verificar = false;
+                    break;
+                }
+            }
+        }
+        assertTrue(verificar);
+    }// ES SOLO UN "CONSTRUCTOR", llama a un metodo para crear arreglo, luego
+    //  llama a otro para llenarlo de numeros aleatorios no repetidos
+    //  (dado un arreglo de largo N, lo llena llamando a otro metosdo y lo
+    //  devulve)
+
+    @Test
+    public void testNumeroAleatoriosNoRepetidos(){
         int[] arreglo = new int [10000];
-        arreglo = tablero.generarNumeroAleatoriosNoRepetidos(arreglo);
+        arreglo = tablero.numeroAleatoriosNoRepetidos(arreglo);
 
         boolean verificar = true;
         for (int i = 0; i <arreglo.length; i++) {
@@ -33,7 +79,7 @@ class TablerosTest {
             }
         }
         assertTrue(verificar);
-    }
+    }// genera un arreglo de largo N con numeros no repetidos desde 0 a N
 
     @Test
     public void testGenerarArregloInt(){
@@ -42,11 +88,11 @@ class TablerosTest {
     }
 
     @Test
-    public void testGenerarArregloNoRepetido(){
+    public void testArregloNoRepetido(){
         String[] arreglo = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 
         String[] nuevoArreglo = new String[arreglo.length];
-        nuevoArreglo = tablero.generarArregloNoRepetido(nuevoArreglo, arreglo);
+        nuevoArreglo = tablero.arregloNoRepetido(nuevoArreglo, arreglo);
 
         boolean verficar = true;
         for (int i = 0; i < arreglo.length ; i++) {
