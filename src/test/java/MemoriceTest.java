@@ -1,8 +1,9 @@
-//import Clases_Dominio.Memorice;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MemoriceTest {
 
-    //Memorice memorice = new Memorice();
+    Memorice memorice = new Memorice();
     /*
     @Test
     public void testCrearPersona(){
