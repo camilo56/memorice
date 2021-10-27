@@ -3,12 +3,11 @@ import java.util.Random;
 
 public class Tableros {
 
-    Validaciones validar = new  Validaciones();
+    private Validaciones validar = new  Validaciones();
 
     private Random randomNum = new Random();
 
     private String[][] matriz;
-    private int coordenadas;
     private String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     private String nombre;
 

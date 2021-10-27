@@ -1,17 +1,15 @@
 public class Persona {
 
-    String nick;
-    int puntaje = 0;
-    int nVeces=0;
+    /*
+    creo que esta clase solo debe  tener datos de persona (solo el nick),
+    en otra clase guardar las estadisticas de cada persona en un List<Persona> persona = new ...
+    ya que en esta  se guardarian los datos referentes a cada partidad que juegue una persona
+     */
+
+    private String nick;
 
     public Persona(String nick) {
         this.nick = nick;
-    }
-
-    public Persona(String nick, int puntaje, int nVeces) {
-        this.nick = nick;
-        this.puntaje = puntaje;
-        this.nVeces = nVeces;
     }
 
     public String getNick() {
@@ -20,21 +18,5 @@ public class Persona {
 
     public void setNick(String nick) {
         this.nick = nick;
-    }
-
-    public int getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
-    }
-
-    public int getnVeces() {
-        return nVeces;
-    }
-
-    public void setnVeces(int nVeces) {
-        this.nVeces = nVeces;
     }
 }

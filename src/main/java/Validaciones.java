@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class Validaciones {
 
-    // ESTE METODOS SON BASTANTE VIABLES AL QUERER VALIDAR EL INPUT DE LAS COORDENADAS DE CLASE "Tableros.java"
-
     public int pedirNumero(){
         Scanner teclado = new Scanner(System.in);
         int numero;
@@ -30,15 +28,11 @@ public class Validaciones {
         } while (!limitesNumero(num, min, max));
         return num;
     }// PIDE INPUT DE UN NUMERO, LLAMANDO A
-    //"pedirNumer()" PERO ESTE LIMITADO ENTRE DOS NUMEROS(LLAMANDO A "limitesNumero(min, max);")
+    //"pedirNumero()" PERO ESTE LIMITADO ENTRE DOS NUMEROS(LLAMANDO A "limitesNumero(min, max);")
     // ESTA VALIDADO
 
     public boolean limitesNumero(int num, int min ,int max) {
         return (min <= num && num <= max);
     }
     //RETORNA true O false SI EL NUMERO SE ENCUENTRA ENTRE "max" Y "min"
-
-    public void imprimirNumero(double numero) {
-        System.out.println("El numero es: " + numero);
-    }
 }
