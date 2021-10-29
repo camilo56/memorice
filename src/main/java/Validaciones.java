@@ -18,7 +18,7 @@ public class Validaciones {
     } // PIDE INPUT DE UN NUMERO, ESTA VALIDADO
 
     public int pedirNumeroLimitado(int min, int max){
-        System.out.println("Indique un numero (entre: " + min + " y " + max + ")");
+        //System.out.println("Indique un numero (entre: " + min + " y " + max + ")");
         int num;
         do {
             num = pedirNumero();

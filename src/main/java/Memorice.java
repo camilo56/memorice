@@ -1,27 +1,35 @@
-/*vComentarios:
-Entrada: nombre de jugador, selecion de opcciones del opcionesMenuPrincipal, seleccion de carta de juego
+/*
 
-desarrollo:
+MEJORAS DEL AVANCE 1 (RETROALIMENTACION)
+i. el diseño inicial de las clases mostrado en el reporte es muy confuso y uds. lo reconocen al final del documento, que requiere un re diseño, arovechen ahora lo de UML y POO para re ordenar esta propuesta pensando en informe 2
 
-Crear la cantidad de celdas de filas y columnas debe ser variable y la puede parametrizar el usuario, en ciertos rangos pre definidos por la App, por ej 2x5, 3x4, 2x10 y 3x10
+ii. ojo! con las buenas prácticas a la hora de definir la cantidad de parámetros de entrada, hay métodos con hasta 3 parámetros y de tipos arreglos!
 
- tener modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay un tiempo acotado para jugar y depende del avance se otorga un puntaje), un versus entre 2 jugadores o vs CPU
+iii. los test debieran "exigir un poco más", los casos de prueba debieran ir al límite del sistema y ver como se comporta éste.
 
-Usando i y ii, definir niveles de establecerDificultad, por ej. fácil, intermedio, difícil, muy difícil, experto, etc...
+REQUISITOS AVANCE 2
+- incorporar las consideraciones y correcciones del informe 01 (indicar qué cambia y cómo afecta en el desarrollo de la solución)
 
-iii. deben poder crearse perfiles de jugador, que almacenen los datos, por ej con al menos un nombre y nick para asociarlo a sus puntajes, estadísticas (veces que ha jugado, niveles que ha jugado, etc...)
- y algunas preferencias, como por ej. el tipo de imágenes para las "cartas"
+- diferencias entre la planificación inicial y el resultado final ¿por qué? ¿qué medidas se tomaron? ¿nueva planificación?
+- descripción de las clases que forman de su proyecto, que considera:
+  a. descripción atributos: nombre, tipo y nivel de encapsulamiento.
+  b. descripción de métodos: nombre, tipo de retorno y nivel de encapsulamiento
+(considere el uso de herramientas de apoyo en la documentación)
 
- salidas:
- estadisticas,
- Puntajes:veces que ha jugado, niveles que ha jugado, etc...) y algunas preferencias, como por ej. el tipo de imágenes para las "cartas".
- menus:nivel de difilcutad, opcines a elegir,modalidades de juego, ej. libre (sin restricciones de tiempo) o contra reloj (en la cual hay
- un tiempo acotado para jugar y depende del avance se otorga un puntaje),un versus entre 2 jugadores o vs CPU.
-  celdas de filas y columnas
+- modelo UML de las clases de su dominio problema, ponga énfasis en las relaciones entre éstas (dependencia, asociación, composición, agregación, así como los roles y multiplicidades). Esto considera el uso de herramientas CASE, p.ej. Visual Paradigm (no hacer diagramas "a mano"!!!!)
 
-estoy solo, no es divertido estar solo T_T.
- */
+- definición y diseño de todas las GUIs con herramientas moqups o JFrame de su proyecto: a partir del avance logrado, refinar el diseño de GUIs.
 
+a. establecer un mapa de navegación entre las diferentes GUIs
+
+b. decir para que sirve y que hace cada GUI
+
+- definición de la gestión de datos que hará su programa: a partir del avance logrado, refinar la definición de datos a usar o almacenar por sus sistema.
+
+a. archivos a usar por su aplicación (XLS, TXT, XML, JSON, etc...)
+
+b. datos que se almacenarán en su archivo (tipos de datos de cada columna), estructura del archivo (que almacenará en cada columna y que representan)
+*/
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -31,15 +39,14 @@ public class Memorice {
     private Validaciones validar = new  Validaciones();
     private List<Estadisticas> estadisticas;
 
-    private Tableros tableros;
+    private Tablero tableros;
     private final int [][] rangosTableros = {{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
 
 
 
     public Memorice() {
         this.estadisticas = new ArrayList<>();
-    //    this.personas = new ArrayList<>();
-        this.tableros=new Tableros();
+        this.tableros=new Tablero();
     }
 
     public void mostarMenuPrincipal() {
@@ -122,16 +129,16 @@ public class Memorice {
 
     public void generarPartidaNueva(int filas, int columnas){
         //Cronometro cronometro= new Cronometro();
-        tableros.crearTablero(filas, columnas);
-        String[][] matrizCartas = tableros.mostrarSimple(tableros.asignarCartas());
+        String[][] tablero = tableros.generarTablero(filas, columnas);
         int x = 1;
+        System.out.println("Ingrese las coordenadas de las cartas que quiera (segun ejes X y Y)");
         do{
-            tableros.coordenadas(matrizCartas);
+            tableros.mostrarMatriz(tablero);
+            tableros.coordenadas(tablero);
             //cronometro.runa();
-            tableros.mostrarSimple(matrizCartas);
-            for (int i = 1; i < matrizCartas.length; i++) {
-                for (int j = 1; j < matrizCartas[0].length; j++) {
-                    if(matrizCartas[i][j].equals("=")){
+            for (int i = 1; i < tablero.length; i++) {
+                for (int j = 1; j < tablero[0].length; j++) {
+                    if(tablero[i][j].equals("=")){
                         x = 0;
                     }else{
                         x = 1;
@@ -140,7 +147,7 @@ public class Memorice {
                 }
             }
         } while(x==1);
-        System.out.println("\nFelicidades, has completado este nivel");
+        System.out.println("\nFelicidades, has completado este nivel\n");
     }
 
     public void generarPartidaPersonalizada(){
@@ -160,9 +167,6 @@ public class Memorice {
         generarPartidaNueva(filas,columnas);
     }
 
-
-
-
     // INPUT
 
     public String leerOpcion() {
@@ -176,8 +180,6 @@ public class Memorice {
         System.out.println(instruccion);
         return scanner.nextLine();
     }
-
-
 
     // OUTPUT
 
@@ -193,14 +195,10 @@ public class Memorice {
         return "Adios, gracias por jugar";
     }
 
-
     // OUTPUT DE SALIDA DE VARIABLES DE TIPOS DE DATOS
 
     private void mostrarString(String cadena){
         System.out.println(cadena);
     }
-
-
-
 }
 
