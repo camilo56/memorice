@@ -1,13 +1,13 @@
 package Clases_Dominio;
 import Manejo_Archivos.GestorArchivo;
 
-import java.util.List;
-
 public class Estadisticas {
 
     private Persona persona;
     private int idPartida = 0;
     private int puntaje;
+    
+    private String rutaArchivo = "Estadisticas.csv";
 
     public Estadisticas(String nick){
         this.persona = new Persona(nick);
@@ -32,25 +32,13 @@ public class Estadisticas {
         }
     }
 
-    /*
-    private String crearDatos(){
-        String datos = "Nick: " + getPersona().getNick() + "; Veces Jugadas: " + getVecesJugadas();
-        for(Integer puntaje : getPuntajes()){
-            datos += "; " + puntaje;
-        }
-        return datos;
-    }
-     */
     private String crearEstructuraArchivo(){
-        String nombresColumnas = "Nick;Id Partida;Puntaje";
+        String nombresColumnas = "Nick;Id Partida;Puntaje.";
         return nombresColumnas;
     }
 
     private String crearDatos(){
         String datos = getPersona().getNick() + ";" + getIdPartida() + ";" + getPuntaje();
-        //for(Integer puntaje : getPuntajes()){
-        //    datos += ";" + puntaje;
-        //}
         return datos;
     }
 

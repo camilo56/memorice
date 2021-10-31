@@ -39,6 +39,7 @@ import java.util.Scanner;
 
 public class Memorice {
 
+    private Datos datos = new Datos();
     private Validaciones validar = new  Validaciones();
     private List<Estadisticas> estadisticas;
     private Estadisticas jugador;
@@ -65,6 +66,8 @@ public class Memorice {
         System.out.println("***********************************************************");
     }//LISTO
 
+
+
     public void opcionesMenuPrincipal(){
         String opcion;
         try {
@@ -74,7 +77,7 @@ public class Memorice {
                 switch (opcion) {
                     case "a" -> casoNuevaPartida();
                     case "b" -> mostrarString(enDesarrollo());
-                    case "c" -> mostrarString(enDesarrollo());
+                    case "c" -> mostrarString(datos.obtenerEstadisticas());
                     case "d" -> mostrarString(enDesarrollo());
                     case "e" -> mostrarString(enDesarrollo());
                     case "s" -> mostrarString(salirDelJuego());
@@ -155,7 +158,6 @@ public class Memorice {
     }
 
     public boolean actualizarEstadisticas(Integer puntaje){
-
         try {
             jugador.setIdPartida(jugador.getIdPartida() + 1);
             jugador.setPuntaje(puntaje);

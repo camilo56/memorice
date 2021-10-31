@@ -1,9 +1,6 @@
 package Manejo_Archivos;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class GestorArchivo {
@@ -50,6 +47,20 @@ public class GestorArchivo {
         }
     }//LEE EL ARCHIVO LINEA POR LINA(confirma si se puede leer)
 
+    public String obtenerLineasArchivo(String ruta){
+        String datos = "";
+        try {
+            Scanner scanner = new Scanner(new File(ruta));
+            while (scanner.hasNextLine()){
+                datos += scanner.nextLine() + "\n";
+            }
+            return datos;
+        } catch (FileNotFoundException e) {
+            System.out.println("archivo no encontrado");
+            return "Error al leer el archivo";
+        }
+    }//DEVUELVE TODO EL ARCHIVO EN UN STRING
+
     public boolean renombrarArchivo(String rutaActual, String rutaNueva){
         File archivoActual = new File(rutaActual);
         File archivoNuevo = new File(rutaNueva);
@@ -83,5 +94,16 @@ public class GestorArchivo {
             return false;
         }
     }//ESCRIBE EN ARCHIVO (agrega lineas según las lineas que contenga el archivo)
+
+    public int cantidadLineasArchivo(String ruta){
+        try {
+            FileReader fr = new FileReader(ruta);
+            BufferedReader br = new BufferedReader(fr);
+            return (int) br.lines().count();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
 
