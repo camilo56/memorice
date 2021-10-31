@@ -61,17 +61,16 @@ public class GestorArchivo {
         }
     }//RENOMBRA ARCHIVO, cambia rutaActual por rutaNueva
 
-    public boolean escribirEnArchivo(String ruta){
+    public boolean escribirEnArchivo(String ruta, String datos){
         Scanner scanner = new Scanner(System.in);
         File archivo = new File(ruta);
         if(existeArchivo(ruta)){
             try {
                 FileWriter escribir = new FileWriter(archivo.getAbsoluteFile(),true);
-                System.out.println("Escriba...");
                 if(archivo.length() == 0){
-                    escribir.write(scanner.nextLine());
+                    escribir.write(datos);
                 }else{
-                    escribir.write("\n" + scanner.nextLine());
+                    escribir.write("\n" + datos);
                 }
                 escribir.close();
                 return true;

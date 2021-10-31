@@ -1,4 +1,6 @@
-package Clases_Dominio;/*
+package Clases_Dominio;
+
+/*
 
 MEJORAS DEL AVANCE 1 (RETROALIMENTACION)
 i. el diseño inicial de las clases mostrado en el reporte es muy confuso y uds. lo reconocen al final del documento, que requiere un re diseño, arovechen ahora lo de UML y POO para re ordenar esta propuesta pensando en informe 2
@@ -39,6 +41,7 @@ public class Memorice {
 
     private Validaciones validar = new  Validaciones();
     private List<Estadisticas> estadisticas;
+    private Estadisticas jugador;
 
     private Tablero tableros;
     private final int [][] rangosTableros = {{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
@@ -98,8 +101,7 @@ public class Memorice {
 
     public void casoNuevaPartida(){
         try {
-            Estadisticas jugador = new Estadisticas(inputScannerNextLine("Ingrese un nick "));
-            estadisticas.add(jugador);
+            jugador = new Estadisticas(inputScannerNextLine("Ingrese un nick "));
             establecerDificultad();
         }catch (Exception e){
             e.printStackTrace();
@@ -149,6 +151,22 @@ public class Memorice {
             }
         } while(x==1);
         System.out.println("\nFelicidades, has completado este nivel\n");
+        actualizarEstadisticas(12);
+    }
+
+    public boolean actualizarEstadisticas(Integer puntaje){
+
+        try {
+            jugador.setVecesJugadas(jugador.getVecesJugadas() + 1);
+            jugador.ingresarPuntaje(puntaje);
+            jugador.guardarEstadisticas();
+            estadisticas.add(jugador);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error al ingresar datos");
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void generarPartidaPersonalizada(){
