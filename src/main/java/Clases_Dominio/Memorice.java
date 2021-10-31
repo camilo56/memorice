@@ -1,6 +1,4 @@
-package Clases_Dominio;
-
-/*
+package Clases_Dominio;/*
 
 MEJORAS DEL AVANCE 1 (RETROALIMENTACION)
 i. el diseño inicial de las clases mostrado en el reporte es muy confuso y uds. lo reconocen al final del documento, que requiere un re diseño, arovechen ahora lo de UML y POO para re ordenar esta propuesta pensando en informe 2
@@ -37,24 +35,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-/*
 public class Memorice {
 
-    private Datos datos = new Datos();
     private Validaciones validar = new  Validaciones();
     private List<Estadisticas> estadisticas;
-    private Estadisticas jugador;
 
     private Tablero tableros;
     private final int [][] rangosTableros = {{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
+
+
 
     public Memorice() {
         this.estadisticas = new ArrayList<>();
         this.tableros=new Tablero();
     }
 
-    private void mostarMenuPrincipal() {
+    public void mostarMenuPrincipal() {
         System.out.println("***********************************************************");
         System.out.println("*                      Iniciar Juego                      *");
         System.out.println("*   [a] Partida Nueva                                     *");
@@ -75,7 +71,7 @@ public class Memorice {
                 switch (opcion) {
                     case "a" -> casoNuevaPartida();
                     case "b" -> mostrarString(enDesarrollo());
-                    case "c" -> mostrarString(datos.obtenerEstadisticas());
+                    case "c" -> mostrarString(enDesarrollo());
                     case "d" -> mostrarString(enDesarrollo());
                     case "e" -> mostrarString(enDesarrollo());
                     case "s" -> mostrarString(salirDelJuego());
@@ -87,7 +83,7 @@ public class Memorice {
         }
     }// VALIDADO
 
-    private void mostrarMenuPartidaNueva(){
+    public void mostrarMenuPartidaNueva(){
         System.out.println("***********************************************************");
         System.out.println("*             Selecione nivel de dificultad               *");
         System.out.println("*[a]facil(Tablero de 2X5,sin limite de tiempo)            *");
@@ -100,16 +96,17 @@ public class Memorice {
         System.out.println("***********************************************************");
     }//LISTO
 
-    private void casoNuevaPartida(){
+    public void casoNuevaPartida(){
         try {
-            jugador = new Estadisticas(inputScannerNextLine("Ingrese un nick "));
+            Estadisticas jugador = new Estadisticas(inputScannerNextLine("Ingrese un nick "));
+            estadisticas.add(jugador);
             establecerDificultad();
         }catch (Exception e){
             e.printStackTrace();
         }
     } //LISTO, quiza es necesario contar con un tipo de retorno
 
-    private void establecerDificultad(){
+    public void establecerDificultad(){
         String opcion;
         try {
             do{
@@ -131,7 +128,7 @@ public class Memorice {
         }
     }//VALIDADO
 
-    private void generarPartidaNueva(int filas, int columnas){
+    public void generarPartidaNueva(int filas, int columnas){
         //Cronometro cronometro= new Cronometro();
         String[][] tablero = tableros.generarTablero(filas, columnas);
         int x = 1;
@@ -152,24 +149,9 @@ public class Memorice {
             }
         } while(x==1);
         System.out.println("\nFelicidades, has completado este nivel\n");
-        actualizarEstadisticas(12);
     }
 
-    private boolean actualizarEstadisticas(int puntaje){
-        try {
-            jugador.setIdPartida(jugador.getIdPartida() + 1);
-            jugador.setPuntaje(puntaje);
-            jugador.guardarEstadisticas();
-            estadisticas.add(jugador);
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error al ingresar datos");
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    private void generarPartidaPersonalizada(){
+    public void generarPartidaPersonalizada(){
         System.out.println("Debe ingresar filas y columnas (la multiplicaion de estas debe ser a lo mas de 52)");
         System.out.println("ingrese cantidad de filas");
         int filas = validar.pedirNumeroLimitado(1, 7);
@@ -188,13 +170,13 @@ public class Memorice {
 
     // INPUT
 
-    private String leerOpcion() {
+    public String leerOpcion() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese opcion:");
         return scanner.nextLine();
     }//INPUT DE LINEA
 
-    private String inputScannerNextLine(String instruccion){
+    public String inputScannerNextLine(String instruccion){
         Scanner scanner = new Scanner(System.in);
         System.out.println(instruccion);
         return scanner.nextLine();
@@ -220,4 +202,4 @@ public class Memorice {
         System.out.println(cadena);
     }
 }
-*/
+

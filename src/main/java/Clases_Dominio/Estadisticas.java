@@ -1,44 +1,17 @@
 package Clases_Dominio;
-import Manejo_Archivos.GestorArchivo;
+
+import java.util.List;
 
 public class Estadisticas {
 
     private Persona persona;
-    private int idPartida = 0;
-    private int puntaje;
-    
-    private String rutaArchivo = "Estadisticas.csv";
+    private int vecesJugadas = 0;
+    private List<Integer> puntajes;
 
     public Estadisticas(String nick){
         this.persona = new Persona(nick);
-        this.idPartida = getIdPartida();
-        this.puntaje = getPuntaje();
-    }
-
-    public Boolean guardarEstadisticas() {
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        try {
-            if(!gestorArchivo.existeArchivo(rutaArchivo)){
-                gestorArchivo.crearArchivo(rutaArchivo);
-                gestorArchivo.escribirEnArchivo(rutaArchivo, crearEstructuraArchivo());
-            }
-            gestorArchivo.escribirEnArchivo(rutaArchivo, crearDatos());
-            return true;
-        } catch (Exception e) {
-            System.out.println("Error al guardar datos");
-            e.printStackTrace();
-            return  false;
-        }
-    }
-
-    private String crearEstructuraArchivo(){
-        String nombresColumnas = "Nick;Id Partida;Puntaje.";
-        return nombresColumnas;
-    }
-
-    private String crearDatos(){
-        String datos = getPersona().getNick() + ";" + getIdPartida() + ";" + getPuntaje();
-        return datos;
+        this.vecesJugadas = getVecesJugadas();
+        this.puntajes = getPuntajes();
     }
 
     public Persona getPersona() {
@@ -49,19 +22,19 @@ public class Estadisticas {
         this.persona = persona;
     }
 
-    public int getIdPartida() {
-        return idPartida;
+    public int getVecesJugadas() {
+        return vecesJugadas;
     }
 
-    public void setIdPartida(int idPartida) {
-        this.idPartida = idPartida;
+    public void setVecesJugadas(int vecesJugadas) {
+        this.vecesJugadas = vecesJugadas;
     }
 
-    public int getPuntaje() {
-        return puntaje;
+    public List<Integer> getPuntajes() {
+        return puntajes;
     }
 
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
+    public void setPuntajes(List<Integer> puntajes) {
+        this.puntajes = puntajes;
     }
 }

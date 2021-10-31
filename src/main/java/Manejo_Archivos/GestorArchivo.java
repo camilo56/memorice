@@ -1,6 +1,9 @@
 package Manejo_Archivos;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class GestorArchivo {
@@ -47,20 +50,6 @@ public class GestorArchivo {
         }
     }//LEE EL ARCHIVO LINEA POR LINA(confirma si se puede leer)
 
-    public String obtenerLineasArchivo(String ruta){
-        String datos = "";
-        try {
-            Scanner scanner = new Scanner(new File(ruta));
-            while (scanner.hasNextLine()){
-                datos += scanner.nextLine() + "\n";
-            }
-            return datos;
-        } catch (FileNotFoundException e) {
-            System.out.println("archivo no encontrado");
-            return "Error al leer el archivo";
-        }
-    }//DEVUELVE TODO EL ARCHIVO EN UN STRING
-
     public boolean renombrarArchivo(String rutaActual, String rutaNueva){
         File archivoActual = new File(rutaActual);
         File archivoNuevo = new File(rutaNueva);
@@ -72,15 +61,17 @@ public class GestorArchivo {
         }
     }//RENOMBRA ARCHIVO, cambia rutaActual por rutaNueva
 
-    public boolean escribirEnArchivo(String ruta, String datos){
+    public boolean escribirEnArchivo(String ruta){
+        Scanner scanner = new Scanner(System.in);
         File archivo = new File(ruta);
         if(existeArchivo(ruta)){
             try {
                 FileWriter escribir = new FileWriter(archivo.getAbsoluteFile(),true);
+                System.out.println("Escriba...");
                 if(archivo.length() == 0){
-                    escribir.write(datos);
+                    escribir.write(scanner.nextLine());
                 }else{
-                    escribir.write("\n" + datos);
+                    escribir.write("\n" + scanner.nextLine());
                 }
                 escribir.close();
                 return true;
@@ -93,35 +84,5 @@ public class GestorArchivo {
             return false;
         }
     }//ESCRIBE EN ARCHIVO (agrega lineas según las lineas que contenga el archivo)
-
-    public boolean reEscribirArchivo(String ruta, String datos) {
-        File archivo = new File(ruta);
-        if (existeArchivo(ruta)) {
-            try {
-                FileWriter escribir = new FileWriter(archivo);
-                escribir.write(datos);
-                escribir.close();
-                return true;
-            } catch (IOException e) {
-                System.out.println("Ha ocurrido un error.");
-                e.printStackTrace();
-                return false;
-            }
-        } else {
-            return false;
-        }
-
-    }// RE-ESCRIBE CAD VEZ EN ARCHIVO (ELIMINA LO QUE ESTA, ESCRIBIENDO ALGO NUEVO)
-
-    public int cantidadLineasArchivo(String ruta){
-        try {
-            FileReader fr = new FileReader(ruta);
-            BufferedReader br = new BufferedReader(fr);
-            return (int) br.lines().count();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
 }
 
