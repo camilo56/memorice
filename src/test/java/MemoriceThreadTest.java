@@ -1,16 +1,13 @@
+import Clases_Dominio.Memorice;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-class MemoriceThreadTest {
+class MemoriceTest {
 
     Memorice memorice = new Memorice();
-
+    /*
     @Test
     public void testCrearPersona(){
-
-        int num=3;
-        int nVeces = 4;
-        assertEquals(true,memorice.crearPersona( num, nVeces ));
+        assertEquals(true,memorice.crearPersona());
     }
+
+     */ // SE ELIMINO ESTE METODO
 }

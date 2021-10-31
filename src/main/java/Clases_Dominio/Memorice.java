@@ -1,4 +1,4 @@
-/*
+package Clases_Dominio;/*
 
 MEJORAS DEL AVANCE 1 (RETROALIMENTACION)
 i. el diseño inicial de las clases mostrado en el reporte es muy confuso y uds. lo reconocen al final del documento, que requiere un re diseño, arovechen ahora lo de UML y POO para re ordenar esta propuesta pensando en informe 2
@@ -30,6 +30,7 @@ a. archivos a usar por su aplicación (XLS, TXT, XML, JSON, etc...)
 
 b. datos que se almacenarán en su archivo (tipos de datos de cada columna), estructura del archivo (que almacenará en cada columna y que representan)
 */
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

@@ -1,3 +1,5 @@
+package Clases_Dominio;
+
 import java.util.Random;
 
 public class Tablero {
