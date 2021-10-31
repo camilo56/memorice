@@ -1,18 +1,24 @@
+import java.util.ArrayList;
+
 public class Persona {
 
-    String nick;
-    int puntaje = 0;
-    int nVeces=0;
+    private String nick;
+    private String puntaje;
+    private String nVeces;
 
-    public Persona(String nick) {
-        this.nick = nick;
+
+
+    public Persona() {
+
     }
 
-    public Persona(String nick, int puntaje, int nVeces) {
+    public Persona(String nick, String puntaje,String nVeces) {
         this.nick = nick;
         this.puntaje = puntaje;
-        this.nVeces = nVeces;
+        this.nVeces=nVeces;
+
     }
+
 
     public String getNick() {
         return nick;
@@ -22,19 +28,27 @@ public class Persona {
         this.nick = nick;
     }
 
-    public int getPuntaje() {
+    public String getPuntaje() {
         return puntaje;
     }
 
-    public void setPuntaje(int puntaje) {
+    public void setPuntaje(String puntaje) {
         this.puntaje = puntaje;
     }
 
-    public int getnVeces() {
+    public String getnVeces() {
         return nVeces;
     }
 
-    public void setnVeces(int nVeces) {
+    public void setnVeces(String nVeces) {
         this.nVeces = nVeces;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "Jugador(*" + "Nick='" + nick + '\'' + ", Puntaje='" + puntaje + '\''  + ",Cantidad de partidas='" + nVeces + '\''+ "*)";
+    }
+
 }

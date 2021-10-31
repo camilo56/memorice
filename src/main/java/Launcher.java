@@ -1,10 +1,17 @@
-public class Launcher {
+
+
+
+
+public class Launcher   {
 
     public static void main(String[] args) {
 
-        MemoriceThread memorice = new MemoriceThread();
+        Memorice memorice = new Memorice();
         //Cronometro cronometro = new Cronometro();
+
         memorice.menu();
-       // cronometro.start();// el metodo start() es para iniciar el codigo en otro hilo que este dentro del metodo run() en la clase MemoriceThread
+
+       // memorice.start();
+       //cronometro.start();// el metodo start() es para iniciar el codigo en otro hilo que este dentro del metodo run() en la clase MemoriceThread
     }
 }

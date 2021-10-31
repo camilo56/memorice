@@ -22,7 +22,7 @@ class TablerosTest {
     public void testCantidadCartasTotalesTablero(){
         String[][] matriz = new String [10][12];
         int esperado = 9 * 11;
-        assertEquals(esperado, tablero.cantidadCartasTotalesTablero(matriz));
+        assertEquals(esperado, tablero.canTotalTablero(matriz));
     }// metodo que devuelve (filas - 1) * (columnas -1)
 
     @Test
@@ -30,7 +30,7 @@ class TablerosTest {
         String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
         int cartasTotales = 52;
         boolean verificar = true;
-        String[] cartasNoRepetidas = tablero.generarArregloCartasPares(cartasTotales, cartas);
+        String[] cartasNoRepetidas = tablero.generarCartasPares(cartasTotales, cartas);
 
         for (int i = 0; i < cartasNoRepetidas.length; i++) {
             for (int j = 0; j < i; j++) {
@@ -48,7 +48,7 @@ class TablerosTest {
     public void testGenerarArregloNumerosNoRepetidos(){
         int cantidad = 845;
         boolean verificar = true;
-        int[] arreglo =tablero.generarArregloNumerosNoRepetidos(cantidad);
+        int[] arreglo =tablero.generarNumNoRepetidos(cantidad);
 
         for (int i = 0; i < arreglo.length; i++) {
             for (int j = 0; j < i; j++) {
@@ -67,7 +67,7 @@ class TablerosTest {
     @Test
     public void testNumeroAleatoriosNoRepetidos(){
         int[] arreglo = new int [10000];
-        arreglo = tablero.numeroAleatoriosNoRepetidos(arreglo);
+        arreglo = tablero.numRandomNoRepetidos(arreglo);
 
         boolean verificar = true;
         for (int i = 0; i <arreglo.length; i++) {
@@ -92,7 +92,7 @@ class TablerosTest {
         String[] arreglo = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
 
         String[] nuevoArreglo = new String[arreglo.length];
-        nuevoArreglo = tablero.arregloNoRepetido(nuevoArreglo, arreglo);
+        nuevoArreglo = tablero.NoRepetido(nuevoArreglo, arreglo);
 
         boolean verficar = true;
         for (int i = 0; i < arreglo.length ; i++) {

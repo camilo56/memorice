@@ -1,19 +1,19 @@
 
-public class Cronometro extends Thread {
+public class Cronometro  {
 
     public Cronometro() {
     }
 
     public void run() {
         int minutos = 0;
-        int segundo = 0;
-        for (segundo = 0; segundo < 10; segundo++) {
+        int segundo;
+        for (segundo = 1; segundo < 15; segundo++) {
             System.out.println(minutos + ":" + segundo);
             delaySegundo();
         }
     }//Todo el codigo agregado en este metodo es ejecuta en el main de manera independiente y en en otro hilo
 
-    public void runa(){
+    public void temporizador(){
      for (int segundo = 3; segundo >= 1; segundo--) {
             System.out.println("Generando tablero en: " + segundo);
             delaySegundo();
@@ -27,4 +27,5 @@ public class Cronometro extends Thread {
             e.printStackTrace();
         }
     }
+
 }

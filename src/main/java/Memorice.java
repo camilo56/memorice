@@ -25,14 +25,16 @@ estoy solo, no es divertido estar solo T_T.
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MemoriceThread extends Thread {
+public class Memorice {
 
-    Validaciones validar = new  Validaciones();
-
+    private Validaciones validar = new  Validaciones();
     private ArrayList<Persona> personas;
     private Tableros tableros;
+    private Persona persona=new Persona();
 
-    public MemoriceThread() {
+
+
+    public Memorice() {
         this.personas = new ArrayList<>();
         this.tableros=new Tableros();
     }
@@ -45,10 +47,7 @@ public class MemoriceThread extends Thread {
                 opcion = leerOpcion();
                 switch (opcion) {
                     case "a" -> casoNuevaPartida();
-                    case "b" -> desarrollo();
-                    case "c" -> desarrollo();
-                    case "d" -> desarrollo();
-                    case "e" -> desarrollo();
+                    case "b" -> Estadisticas();
                     case "s" -> casoSalir();
                     default -> System.out.println("La opcion ingresada es incorrecta");
                 }
@@ -56,6 +55,11 @@ public class MemoriceThread extends Thread {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void Estadisticas() {
+        System.out.println(personas.toString());
+
     }
 
     public static String leerOpcion() {
@@ -68,10 +72,7 @@ public class MemoriceThread extends Thread {
         System.out.println("***********************************************************");
         System.out.println("*                      Iniciar Juego                      *");
         System.out.println("*   [a] Partida Nueva                                     *");
-        System.out.println("*   [b] Cargar Partida                                    *");
-        System.out.println("*   [c] Ver Estadisticas                                  *");
-        System.out.println("*   [d] Configuraciones                                   *");
-        System.out.println("*   [e] Creditos                                          *");
+        System.out.println("*   [b] Ver Estadisticas                                  *");
         System.out.println("*   [s] Salir                                             *");
         System.out.println("***********************************************************");
     }//listo, muestra menu principal
@@ -95,9 +96,11 @@ public class MemoriceThread extends Thread {
         return scanner.nextLine();
     }//listo, pide ingresar sobrenombre(nick) solamente
 
-    public boolean crearPersona() {
+        public boolean crearPersona(int puntos,int nVeces) {
+        String numCadena= String.valueOf(puntos);
+        String numNveces= String.valueOf(nVeces);
         try {
-            Persona persona = new Persona(darNick());
+            Persona persona = new Persona(darNick(),numCadena,numNveces);
             personas.add(persona);
             System.out.println("Nick Creado");
         } catch (Exception e) {
@@ -105,11 +108,10 @@ public class MemoriceThread extends Thread {
             return false;
         }
         return true;
-    }//llama a darNick(). Aun falta agregar contraseña y validar los datos ingresados
+    }
 
     public void casoNuevaPartida(){
         try {
-            crearPersona();
             dificultad();
         } catch (Exception e){
             e.printStackTrace();
@@ -117,29 +119,68 @@ public class MemoriceThread extends Thread {
 
     }
 
-    public void dificultad(){
+    public void  dificultad(){
         Scanner scanner = new Scanner(System.in);
-        String opcion;
+        Archivo archivo = new Archivo();
+        String opcion = "";
+        int puntaje = 0;
+        int nVeces =0;
         int[][] MxN = arregloMxN();
         try {
             do{
-                menuPartidaNueva();
+            menuPartidaNueva();
                 opcion = scanner.nextLine();
                 switch (opcion) {
-                    case "a" -> generarPartidaNueva(MxN[0][0], MxN[0][1]);//2x10
-                    case "b" -> generarPartidaNueva(MxN[1][0], MxN[1][1]);//3x4
-                    case "c" -> generarPartidaNueva(MxN[2][0], MxN[2][1]);//2x10
-                    case "d" -> generarPartidaNueva(MxN[3][0], MxN[3][1]);//2x10
-                    case "e" -> generarPartidaNueva(MxN[4][0], MxN[4][1]);//5x10
+                    case "a" -> {
+
+                        //generarPartidaNueva(MxN[0][0], MxN[0][1]);
+                        nVeces++;
+                        puntaje ++;
+                        //2x10
+                    }//2x5 1 punto incial va aumentando de dos en dos
+                    case "b" -> {
+                        //generarPartidaNueva(MxN[1][0], MxN[1][1]);
+                        nVeces++;
+                        puntaje+=2;
+                    }//3x4 2 puntos incial va aumentando de dos en dos
+                    case "c" -> {
+                        //generarPartidaNueva(MxN[2][0], MxN[2][1]);
+                        nVeces++;
+                        puntaje+=3;
+                    }//2x10
+                    case "d" -> {
+                        generarPartidaNueva(MxN[3][0], MxN[3][1]);
+                        nVeces++;
+                        puntaje+=4;
+                    }//3x10
+                    case "e" -> {
+                        generarPartidaNueva(MxN[4][0], MxN[4][1]);
+                        nVeces++;
+                        puntaje+=5;
+                    }//5x10
                     case "f" -> generarPartidaPersonalizada();//personalizada
                     case "s" -> volverMenu();//volver a menu
                     default -> System.out.println("La opcion ingresada es incorrecta");
+
+
                 }
 
+                System.out.println("Puntaje actual"+puntaje);
+
             }while(!opcion.equals("s"));
+
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+        System.out.println("Total PUNTAJE:\n"+puntaje+"\n");
+
+        crearPersona(puntaje,nVeces);
+
+        archivo.setValor(toString());
+        archivo.escribirArchivo();
+
     }
 
     public static int [][] arregloMxN(){
@@ -153,7 +194,7 @@ public class MemoriceThread extends Thread {
         int x = 1;
         do{
             tableros.coordenadas(matrizCartas);
-            cronometro.runa();
+            cronometro.temporizador();
             tableros.mostrarSimple(matrizCartas);
             for (int i = 1; i < matrizCartas.length; i++) {
                 for (int j = 1; j < matrizCartas[0].length; j++) {
@@ -196,6 +237,15 @@ public class MemoriceThread extends Thread {
     private static void volverMenu() {
         System.out.println("Volviendo a menu...");
     }
+    @Override
+    public String toString() {
 
+        StringBuilder archivoGuardado = new StringBuilder();
+
+        for (Persona contacto : personas) {
+            archivoGuardado.append(contacto.toString());
+        }
+        return archivoGuardado.toString();
+    }
 }
 

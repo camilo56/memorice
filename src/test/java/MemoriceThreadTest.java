@@ -4,10 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemoriceThreadTest {
 
-    MemoriceThread memorice = new MemoriceThread();
+    Memorice memorice = new Memorice();
 
     @Test
     public void testCrearPersona(){
-        assertEquals(true,memorice.crearPersona());
+
+        int num=3;
+        int nVeces = 4;
+        assertEquals(true,memorice.crearPersona( num, nVeces ));
     }
 }
