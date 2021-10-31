@@ -11,6 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="datos" target="15" />
+      <module name="guis" target="15" />
       <module name="progCronometro" target="15" />
     </bytecodeTargetLevel>
   </component>
