@@ -17,13 +17,12 @@ public class Estadisticas {
 
     public Boolean guardarEstadisticas() {
         GestorArchivo gestorArchivo = new GestorArchivo();
-        String ruta = "Estadisticas.csv";
         try {
-            if(!gestorArchivo.existeArchivo(ruta)){
-                gestorArchivo.crearArchivo(ruta);
-                gestorArchivo.escribirEnArchivo(ruta, crearEstructuraArchivo());
+            if(!gestorArchivo.existeArchivo(rutaArchivo)){
+                gestorArchivo.crearArchivo(rutaArchivo);
+                gestorArchivo.escribirEnArchivo(rutaArchivo, crearEstructuraArchivo());
             }
-            gestorArchivo.escribirEnArchivo(ruta, crearDatos());
+            gestorArchivo.escribirEnArchivo(rutaArchivo, crearDatos());
             return true;
         } catch (Exception e) {
             System.out.println("Error al guardar datos");
