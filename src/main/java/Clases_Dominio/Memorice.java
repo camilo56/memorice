@@ -157,8 +157,8 @@ public class Memorice {
     public boolean actualizarEstadisticas(Integer puntaje){
 
         try {
-            jugador.setVecesJugadas(jugador.getVecesJugadas() + 1);
-            jugador.ingresarPuntaje(puntaje);
+            jugador.setIdPartida(jugador.getIdPartida() + 1);
+            jugador.setPuntaje(puntaje);
             jugador.guardarEstadisticas();
             estadisticas.add(jugador);
             return true;

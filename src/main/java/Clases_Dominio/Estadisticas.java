@@ -1,23 +1,18 @@
 package Clases_Dominio;
 import Manejo_Archivos.GestorArchivo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Estadisticas {
 
     private Persona persona;
-    private int vecesJugadas = 0;
-    private List<Integer> puntajes;
+    private int idPartida = 0;
+    private int puntaje;
 
     public Estadisticas(String nick){
         this.persona = new Persona(nick);
-        this.vecesJugadas = getVecesJugadas();
-        this.puntajes = new ArrayList<>();
-    }
-
-    public void ingresarPuntaje(Integer puntaje){
-        puntajes.add(puntaje);
+        this.idPartida = getIdPartida();
+        this.puntaje = getPuntaje();
     }
 
     public Boolean guardarEstadisticas() {
@@ -47,18 +42,15 @@ public class Estadisticas {
     }
      */
     private String crearEstructuraArchivo(){
-        String nombresColumnas = "Nick;Veces Jugadas";
-        for (int i = 0; i < vecesJugadas; i++) {
-            nombresColumnas += ";Puntaje Jugada Nº" + (i + 1);
-        }
-        return  nombresColumnas;
+        String nombresColumnas = "Nick;Id Partida;Puntaje";
+        return nombresColumnas;
     }
 
     private String crearDatos(){
-        String datos = getPersona().getNick() + ";" + getVecesJugadas();
-        for(Integer puntaje : getPuntajes()){
-            datos += ";" + puntaje;
-        }
+        String datos = getPersona().getNick() + ";" + getIdPartida() + ";" + getPuntaje();
+        //for(Integer puntaje : getPuntajes()){
+        //    datos += ";" + puntaje;
+        //}
         return datos;
     }
 
@@ -70,19 +62,19 @@ public class Estadisticas {
         this.persona = persona;
     }
 
-    public int getVecesJugadas() {
-        return vecesJugadas;
+    public int getIdPartida() {
+        return idPartida;
     }
 
-    public void setVecesJugadas(int vecesJugadas) {
-        this.vecesJugadas = vecesJugadas;
+    public void setIdPartida(int idPartida) {
+        this.idPartida = idPartida;
     }
 
-    public List<Integer> getPuntajes() {
-        return puntajes;
+    public int getPuntaje() {
+        return puntaje;
     }
 
-    public void setPuntajes(List<Integer> puntajes) {
-        this.puntajes = puntajes;
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
     }
 }

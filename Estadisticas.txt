@@ -1,2 +1,0 @@
-Nick;Veces Jugadas;Puntaje Jugada Nº1;Puntaje Jugada Nº2
-pablo;2;12;12
