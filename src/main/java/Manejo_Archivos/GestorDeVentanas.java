@@ -1,5 +1,6 @@
 package Manejo_Archivos;
 
+import Clases_Guis.Gui_Configuraciones;
 import Clases_Guis.MenuElegirDificultad;
 import Clases_Guis.MenuPrincipal;
 import Clases_Guis.Modelo;
@@ -10,6 +11,7 @@ public class GestorDeVentanas {
 
     private MenuPrincipal menuPrincipal;
     private MenuElegirDificultad menuElegirDificultad;
+    private Gui_Configuraciones configuraciones;
     private Container ventana;
 
     public void ejecutar() {
@@ -24,6 +26,10 @@ public class GestorDeVentanas {
 
     public void ejecutarMenuElegirDificultad(Container ventana) {
         menuElegirDificultad = new MenuElegirDificultad(ventana);
+    }
+
+    public void ejecutarConfiguraciones(Container ventana) {
+        configuraciones = new Gui_Configuraciones(ventana);
     }
 
     public Container getVentana() {

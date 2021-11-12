@@ -53,6 +53,7 @@ public class MenuPrincipal extends Modelo implements ActionListener {
         botonConfiguraciones.setBounds(200, 140 ,altoBoton ,anchoBoton );
         botonConfiguraciones.setHorizontalAlignment(SwingConstants.CENTER);
         botonConfiguraciones.setFont(getFuente()); // getFuente es metodo  de clase Modelo
+        botonConfiguraciones.addActionListener(this);
         panel.add(botonConfiguraciones);
 
         botonCreditos = new JButton("Creditos");
@@ -78,6 +79,11 @@ public class MenuPrincipal extends Modelo implements ActionListener {
         }
         if (e.getSource() == this.botonSalir) {
             System.exit(0);
+        }
+        if (e.getSource() == this.botonConfiguraciones) {
+            panel.setVisible(false);
+            panel.validate();
+            gestorDeVentanas.ejecutarConfiguraciones(ventana);
         }
     }
 }
