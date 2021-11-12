@@ -13,7 +13,7 @@ public class Modelo extends JFrame {
 
     private JPanel panel;
 
-    public void crearVentana() {
+    public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
         setSize(ancho, alto);// definir tamaño de ventana
         //setIconImage(new ImageIcon(getClass().getResource("logo.jpg")).getImage()); //NO FUNCIONA, NO SÉ POR QUÉ!
@@ -21,12 +21,13 @@ public class Modelo extends JFrame {
         setVisible(true);// opcion de visibilidad de la ventana
         setLocationRelativeTo(null);// opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
         setDefaultCloseOperation(EXIT_ON_CLOSE);//al cerrar la ventana, termina ejecucion de programa
+        return getContentPane();
     }
 
-    public JPanel crearPanel() {
+    public JPanel crearPanel(Container ventana) {
         panel = new JPanel();
         panel.setLayout(null);
-        this.getContentPane().add(panel);
+        ventana.add(panel);
         return getPanel();
     }
 

@@ -3,33 +3,25 @@ package Clases_Guis;
 import Manejo_Archivos.GestorDeVentanas;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPrincipal extends Modelo implements ActionListener {
 
-    private GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
+    private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
 
+    private Container ventana;
     private JPanel panel;
     private JButton botonNuevaPartida, botonCargarPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
 
-    private int altoBoton = 200; // width
-    private int anchoBoton = 20;// heigth
-    /*
-    ESTA GUI BUSCA MOSTRAR ESTAS SECCIONES (BOTONES QUE DAN PASO A OTRAS GUI's)
-        System.out.println("***********************************************************");
-        System.out.println("*                      Iniciar Juego                      *");
-        System.out.println("*   [a] Partida Nueva                                     *");
-        System.out.println("*   [b] Cargar Partida                                    *");
-        System.out.println("*   [c] Ver Estadisticas                                  *");
-        System.out.println("*   [d] Configuraciones                                   *");
-        System.out.println("*   [e] Creditos                                          *");
-        System.out.println("*   [s] Salir                                             *");
-        System.out.println("***********************************************************");
-     */
-    public MenuPrincipal() {
-        crearVentana();
-        panel = crearPanel();
+    private final int altoBoton = 200; // width
+    private final int anchoBoton = 20;// heigth
+
+    public MenuPrincipal(Container ventana) {
+        this.ventana = ventana;
+        this.panel = crearPanel(ventana);
+        this.panel.setVisible(true);
         crearComponentes();
     }
 
@@ -80,8 +72,9 @@ public class MenuPrincipal extends Modelo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonNuevaPartida) {
-            gestorDeVentanas.ejecutarMenuElegirDificultad();
-            setVisible(false); //cierra la ventana actual -> le da paso a la otra ventana
+            panel.setVisible(false);
+            panel.validate();
+            gestorDeVentanas.ejecutarMenuElegirDificultad(ventana);
         }
         if (e.getSource() == this.botonSalir) {
             System.exit(0);
