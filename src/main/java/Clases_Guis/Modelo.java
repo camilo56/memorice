@@ -5,9 +5,11 @@ import java.awt.*;
 
 public class Modelo extends JFrame {
 
+    private Color color;
     private final int ancho = 600;
     private final int alto = 500;
     private final String titulo= "MeMO";
+
 
     private final Font fuente = new Font("arial",2, 15);
 
@@ -27,6 +29,7 @@ public class Modelo extends JFrame {
     public JPanel crearPanel(Container ventana) {
         panel = new JPanel();
         panel.setLayout(null);
+        panel.setBackground(getColor());
         ventana.add(panel);
         return getPanel();
     }
@@ -49,5 +52,13 @@ public class Modelo extends JFrame {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public  void setColor(Color color) {
+        this.color = color;
     }
 }
