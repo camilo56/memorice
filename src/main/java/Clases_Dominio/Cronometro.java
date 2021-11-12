@@ -23,7 +23,6 @@ public class Cronometro extends Thread {
         }
     }
 
-
     public void runa2(){
      for (int segundo = 3; segundo >= 1; segundo--) {
             System.out.println("Generando tablero en: " + segundo);

@@ -10,7 +10,7 @@ public class Datos {
         GestorArchivo gestorArchivo = new GestorArchivo();
         String datos =  "****************************************\n";
         datos += "               Esdisticas               \n";
-        datos += gestorArchivo.obtenerLineasArchivo(rutaArchivo);;
+        datos += gestorArchivo.obtenerLineasArchivo(rutaArchivo);
         datos = datos.replace(";", "    ");
         datos += "****************************************\n";
         return datos;
