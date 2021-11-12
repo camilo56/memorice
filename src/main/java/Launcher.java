@@ -1,11 +1,11 @@
-import Clases_Dominio.Memorice;
+import Manejo_Archivos.GestorDeVentanas;
 
 public class Launcher {
 
     public static void main(String[] args) {
 
-        Memorice memorice = new Memorice();
-        memorice.opcionesMenuPrincipal();
+        GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
+        gestorDeVentanas.ejecutarVentanaMenuPrincipal();
 
     }
 }

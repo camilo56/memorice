@@ -39,6 +39,7 @@ import java.util.Scanner;
 
 public class Memorice {
 
+    private Datos datos = new Datos();
     private Validaciones validar = new  Validaciones();
     private List<Estadisticas> estadisticas;
     private Estadisticas jugador;
@@ -46,14 +47,12 @@ public class Memorice {
     private Tablero tableros;
     private final int [][] rangosTableros = {{2, 5}, {3, 4}, {2, 10}, {3, 10}, {5, 10}};
 
-
-
     public Memorice() {
         this.estadisticas = new ArrayList<>();
         this.tableros=new Tablero();
     }
 
-    public void mostarMenuPrincipal() {
+    private void mostarMenuPrincipal() {
         System.out.println("***********************************************************");
         System.out.println("*                      Iniciar Juego                      *");
         System.out.println("*   [a] Partida Nueva                                     *");
@@ -74,7 +73,7 @@ public class Memorice {
                 switch (opcion) {
                     case "a" -> casoNuevaPartida();
                     case "b" -> mostrarString(enDesarrollo());
-                    case "c" -> mostrarString(enDesarrollo());
+                    case "c" -> mostrarString(datos.obtenerEstadisticas());
                     case "d" -> mostrarString(enDesarrollo());
                     case "e" -> mostrarString(enDesarrollo());
                     case "s" -> mostrarString(salirDelJuego());
@@ -86,7 +85,7 @@ public class Memorice {
         }
     }// VALIDADO
 
-    public void mostrarMenuPartidaNueva(){
+    private void mostrarMenuPartidaNueva(){
         System.out.println("***********************************************************");
         System.out.println("*             Selecione nivel de dificultad               *");
         System.out.println("*[a]facil(Tablero de 2X5,sin limite de tiempo)            *");
@@ -99,7 +98,7 @@ public class Memorice {
         System.out.println("***********************************************************");
     }//LISTO
 
-    public void casoNuevaPartida(){
+    private void casoNuevaPartida(){
         try {
             jugador = new Estadisticas(inputScannerNextLine("Ingrese un nick "));
             establecerDificultad();
@@ -108,7 +107,7 @@ public class Memorice {
         }
     } //LISTO, quiza es necesario contar con un tipo de retorno
 
-    public void establecerDificultad(){
+    private void establecerDificultad(){
         String opcion;
         try {
             do{
@@ -130,7 +129,7 @@ public class Memorice {
         }
     }//VALIDADO
 
-    public void generarPartidaNueva(int filas, int columnas){
+    private void generarPartidaNueva(int filas, int columnas){
         //Cronometro cronometro= new Cronometro();
         String[][] tablero = tableros.generarTablero(filas, columnas);
         int x = 1;
@@ -154,11 +153,10 @@ public class Memorice {
         actualizarEstadisticas(12);
     }
 
-    public boolean actualizarEstadisticas(Integer puntaje){
-
+    private boolean actualizarEstadisticas(int puntaje){
         try {
-            jugador.setVecesJugadas(jugador.getVecesJugadas() + 1);
-            jugador.ingresarPuntaje(puntaje);
+            jugador.setIdPartida(jugador.getIdPartida() + 1);
+            jugador.setPuntaje(puntaje);
             jugador.guardarEstadisticas();
             estadisticas.add(jugador);
             return true;
@@ -169,7 +167,7 @@ public class Memorice {
         }
     }
 
-    public void generarPartidaPersonalizada(){
+    private void generarPartidaPersonalizada(){
         System.out.println("Debe ingresar filas y columnas (la multiplicaion de estas debe ser a lo mas de 52)");
         System.out.println("ingrese cantidad de filas");
         int filas = validar.pedirNumeroLimitado(1, 7);
@@ -188,13 +186,13 @@ public class Memorice {
 
     // INPUT
 
-    public String leerOpcion() {
+    private String leerOpcion() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese opcion:");
         return scanner.nextLine();
     }//INPUT DE LINEA
 
-    public String inputScannerNextLine(String instruccion){
+    private String inputScannerNextLine(String instruccion){
         Scanner scanner = new Scanner(System.in);
         System.out.println(instruccion);
         return scanner.nextLine();

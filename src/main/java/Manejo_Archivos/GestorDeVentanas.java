@@ -1,36 +1,20 @@
 package Manejo_Archivos;
 
-import Clases_Guis.*;
-
-import java.awt.*;
+import Clases_Guis.MenuElegirDificultad;
+import Clases_Guis.MenuPrincipal;
 
 public class GestorDeVentanas {
 
-    private Container ventana;
+    private MenuPrincipal menuPrincipal;
+    private MenuElegirDificultad menuElegirDificultad;
 
-    public void ejecutar() {
-        Modelo modelo = new Modelo();
-        ventana = modelo.crearVentana();
-        ejecutarVentanaMenuPrincipal(ventana);
+    public void ejecutarVentanaMenuPrincipal() {
+        menuPrincipal = new MenuPrincipal();
     }
 
-    public void ejecutarVentanaMenuPrincipal(Container ventana) {
-        Gui_MenuPrincipal guiMenuPrincipal = new Gui_MenuPrincipal(ventana);
+    public void ejecutarMenuElegirDificultad() {
+        menuElegirDificultad = new MenuElegirDificultad();
     }
 
-    public void ejecutarMenuElegirDificultad(Container ventana) {
-        Gui_NuevaPartida guiNuevaPartida = new Gui_NuevaPartida(ventana);
-    }
 
-    public void ejecutarConfiguraciones(Container ventana) {
-        Gui_Configuraciones configuraciones = new Gui_Configuraciones(ventana);
-    }
-
-    public void ejecutarJuego(Container ventana) {
-        Gui_Juego juego = new Gui_Juego(ventana);
-    }
-
-    public Container getVentana() {
-        return ventana;
-    }
 }

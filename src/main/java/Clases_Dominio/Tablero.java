@@ -128,9 +128,7 @@ public class Tablero {
         return matriz;
     }//LISTO
 
-
-
-    // GETTERS Y SETTERS
+    // GETTERS
 
     public String[][] getTablero() {
         return tablero;
