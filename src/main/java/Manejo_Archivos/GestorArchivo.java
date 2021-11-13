@@ -73,7 +73,6 @@ public class GestorArchivo {
     }//RENOMBRA ARCHIVO, cambia rutaActual por rutaNueva
 
     public boolean escribirEnArchivo(String ruta, String datos){
-        Scanner scanner = new Scanner(System.in);
         File archivo = new File(ruta);
         if(existeArchivo(ruta)){
             try {
@@ -94,6 +93,25 @@ public class GestorArchivo {
             return false;
         }
     }//ESCRIBE EN ARCHIVO (agrega lineas según las lineas que contenga el archivo)
+
+    public boolean reEscribirArchivo(String ruta, String datos) {
+        File archivo = new File(ruta);
+        if (existeArchivo(ruta)) {
+            try {
+                FileWriter escribir = new FileWriter(archivo);
+                escribir.write(datos);
+                escribir.close();
+                return true;
+            } catch (IOException e) {
+                System.out.println("Ha ocurrido un error.");
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+    }// RE-ESCRIBE CAD VEZ EN ARCHIVO (ELIMINA LO QUE ESTA, ESCRIBIENDO ALGO NUEVO)
 
     public int cantidadLineasArchivo(String ruta){
         try {
