@@ -20,7 +20,7 @@ public class Modelo extends JFrame {
     public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
         setSize(ancho, alto);// definir tamaño de ventana
-        ImageIcon logo = new ImageIcon("src/main/java/Imagenes/logo.jpg");
+        ImageIcon logo = new ImageIcon("src/main/java/Imagenes/logo.png");
         setIconImage(logo.getImage()); //FUNCIONO, FALTA AGREGAR UN LOGO UN POCO MAS CREATIVO (MAS ADECUADO AL TEMA)
         setResizable(false);// opcion de maximizar/minimizar ventana
         setVisible(true);// opcion de visibilidad de la ventana

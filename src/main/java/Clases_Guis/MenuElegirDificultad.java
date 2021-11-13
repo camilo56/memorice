@@ -30,7 +30,7 @@ public class MenuElegirDificultad extends Modelo implements ActionListener {
     private void crearBotones() {
         botonVolver = new JButton();
         botonVolver.setBounds(15, 15, 100,30);
-        ImageIcon volver = new ImageIcon("volver.png");
+        ImageIcon volver = new ImageIcon("src/main/java/Imagenes/volver.png");
         botonVolver.setIcon(new ImageIcon(volver.getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
         botonVolver.setVisible(true);
         botonVolver.addActionListener(this);
