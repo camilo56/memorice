@@ -1,16 +1,16 @@
 package Manejo_Archivos;
 
 import Clases_Guis.Gui_Configuraciones;
-import Clases_Guis.MenuElegirDificultad;
-import Clases_Guis.MenuPrincipal;
+import Clases_Guis.Gui_NuevaPartida;
+import Clases_Guis.Gui_MenuPrincipal;
 import Clases_Guis.Modelo;
 
 import java.awt.*;
 
 public class GestorDeVentanas {
 
-    private MenuPrincipal menuPrincipal;
-    private MenuElegirDificultad menuElegirDificultad;
+    private Gui_MenuPrincipal guiMenuPrincipal;
+    private Gui_NuevaPartida guiNuevaPartida;
     private Gui_Configuraciones configuraciones;
     private Container ventana;
 
@@ -21,11 +21,11 @@ public class GestorDeVentanas {
     }
 
     public void ejecutarVentanaMenuPrincipal(Container ventana) {
-        menuPrincipal = new MenuPrincipal(ventana);
+        guiMenuPrincipal = new Gui_MenuPrincipal(ventana);
     }
 
     public void ejecutarMenuElegirDificultad(Container ventana) {
-        menuElegirDificultad = new MenuElegirDificultad(ventana);
+        guiNuevaPartida = new Gui_NuevaPartida(ventana);
     }
 
     public void ejecutarConfiguraciones(Container ventana) {
@@ -40,10 +40,4 @@ public class GestorDeVentanas {
         this.ventana = ventana;
     }
 
-    /*
-    public Container activarVisivilidadVentana(boolean T) {
-        ventana.setVisible(T);
-        return ventana;
-    }
-     */
 }

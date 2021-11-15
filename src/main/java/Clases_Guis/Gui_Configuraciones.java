@@ -38,9 +38,9 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         cambiarColor();
 
         botonVolver = new JButton();
+        //getImageVolver() --> logo volver, herencia de clase Modelo
         botonVolver.setBounds(15, 15, 100,30);
-        ImageIcon volver = new ImageIcon("src/main/java/Imagenes/volver.png");
-        botonVolver.setIcon(new ImageIcon(volver.getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
+        botonVolver.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
         botonVolver.setVisible(true);
         botonVolver.addActionListener(this);
         panel.add(botonVolver);
