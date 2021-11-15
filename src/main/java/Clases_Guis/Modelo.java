@@ -7,11 +7,12 @@ import java.awt.*;
 
 public class Modelo extends JFrame {
 
-    private Color color;
+    //private Color color;
     private final int ancho = 600;
     private final int alto = 500;
     private final String titulo= "MeMO";
-
+    private final ImageIcon logoMeMO = new ImageIcon("src/main/java/Imagenes/logo.png");
+    private final ImageIcon imagenVolver = new ImageIcon("src/main/java/Imagenes/volver.png");
 
     private final Font fuente = new Font("arial",2, 15);
 
@@ -20,8 +21,7 @@ public class Modelo extends JFrame {
     public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
         setSize(ancho, alto);// definir tamaño de ventana
-        ImageIcon logo = new ImageIcon("src/main/java/Imagenes/logo.png");
-        setIconImage(logo.getImage()); //FUNCIONO, FALTA AGREGAR UN LOGO UN POCO MAS CREATIVO (MAS ADECUADO AL TEMA)
+        setIconImage(logoMeMO.getImage()); //FUNCIONO, FALTA AGREGAR UN LOGO UN POCO MAS CREATIVO (MAS ADECUADO AL TEMA)
         setResizable(false);// opcion de maximizar/minimizar ventana
         setVisible(true);// opcion de visibilidad de la ventana
         setLocationRelativeTo(null);// opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
@@ -33,9 +33,16 @@ public class Modelo extends JFrame {
         //obtenerColorPanel();
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setBackground(getColor());
+        //panel.setBackground(getColor());
         ventana.add(panel);
         return getPanel();
+    }
+
+    public JButton crearBoton(String texto ) {
+        JButton boton = new JButton(texto);
+        boton.setHorizontalAlignment(SwingConstants.CENTER);
+        boton.setFont(getFuente());
+        return boton;
     }
     /* NO HE PODIDO IMPLEMENTAR LO DE CAMBIAR EL COLOR A NIVEL GLOBAL
     private void obtenerColorPanel() {
@@ -67,11 +74,18 @@ public class Modelo extends JFrame {
         return panel;
     }
 
+    /*
     public Color getColor() {
         return color;
     }
 
     public  void setColor(Color color) {
+
         this.color = color;
+    }
+ */
+
+    public ImageIcon getImagenVolver() {
+        return imagenVolver;
     }
 }
