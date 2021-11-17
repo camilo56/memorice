@@ -1,7 +1,5 @@
 package Clases_Guis;
 
-import Manejo_Archivos.GestorArchivo;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,7 +19,7 @@ public class Modelo extends JFrame {
     public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
         setSize(ancho, alto);// definir tamaño de ventana
-        setIconImage(logoMeMO.getImage()); //FUNCIONO, FALTA AGREGAR UN LOGO UN POCO MAS CREATIVO (MAS ADECUADO AL TEMA)
+        setIconImage(logoMeMO.getImage());// cambia icono de JFrame
         setResizable(false);// opcion de maximizar/minimizar ventana
         setVisible(true);// opcion de visibilidad de la ventana
         setLocationRelativeTo(null);// opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
@@ -38,7 +36,7 @@ public class Modelo extends JFrame {
         return getPanel();
     }
 
-    public JButton crearBoton(String texto ) {
+    public JButton crearBoton(String texto) {
         JButton boton = new JButton(texto);
         boton.setHorizontalAlignment(SwingConstants.CENTER);
         boton.setFont(getFuente());

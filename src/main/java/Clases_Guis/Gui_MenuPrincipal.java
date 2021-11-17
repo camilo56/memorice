@@ -20,13 +20,15 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
 
     public Gui_MenuPrincipal(Container ventana) {
         this.ventana = ventana;
-        this.panel = crearPanel(ventana);
+        this.panel = crearPanel(this.ventana);
         this.panel.setVisible(true);
         crearComponentes();
+        panel.updateUI();
     }
 
     private void crearComponentes() {
         crearBotones();
+
     }
 
     private void crearBotones() {
@@ -56,7 +58,10 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         botonSalir.setBounds(200,220, anchoBoton, altoBoton );
         botonSalir.addActionListener(this);
         panel.add(botonSalir);
+
+        panel.validate();
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

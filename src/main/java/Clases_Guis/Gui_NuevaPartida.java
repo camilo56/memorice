@@ -1,6 +1,5 @@
 package Clases_Guis;
 
-
 import Manejo_Archivos.GestorDeVentanas;
 
 import javax.swing.*;
@@ -10,21 +9,26 @@ import java.awt.event.ActionListener;
 
 public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
-    private GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
+    private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
 
     private Container ventana;
     private JPanel panel;
     private JButton botonVolver, botonJugar;
-    private JRadioButton radioBoton1;
+    private JCheckBox tiempoLimite;
+    private JRadioButton nivelFacil, nivelDificil, nivelExperto, nivelIntermedio, nivelMuyDificil, nivelPersonalizado;
+    private ButtonGroup grupoRadioBotones;
+    private JComboBox listaFilas, listaColumnas;
+    private JTextField cajaNick;
 
     private final int anchoBoton = 200; // width
-    private final int altoBoton = 20;// heigth
+    private final int altoBoton = 20;// heigth  
 
     public Gui_NuevaPartida(Container ventana) {
         this.ventana = ventana;
-        this.panel = crearPanel(ventana);
+        this.panel = crearPanel(this.ventana);
         this.panel.setVisible(true);
         crearComponentes();
+        panel.updateUI();
     }
 
     private void crearComponentes() {
@@ -32,6 +36,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         crearCajaTexto();
         crearBotones();
         crearRadioBotones();
+        agregarGrupoRadioBotones();
     }
 
     private void crearEtiquetas() {
@@ -51,11 +56,10 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     }
 
     private void crearCajaTexto() {
-        JTextField cajaNick = new JTextField();
+        cajaNick = new JTextField();
         cajaNick.setBounds(160, 80, 100, 20);
-        cajaNick.setOpaque(true);
+        cajaNick.setOpaque(true);//opcion de poder editar componentes internos de un JTextField
         cajaNick.setBackground(Color.white);
-        String nick = cajaNick.getText();
         panel.add(cajaNick);
     }
 
@@ -65,52 +69,110 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         botonJugar.addActionListener(this);
         panel.add(botonJugar);
 
-
         //getImageVolver() --> logo volver, herencia de clase Modelo
         botonVolver = new JButton();
         botonVolver.setBounds(15, 15, 100,30);
         botonVolver.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
-        botonVolver.setVisible(true);
         botonVolver.addActionListener(this);
         panel.add(botonVolver);
     }
 
     private void crearRadioBotones() {
-        JCheckBox tiempoLimite = new JCheckBox("¿Tiempo Limitado?", false);
+        tiempoLimite = new JCheckBox("¿Tiempo Limitado?", false);
         tiempoLimite.setBounds(300, 80, 150, 20);
         panel.add(tiempoLimite);
 
-        JRadioButton nivelFacil = new JRadioButton("Fácil", false);
+        nivelFacil = new JRadioButton("Fácil", false);
         nivelFacil.setBounds(100, 140, 100, 20);
+        nivelFacil.addActionListener(this);
         panel.add(nivelFacil);
 
-        JRadioButton nivelDificil = new JRadioButton("Difícil", false);
+        nivelDificil = new JRadioButton("Difícil", false);
         nivelDificil.setBounds(100, 200, 100, 20);
+        nivelDificil.addActionListener(this);
         panel.add(nivelDificil);
 
-        JRadioButton nivelExperto = new JRadioButton("Experto", false);
+        nivelExperto = new JRadioButton("Experto", false);
         nivelExperto.setBounds(100, 260, 100, 20);
+        nivelDificil.addActionListener(this);
         panel.add(nivelExperto);
 
-        JRadioButton nivelIntermedio = new JRadioButton("Intermedio", false);
+        nivelIntermedio = new JRadioButton("Intermedio", false);
         nivelIntermedio.setBounds(300, 140, 100, 20);
+        nivelIntermedio.addActionListener(this);
         panel.add(nivelIntermedio);
 
-        JRadioButton nivelMuyDificil = new JRadioButton("Muy Difícil", false);
+        nivelMuyDificil = new JRadioButton("Muy Difícil", false);
         nivelMuyDificil.setBounds(300, 200, 100, 20);
+        nivelMuyDificil.addActionListener(this);
         panel.add(nivelMuyDificil);
 
-        JRadioButton nivelPersonalizado = new JRadioButton("Personalizado", false);
-        nivelPersonalizado.setBounds(300, 260, 100, 20);
+        nivelPersonalizado = new JRadioButton("Personalizado", false);
+        nivelPersonalizado.setBounds(300, 260, 110, 20);
+        nivelPersonalizado.addActionListener(this);
         panel.add(nivelPersonalizado);
+    }
 
-        ButtonGroup grupoRadioBotones = new ButtonGroup();
+    private void agregarGrupoRadioBotones() {
+        grupoRadioBotones = new ButtonGroup();
         grupoRadioBotones.add(nivelFacil);
         grupoRadioBotones.add(nivelIntermedio);
         grupoRadioBotones.add(nivelDificil);
         grupoRadioBotones.add(nivelMuyDificil);
         grupoRadioBotones.add(nivelExperto);
-        grupoRadioBotones.add(nivelPersonalizado); 
+        grupoRadioBotones.add(nivelPersonalizado);
+    }
+
+    private void asignarFilas () {
+        ocultarColumnas();
+        String[] filas = {"1", "2", "3", "4", "5", "6"};// hasta el momento tendra que ser de max 6x6 ya que no tengo mas imagenes XD
+        listaFilas = new JComboBox(filas);
+        listaFilas.setBounds(300, 285, 60, 20);
+        listaFilas.setVisible(true);
+        listaFilas.addActionListener(this);
+        panel.add(listaFilas);
+
+        panel.validate();
+    }
+
+    private void ocultarFilasColumnas() {
+        ocultarFilas();
+        ocultarColumnas();
+    }
+
+    private void ocultarFilas() {
+        if (listaFilas != null) {
+            if (listaFilas.getSelectedItem() != null) {
+                listaFilas.resetKeyboardActions();
+            }
+            listaFilas.setVisible(false);
+        }
+        panel.validate();
+    }
+
+    private void ocultarColumnas() {
+        if (listaColumnas != null) {
+            if (listaColumnas.getSelectedItem() != null) {
+                listaColumnas.resetKeyboardActions();
+            }
+            listaColumnas.setVisible(false);
+        }
+        panel.validate();
+    }
+
+    private void asignarColumnas () {
+        String[] columnas;
+        if ((Integer.parseInt(listaFilas.getSelectedItem().toString()) % 2) == 0) {
+            columnas = new String[]{"1", "2", "3", "4", "5", "6"};
+        } else {
+            columnas = new String[]{"2", "4", "6"};
+        }
+        listaColumnas = new JComboBox(columnas);
+        listaColumnas.setBounds(365, 285, 60, 20);
+        panel.setVisible(true);
+        panel.add(listaColumnas);
+
+        panel.validate();
     }
 
     @Override
@@ -120,9 +182,31 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             panel.validate();
             gestorDeVentanas.ejecutarVentanaMenuPrincipal(ventana);
         }
+        if (e.getSource() == this.listaFilas) {
+            asignarColumnas();
+        }
+        if (e.getSource() == this.nivelFacil) {
+            ocultarFilasColumnas();
+        }
+        if (e.getSource() == this.nivelIntermedio) {
+            ocultarFilasColumnas();
+        }
+        if (e.getSource() == this.nivelDificil) {
+            ocultarFilasColumnas();
+        }
+        if (e.getSource() == this.nivelMuyDificil) {
+            ocultarFilasColumnas();
+        }
+        if (e.getSource() == this.nivelExperto) {
+            ocultarFilasColumnas();
+        }
+        if (e.getSource() == this.nivelPersonalizado) {
+            asignarFilas();
+        }
         if (e.getSource() == this.botonJugar) {
-            JOptionPane.showMessageDialog(null, "funciona");
-            //codigoo....
+            panel.setVisible(false);
+            panel.validate();
+            gestorDeVentanas.ejecutarJuego(ventana);
         }
     }
 }
