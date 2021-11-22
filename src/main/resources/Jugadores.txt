@@ -1,0 +1,2 @@
+Jugador(*Nick='seba', Puntaje='12',Cantidad de partidas='4'*) '
+'
