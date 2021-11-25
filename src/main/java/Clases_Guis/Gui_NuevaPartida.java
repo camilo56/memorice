@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
@@ -22,6 +23,10 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
     private final int anchoBoton = 200; // width
     private final int altoBoton = 20;// heigth  
+    private int filas;
+    private int columnas;
+    private boolean tiempoLimitado;
+    private String nick;
 
     public Gui_NuevaPartida(Container ventana) {
         this.ventana = ventana;
@@ -132,12 +137,13 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         listaFilas.addActionListener(this);
         panel.add(listaFilas);
 
-        panel.validate();
+        panel.updateUI();
     }
 
     private void ocultarFilasColumnas() {
         ocultarFilas();
         ocultarColumnas();
+        panel.updateUI();
     }
 
     private void ocultarFilas() {
@@ -162,17 +168,28 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
     private void asignarColumnas () {
         String[] columnas;
+        /*
         if ((Integer.parseInt(listaFilas.getSelectedItem().toString()) % 2) == 0) {
             columnas = new String[]{"1", "2", "3", "4", "5", "6"};
         } else {
             columnas = new String[]{"2", "4", "6"};
         }
+         */
+        columnas = new String[]{"2", "4", "6"};
         listaColumnas = new JComboBox(columnas);
         listaColumnas.setBounds(365, 285, 60, 20);
-        panel.setVisible(true);
+        listaColumnas.addActionListener(this);
+        listaColumnas.setVisible(true);
         panel.add(listaColumnas);
 
-        panel.validate();
+        panel.updateUI();
+    }
+
+    private void combinacionJuego() {
+        filas = (int) listaFilas.getSelectedItem();
+        columnas = (int) listaColumnas.getSelectedItem();
+        tiempoLimitado = tiempoLimite.isSelected();
+        nick = cajaNick.getText();
     }
 
     @Override
@@ -184,6 +201,9 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         }
         if (e.getSource() == this.listaFilas) {
             asignarColumnas();
+        }
+        if (e.getSource() == this.listaColumnas) {
+
         }
         if (e.getSource() == this.nivelFacil) {
             ocultarFilasColumnas();
@@ -206,6 +226,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         if (e.getSource() == this.botonJugar) {
             panel.setVisible(false);
             panel.validate();
+            combinacionJuego();
             gestorDeVentanas.ejecutarJuego(ventana);
         }
     }
