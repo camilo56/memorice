@@ -1,8 +1,8 @@
-import Clases_Dominio.Memorice;
+//import Clases_Dominio.Memorice;
 
 class MemoriceTest {
 
-    Memorice memorice = new Memorice();
+    //Memorice memorice = new Memorice();
     /*
     @Test
     public void testCrearPersona(){

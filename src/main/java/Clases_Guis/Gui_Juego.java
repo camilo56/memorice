@@ -1,5 +1,6 @@
 package Clases_Guis;
 
+import Clases_Dominio.Tablero;
 import Manejo_Archivos.GestorDeVentanas;
 
 import javax.swing.*;
@@ -11,12 +12,11 @@ import java.util.List;
 public class Gui_Juego extends Modelo implements ActionListener {
 
     private GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
-
+    private Tablero tablero = new Tablero();
     private Container ventana;
     private JPanel panel;
 
     private JButton botonVolver;
-
     private List<JButton> cartas;
 
     public Gui_Juego(Container ventana) {
