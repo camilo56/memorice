@@ -30,7 +30,7 @@ public class Memorice {
     private Validaciones validar = new  Validaciones();
     private ArrayList<Persona> personas;
     private Tableros tableros;
-    private Persona persona=new Persona();
+    //private Persona persona=new Persona();
     
     public Memorice() {
         this.personas = new ArrayList<>();
@@ -98,8 +98,8 @@ public class Memorice {
         String numCadena= String.valueOf(puntos);
         String numNveces= String.valueOf(nVeces);
         try {
-            Persona persona = new Persona(darNick(),numCadena,numNveces);
-            personas.add(persona);
+            //Persona persona = new Persona(darNick(),numCadena,numNveces);
+            //personas.add(persona);
             System.out.println("Nick Creado");
         } catch (Exception e) {
             e.printStackTrace();
@@ -192,7 +192,7 @@ public class Memorice {
         int x = 1;
         do{
             tableros.coordenadas(matrizCartas);
-            cronometro.temporizador();
+            //cronometro.temporizador();
             tableros.mostrarSimple(matrizCartas);
             for (int i = 1; i < matrizCartas.length; i++) {
                 for (int j = 1; j < matrizCartas[0].length; j++) {
