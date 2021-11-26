@@ -226,7 +226,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         if (e.getSource() == this.botonJugar) {
             panel.setVisible(false);
             panel.validate();
-            combinacionJuego();
+            //combinacionJuego();
             gestorDeVentanas.ejecutarJuego(ventana);
         }
     }
