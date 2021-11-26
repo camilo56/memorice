@@ -34,19 +34,14 @@ public class Gui_Juego extends Modelo implements ActionListener {
     }
 
     private void crearBotones() {
-        botonVolver = new JButton();
-        botonVolver.setBounds(15, 15, 100,30);
-        botonVolver.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
+        botonVolver = botonImagenVolver(botonVolver, 15, 15);
         botonVolver.addActionListener(this);
         panel.add(botonVolver);
     }
 
     private void crearEtiquetas() {
         JLabel etiquetaTiempo = new JLabel("Tiempo restante: ", SwingConstants.CENTER);
-        etiquetaTiempo.setBounds(160, 20, 140, 25);
-        etiquetaTiempo.setOpaque(true);
-        etiquetaTiempo.setBackground(Color.white);
-        etiquetaTiempo.setFont(getFuente());
+        etiquetaTiempo = modelarEtiqueta(etiquetaTiempo, 160, 20, 140, 25, Color.white, getFuente());
         panel.add(etiquetaTiempo);
     }
 

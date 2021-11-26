@@ -5,30 +5,69 @@ import java.awt.*;
 
 public class Modelo extends JFrame {
 
+    //private Color color;
     private final int ancho = 600;
     private final int alto = 500;
     private final String titulo= "MeMO";
+    private final ImageIcon logoMeMO = new ImageIcon("src/main/java/Imagenes/logo.png");
+    private final ImageIcon imagenVolver = new ImageIcon("src/main/java/Imagenes/volver.png");
 
     private final Font fuente = new Font("arial",2, 15);
 
     private JPanel panel;
 
-    public void crearVentana() {
+    public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
         setSize(ancho, alto);// definir tamaño de ventana
-        //setIconImage(new ImageIcon(getClass().getResource("logo.jpg")).getImage()); //NO FUNCIONA, NO SÉ POR QUÉ!
+        setIconImage(logoMeMO.getImage());// cambia icono de JFrame
         setResizable(false);// opcion de maximizar/minimizar ventana
         setVisible(true);// opcion de visibilidad de la ventana
         setLocationRelativeTo(null);// opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
         setDefaultCloseOperation(EXIT_ON_CLOSE);//al cerrar la ventana, termina ejecucion de programa
+        return getContentPane();
     }
 
-    public JPanel crearPanel() {
+    public JPanel crearPanel(Container ventana) {
+        //obtenerColorPanel();
         panel = new JPanel();
         panel.setLayout(null);
-        this.getContentPane().add(panel);
+        //panel.setBackground(getColor());
+        ventana.add(panel);
         return getPanel();
     }
+
+    public JButton crearBoton(JButton button, String text,  Font font, int x, int y, int width, int height) {
+        button = new JButton(text);
+        button.setBounds(x, y, width, height);
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setFont(font);
+        return button;
+    }
+
+    public JButton botonImagenVolver(JButton button, int x, int y) {
+        button = new JButton();
+        button.setBounds(x, y, 50, 30);
+        button.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH)));
+        return button;
+    }
+
+    public JLabel modelarEtiqueta(JLabel jLabel, int x, int y, int width, int height, Color color, Font font) {
+        jLabel.setBounds(x, y, width, height);
+        jLabel.setOpaque(true);
+        jLabel.setBackground(color);
+        jLabel.setFont(font);
+        return jLabel;
+    }
+
+    /* NO HE PODIDO IMPLEMENTAR LO DE CAMBIAR EL COLOR A NIVEL GLOBAL
+    private void obtenerColorPanel() {
+        GestorArchivo ga = new GestorArchivo();
+        String rutaColor = "src/main/java/Datos/color.txt";
+        this.color = Color.ga.obtenerLineasArchivo(rutaColor);
+        //System.out.println(ga.obtenerLineasArchivo("src/main/java/Datos/color.txt"));
+        //System.out.println(Color.gaobtenerLineasArchivo(rutaColor));
+    }
+     */
 
     public int getAncho() {
         return ancho;
@@ -48,5 +87,20 @@ public class Modelo extends JFrame {
 
     public JPanel getPanel() {
         return panel;
+    }
+
+    /*
+    public Color getColor() {
+        return color;
+    }
+
+    public  void setColor(Color color) {
+
+        this.color = color;
+    }
+ */
+
+    public ImageIcon getImagenVolver() {
+        return imagenVolver;
     }
 }

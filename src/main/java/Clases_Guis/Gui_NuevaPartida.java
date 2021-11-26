@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
@@ -21,6 +20,8 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private JComboBox listaFilas, listaColumnas;
     private JTextField cajaNick;
 
+
+    private final int [][] rangosTableros = {{2, 5}, {3, 4}, {4, 5}, {6, 6}, {5, 8}};
     private final int anchoBoton = 200; // width
     private final int altoBoton = 20;// heigth  
     private int filas;
@@ -46,17 +47,11 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
     private void crearEtiquetas() {
         JLabel etiquetaDificultad = new JLabel("DIFICULTAD", SwingConstants.CENTER);
-        etiquetaDificultad.setBounds(200, 20, 200, 25);
-        etiquetaDificultad.setOpaque(true);
-        etiquetaDificultad.setBackground(Color.white);
-        etiquetaDificultad.setFont(getFuente());
+        etiquetaDificultad = modelarEtiqueta(etiquetaDificultad,200, 20, 200, 25, Color.white, getFuente());
         panel.add(etiquetaDificultad);
 
         JLabel etiquetaNick = new JLabel("Nick: ", SwingConstants.CENTER);
-        etiquetaNick.setBounds(100, 80, 59, 20);
-        etiquetaNick.setOpaque(true);
-        etiquetaNick.setBackground(Color.white);
-        etiquetaNick.setFont(getFuente());
+        etiquetaNick = modelarEtiqueta(etiquetaNick, 100, 80, 59, 20, Color.white, getFuente());
         panel.add(etiquetaNick);
     }
 
@@ -69,15 +64,11 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     }
 
     private void crearBotones() {
-        botonJugar = crearBoton("Jugar");
-        botonJugar.setBounds(200, 420, anchoBoton, altoBoton);
+        botonJugar = crearBoton(botonJugar, "Jugar", getFuente(), 200, 420, anchoBoton, altoBoton);
         botonJugar.addActionListener(this);
         panel.add(botonJugar);
 
-        //getImageVolver() --> logo volver, herencia de clase Modelo
-        botonVolver = new JButton();
-        botonVolver.setBounds(15, 15, 100,30);
-        botonVolver.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(botonVolver.getWidth(), botonVolver.getHeight(), Image.SCALE_SMOOTH)));
+        botonVolver = botonImagenVolver(botonVolver,15, 15);
         botonVolver.addActionListener(this);
         panel.add(botonVolver);
     }
@@ -186,10 +177,28 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     }
 
     private void combinacionJuego() {
-        filas = (int) listaFilas.getSelectedItem();
-        columnas = (int) listaColumnas.getSelectedItem();
-        tiempoLimitado = tiempoLimite.isSelected();
-        nick = cajaNick.getText();
+        if (grupoRadioBotones.isSelected(nivelPersonalizado.getModel())) {
+            this.filas = Integer.parseInt(listaFilas.getSelectedItem().toString());
+            this.columnas = Integer.parseInt(listaColumnas.getSelectedItem().toString());
+        } else if (grupoRadioBotones.isSelected(nivelFacil.getModel())) {
+            this.filas = rangosTableros[0][0];
+            this.columnas = rangosTableros[0][1];
+        } else if (grupoRadioBotones.isSelected(nivelIntermedio.getModel())) {
+            this.filas = rangosTableros[1][0];
+            this.columnas = rangosTableros[1][1];
+        } else if (grupoRadioBotones.isSelected(nivelDificil.getModel())) {
+            this.filas = rangosTableros[2][0];
+            this.columnas = rangosTableros[2][1];
+        } else if (grupoRadioBotones.isSelected(nivelMuyDificil.getModel())) {
+            this.filas = rangosTableros[3][0];
+            this.columnas = rangosTableros[3][1];
+        } else { // nivelExperto
+            this.filas = rangosTableros[4][0];
+            this.columnas = rangosTableros[4][1];
+        }
+        this.tiempoLimitado = tiempoLimite.isSelected();
+        this.nick = cajaNick.getText();
+        //System.out.println("filas: " + this.filas + "; columas: " + this.columnas + "; tiempo limitado: " + tiempoLimitado + "; nick: " + nick);
     }
 
     @Override
@@ -226,7 +235,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         if (e.getSource() == this.botonJugar) {
             panel.setVisible(false);
             panel.validate();
-            //combinacionJuego();
+            combinacionJuego();
             gestorDeVentanas.ejecutarJuego(ventana);
         }
     }
