@@ -13,7 +13,8 @@ public class Ventana extends JFrame {
         JPanel panel = new JPanel();
         //panel.setBackground(Color.CYAN);
         this.getContentPane().add(panel);
-        JLabel etiqueta = new JLabel("Hola");
+        JLabel etiqueta = new JLabel();
+        etiqueta.setText("HOLA"); // establecemos al texto de la etiqueta
         panel.add(etiqueta); //agregamos la etiqueta al panel
     }
 }
