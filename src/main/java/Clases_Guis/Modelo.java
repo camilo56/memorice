@@ -36,12 +36,29 @@ public class Modelo extends JFrame {
         return getPanel();
     }
 
-    public JButton crearBoton(String texto) {
-        JButton boton = new JButton(texto);
-        boton.setHorizontalAlignment(SwingConstants.CENTER);
-        boton.setFont(getFuente());
-        return boton;
+    public JButton crearBoton(JButton button, String text,  Font font, int x, int y, int width, int height) {
+        button = new JButton(text);
+        button.setBounds(x, y, width, height);
+        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setFont(font);
+        return button;
     }
+
+    public JButton botonImagenVolver(JButton button, int x, int y) {
+        button = new JButton();
+        button.setBounds(x, y, 50, 30);
+        button.setIcon(new ImageIcon(getImagenVolver().getImage().getScaledInstance(button.getWidth(), button.getHeight(), Image.SCALE_SMOOTH)));
+        return button;
+    }
+
+    public JLabel modelarEtiqueta(JLabel jLabel, int x, int y, int width, int height, Color color, Font font) {
+        jLabel.setBounds(x, y, width, height);
+        jLabel.setOpaque(true);
+        jLabel.setBackground(color);
+        jLabel.setFont(font);
+        return jLabel;
+    }
+
     /* NO HE PODIDO IMPLEMENTAR LO DE CAMBIAR EL COLOR A NIVEL GLOBAL
     private void obtenerColorPanel() {
         GestorArchivo ga = new GestorArchivo();

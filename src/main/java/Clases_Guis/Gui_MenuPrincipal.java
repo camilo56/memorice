@@ -32,30 +32,24 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     }
 
     private void crearBotones() {
-        botonNuevaPartida = crearBoton("Nueva Partida");
-        botonNuevaPartida.setBounds(200,20  , anchoBoton, altoBoton);
+        botonNuevaPartida = crearBoton(botonNuevaPartida,"Nueva Partida", getFuente(),200,20  , anchoBoton, altoBoton);
         botonNuevaPartida.addActionListener(this);
         panel.add(botonNuevaPartida);
 
-        botonCargarPartida = crearBoton("Cargar Partida");
-        botonCargarPartida.setBounds(200,60  , anchoBoton, altoBoton);
+        botonCargarPartida = crearBoton(botonCargarPartida,"Cargar Partida", getFuente(), 200,60  , anchoBoton, altoBoton);
         panel.add(botonCargarPartida);
 
-        botonVerEstadisticasPartida = crearBoton("Ver Estadisticas");
-        botonVerEstadisticasPartida.setBounds(200,100  , anchoBoton, altoBoton);
+        botonVerEstadisticasPartida = crearBoton(botonVerEstadisticasPartida, "Ver Estadisticas", getFuente(),200,100  , anchoBoton, altoBoton);
         panel.add(botonVerEstadisticasPartida);
 
-        botonConfiguraciones = crearBoton("Configuraciones");
-        botonConfiguraciones.setBounds(200, 140 , anchoBoton, altoBoton);
+        botonConfiguraciones = crearBoton(botonConfiguraciones, "Configuraciones", getFuente(), 200, 140 , anchoBoton, altoBoton);
         botonConfiguraciones.addActionListener(this);
         panel.add(botonConfiguraciones);
 
-        botonCreditos = crearBoton("Creditos");
-        botonCreditos.setBounds(200,180  , anchoBoton, altoBoton);
+        botonCreditos = crearBoton(botonCreditos, "Creditos", getFuente(), 200,180  , anchoBoton, altoBoton);
         panel.add(botonCreditos);
 
-        botonSalir = crearBoton("Salir");
-        botonSalir.setBounds(200,220, anchoBoton, altoBoton );
+        botonSalir = crearBoton(botonSalir, "Salir", getFuente(), 200,220, anchoBoton, altoBoton);
         botonSalir.addActionListener(this);
         panel.add(botonSalir);
 
