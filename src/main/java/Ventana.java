@@ -11,7 +11,9 @@ public class Ventana extends JFrame {
     }
     private void iniciarComponentes(){
         JPanel panel = new JPanel();
-        panel.setBackground(Color.CYAN);
+        //panel.setBackground(Color.CYAN);
         this.getContentPane().add(panel);
+        JLabel etiqueta = new JLabel("Hola");
+        panel.add(etiqueta); //agregamos la etiqueta al panel
     }
 }
