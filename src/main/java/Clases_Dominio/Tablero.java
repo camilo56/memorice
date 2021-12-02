@@ -1,66 +1,73 @@
 package Clases_Dominio;
 
+import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Tablero {
 
-    private final Validaciones validar = new  Validaciones();
     private final Random randomNum = new Random();
 
-    private String[][] tablero;
-    private String[][] tableroAmpliado; // es para ingresar los ejes de coordenadas (X y Y)
-    private final String [] cartas =  {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-    private String[] paresDeCartas;
-    private int cantidadCartasTablero;
+    private ImageIcon[] imagenes;
+    private String rutaImagesAnimales =  "src/main/java/Imagenes/Animales/";
+    private String extensionImagenes = ".png";
 
-    public String[][] generarTablero(int filas, int columnas){
-        tablero = new String[filas][columnas];
-        cantidadCartasTablero = filas * columnas;
-        tableroAmpliado = new String[filas + 1][columnas + 1];
-        tableroAmpliado = llenarTableroAmpliado();
-        return tableroAmpliado;
-    }//LISTO
+    private int[] cartasSeleccionadas;
+    private int filas;
+    private int columnas;
+    private int[] indicesImagenes;
+    private int cantidadCartas;
+    private int[] cartasTotalesSeleccionadas;
+    private int cantidadCartasDisponibles = 20;// se esta trabajando con imagenes del directorio "Animales", y solo hay 20 imagenes allí
 
-    public String[][] llenarTableroAmpliado(){
-        tableroAmpliado = llenarFilaColumnaExterna(tableroAmpliado);
-        int[] numerosAleatorios = new int[cantidadCartasTablero];
-        numerosAleatorios = numerosAleatoriosNoRepetidos(numerosAleatorios);
-        String[] tableroTemporal = new String[cantidadCartasTablero];
-        tableroTemporal = llenarTableroTemporal(tableroTemporal, numerosAleatorios);
-        tableroAmpliado = asignarCartas(tableroTemporal);
-        return tableroAmpliado;
-    }//LISTO
+    public ImageIcon[] dimensiones(int filas, int columnas) {
+        this.filas = filas;
+        this.columnas = columnas;
+        cantidadCartas = (this.filas * this.columnas);
+        imagenes = new ImageIcon[cantidadCartas];
+        contruirArregloCartas();
+        asignarImagenes();
+        return imagenes;
+    } //  LISTO
 
-    public String[] llenarTableroTemporal(String[] tableroTemporal, int[] numerosAleatorios) {
-        int contador = 0;
-        paresDeCartas = new String[cantidadCartasTablero / 2];
-        paresDeCartas = cartasNoRepetidas();
-        for (int i = 0; i < cantidadCartasTablero; i++) {
-            if (i < (cantidadCartasTablero / 2)) {
-                tableroTemporal[numerosAleatorios[i]] = paresDeCartas[i];
-            } else {
-                tableroTemporal[numerosAleatorios[i]] = paresDeCartas[contador];
-                contador++;
+    private void contruirArregloCartas() {
+        llenarIndicesImagenes();
+        asignarParesCartas();
+        arregloCartasTotales();
+    }
+
+    private int[] llenarIndicesImagenes() {
+        indicesImagenes = new int[cantidadCartasDisponibles];
+        for (int i = 1; i <= cantidadCartasDisponibles; i++) {
+            indicesImagenes[i - 1] = i;
+        }
+        return indicesImagenes;
+    } // LISTO
+
+    private int[] asignarParesCartas() {
+        cartasSeleccionadas = new int[cantidadCartas / 2];
+        cartasSeleccionadas = cartasNoRepetidas();
+        return cartasSeleccionadas;
+    } // LISTO
+
+    private int[] cartasNoRepetidas() {
+        cartasSeleccionadas[0] = indicesImagenes[randomNum.nextInt(indicesImagenes.length)];
+        for (int i = 1; i < cartasSeleccionadas.length; i++) {
+            cartasSeleccionadas[i] = indicesImagenes[randomNum.nextInt(indicesImagenes.length)];
+            for (int j = 0; j < i; j++) {
+                if (cartasSeleccionadas[i] == cartasSeleccionadas[j]) {
+                    i--;
+                }
             }
         }
-        return tableroTemporal;
-    }//LISTO
+        return cartasSeleccionadas;
+    } // LISTO
 
-    public String[][] asignarCartas(String[] tableroTemporal){
-        int contador = 0;
-        for (int i = 1; i < tableroAmpliado.length; i++) {
-            for (int j = 1; j < tableroAmpliado[0].length; j++) {
-                tableroAmpliado[i][j] = tableroTemporal[contador];
-                contador++;
-            }
-        }
-        return tableroAmpliado;
-    }//LISTO
-
-    public int[] numerosAleatoriosNoRepetidos(int[] arreglo) {
-        arreglo[0] = randomNum.nextInt(arreglo.length);
-        for (int i = 1; i <arreglo.length; i++) {
-            arreglo[i] = randomNum.nextInt(arreglo.length);
+    private int[] numerosAleatoriosNoRepetidos(int[] numeros) {
+        int[] arreglo = new int[numeros.length];
+        arreglo[0] = numeros[randomNum.nextInt(numeros.length)];
+        for (int i = 1; i < arreglo.length; i++) {
+            arreglo[i] = numeros[randomNum.nextInt(numeros.length)];
             for (int j = 0; j < i; j++) {
                 if(arreglo[i] == arreglo[j]){
                     i--;
@@ -70,75 +77,75 @@ public class Tablero {
         return arreglo;
     }//LISTO
 
-    public String[] cartasNoRepetidas() {
-        paresDeCartas[0] = cartas[randomNum.nextInt(cartas.length)];
-        for (int i = 1; i <paresDeCartas.length; i++) {
-            paresDeCartas[i] = cartas[randomNum.nextInt(cartas.length)];
-            for (int j = 0; j < i; j++) {
-                if(paresDeCartas[i].equals(paresDeCartas[j])){
-                    i--;
-                }
+    private void arregloCartasTotales() {
+        int[] arreglo1 = numerosAleatoriosNoRepetidos(cartasSeleccionadas);
+        int[] arreglo2 = numerosAleatoriosNoRepetidos(cartasSeleccionadas);
+        cartasTotalesSeleccionadas = new int[cantidadCartas];
+        int contador = 0;
+        for (int i = 0; i < cantidadCartas; i++) {
+            if (i < (cartasTotalesSeleccionadas.length / 2)) {
+                cartasTotalesSeleccionadas[i] = arreglo1[i];
+            } else {
+                cartasTotalesSeleccionadas[i] = arreglo2[contador];
+                contador++;
             }
         }
-        return paresDeCartas;
-    } //LISTO
+        desordenarCartas();
+    }
 
-    public String[][] llenarFilaColumnaExterna(String[][] matriz){
-        for (int i = 0; i < matriz.length; i++) {
-            matriz[i][0] = Integer.toString(i);
+    private int[] desordenarCartas() {
+        int[] arreglo3 = new int[cartasTotalesSeleccionadas.length];
+        for (int i = 1; i <= cartasTotalesSeleccionadas.length; i++) {
+            arreglo3[i - 1] = i;
         }
-        for (int i = 0; i < matriz[0].length; i++){
-            matriz[0][i] = Integer.toString(i);
+        arreglo3 = numerosAleatoriosNoRepetidos(arreglo3);
+
+        int[] copia = new int[cartasTotalesSeleccionadas.length];
+        for (int i = 0; i < copia.length; i++) {
+            copia[i] = cartasTotalesSeleccionadas[i];
         }
-        return matriz;
-    } //LISTO
 
-    public String[][] coordenadas(String[][] matriz){
-        System.out.println("\nEje X: ");
-        int ejeXcoord1 = validar.pedirNumeroLimitado(1, matriz[0].length - 1);
-        System.out.println("Eje Y: ");
-        int ejeYcoord1 = validar.pedirNumeroLimitado(1, matriz.length - 1);
-        String carta1 = matriz[ejeYcoord1][ejeXcoord1];
-        System.out.println("Carta seleccionada: [" + carta1 + "]");
-
-        System.out.println("\nEje X: ");
-        int ejeXcoord2 = validar.pedirNumeroLimitado(1, matriz[0].length - 1);
-        System.out.println("Eje Y: ");
-        int ejeYcoord2 = validar.pedirNumeroLimitado(1, matriz.length - 1);
-        String carta2 = matriz[ejeYcoord2][ejeXcoord2];
-        System.out.println("Carta seleccionada: [" + carta2 + "]");
-
-        if (carta1.equals(carta2)) {
-            System.out.println("\nCartas iguales, sigue asi!\n");
-            matriz[ejeYcoord1][ejeXcoord1] = "=";
-            matriz[ejeYcoord2][ejeXcoord2] = "=";
-        } else {
-            System.out.println("\nLas cartas no son iguales, intentalo nuevamente\n");
+        for (int i = 0; i < arreglo3.length; i++) {
+            cartasTotalesSeleccionadas[i] = copia[arreglo3[i] - 1];
         }
-        return matriz;
-    }// MUCHAS FUNCIONES --> HACERLO MAS CORTO
+        return cartasTotalesSeleccionadas;
+    }
 
-    public String[][] mostrarMatriz(String[][] matriz) {
-        for (String[] strings : matriz) {
-            for (String string : strings) {
-                System.out.print("[" + string + "]");
-            }
-            System.out.println();
+    /* // MUESTRA LA COMBINACION DE CARTAS (SIN REPETIR, Y DESORDENADAS -> TODAS LAS CARTAS NECESARIAS PARA EL TABLERO)
+    public void mostrarArreglo() {
+        System.out.println(Arrays.toString(cartasTotalesSeleccionadas));
+    }
+    */
+
+    private void asignarImagenes() {
+        String[] rutasImagenes = convertirRutaImagenes(new String[cantidadCartas]);
+        crearImagenes(rutasImagenes);
+    }
+
+    private ImageIcon[] crearImagenes(String[] rutasImagenes) {
+        for (int i = 0; i < rutasImagenes.length; i++) {
+            ImageIcon imagen = new ImageIcon(rutasImagenes[i]);
+            imagenes[i] = imagen;
         }
-        return matriz;
-    }//LISTO
+        return imagenes;
+    }
+
+    private String[] convertirRutaImagenes(String[] nombresRutas) {
+        for (int i = 0; i < nombresRutas.length; i++) {
+            nombresRutas[i] = rutaImagesAnimales + cartasTotalesSeleccionadas[i] + extensionImagenes;
+            System.out.println("imagen " + i + ": " + nombresRutas[i]);
+        }
+        return nombresRutas;
+    }
+
 
     // GETTERS
 
-    public String[][] getTablero() {
-        return tablero;
+    public int getCantidadCartas() {
+        return cantidadCartas;
     }
 
-    public String[][] getTableroAmpliado() {
-        return tableroAmpliado;
-    }
-
-    public int getCantidadCartasTablero() {
-        return cantidadCartasTablero;
+    public ImageIcon[] getImagenes() {
+        return imagenes;
     }
 }

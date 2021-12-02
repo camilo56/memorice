@@ -29,20 +29,26 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private boolean tiempoLimitado;
     private String nick;
 
-    public Gui_NuevaPartida(Container ventana) {
-        this.ventana = ventana;
-        this.panel = crearPanel(this.ventana);
-        this.panel.setVisible(true);
+    public Gui_NuevaPartida(Container container) {
+        this.ventana = container;
         crearComponentes();
         panel.updateUI();
     }
 
     private void crearComponentes() {
+        crearPaneles();
         crearEtiquetas();
         crearCajaTexto();
         crearBotones();
         crearRadioBotones();
         agregarGrupoRadioBotones();
+    }
+
+    private void crearPaneles() {
+        panel = new JPanel();
+        panel.setVisible(true);
+        panel.setLayout(null);
+        ventana.add(panel);
     }
 
     private void crearEtiquetas() {
@@ -105,6 +111,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
         nivelPersonalizado = new JRadioButton("Personalizado", false);
         nivelPersonalizado.setBounds(300, 260, 110, 20);
+        nivelPersonalizado.setEnabled(false);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
         nivelPersonalizado.addActionListener(this);
         panel.add(nivelPersonalizado);
     }
@@ -201,6 +208,14 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         //System.out.println("filas: " + this.filas + "; columas: " + this.columnas + "; tiempo limitado: " + tiempoLimitado + "; nick: " + nick);
     }
 
+    public int getFilas() {
+        return filas;
+    }
+
+    public int getColumnas() {
+        return columnas;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonVolver) {
@@ -236,7 +251,9 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             panel.setVisible(false);
             panel.validate();
             combinacionJuego();
-            gestorDeVentanas.ejecutarJuego(ventana);
+            gestorDeVentanas.ejecutarJuego(ventana, filas, columnas);
         }
+
+
     }
 }

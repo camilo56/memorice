@@ -19,16 +19,22 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
 
     private final String[] colores = {"gris claro", "gris", "azul", "verde-azulado", "verde", "rosa","amarillo", "blanco", "rojo"};
 
-    public Gui_Configuraciones(Container ventana) {
-        this.ventana = ventana;
-        this.panel = crearPanel(ventana);
-        this.panel.setVisible(true);
+    public Gui_Configuraciones(Container container) {
+        this.ventana = container;
         crearComponentes();
         panel.updateUI();
     }
 
     private void crearComponentes() {
+        crearPaneles();
         crearBotones();
+    }
+
+    private void crearPaneles() {
+        panel = new JPanel();
+        panel.setVisible(true);
+        panel.setLayout(null);
+        ventana.add(panel);
     }
 
     private void crearBotones() {

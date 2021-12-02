@@ -27,6 +27,7 @@ public class Modelo extends JFrame {
         return getContentPane();
     }
 
+    /*
     public JPanel crearPanel(Container ventana) {
         //obtenerColorPanel();
         panel = new JPanel();
@@ -35,6 +36,7 @@ public class Modelo extends JFrame {
         ventana.add(panel);
         return getPanel();
     }
+     */
 
     public JButton crearBoton(JButton button, String text,  Font font, int x, int y, int width, int height) {
         button = new JButton(text);
