@@ -26,8 +26,8 @@ public class GestorDeVentanas {
         Gui_Configuraciones configuraciones = new Gui_Configuraciones(ventana);
     }
 
-    public void ejecutarJuego(Container ventana) {
-        Gui_Juego juego = new Gui_Juego(ventana);
+    public void ejecutarJuego(Container ventana, int filas, int columnas) {
+        Gui_Juego juego = new Gui_Juego(ventana, filas, columnas);
     }
 
     public Container getVentana() {

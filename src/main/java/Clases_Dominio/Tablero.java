@@ -8,7 +8,7 @@ public class Tablero {
 
     private final Random randomNum = new Random();
 
-    private ArrayList<ImageIcon> imagenes = new ArrayList<>();
+    private ImageIcon[] imagenes;
     private String rutaImagesAnimales =  "src/main/java/Imagenes/Animales/";
     private String extensionImagenes = ".png";
 
@@ -20,12 +20,14 @@ public class Tablero {
     private int[] cartasTotalesSeleccionadas;
     private int cantidadCartasDisponibles = 20;// se esta trabajando con imagenes del directorio "Animales", y solo hay 20 imagenes allí
 
-    public void dimensiones(int filas, int columnas) {
+    public ImageIcon[] dimensiones(int filas, int columnas) {
         this.filas = filas;
         this.columnas = columnas;
         cantidadCartas = (this.filas * this.columnas);
+        imagenes = new ImageIcon[cantidadCartas];
         contruirArregloCartas();
         asignarImagenes();
+        return imagenes;
     } //  LISTO
 
     private void contruirArregloCartas() {
@@ -120,10 +122,10 @@ public class Tablero {
         crearImagenes(rutasImagenes);
     }
 
-    private ArrayList<ImageIcon> crearImagenes(String[] rutasImagenes) {
+    private ImageIcon[] crearImagenes(String[] rutasImagenes) {
         for (int i = 0; i < rutasImagenes.length; i++) {
             ImageIcon imagen = new ImageIcon(rutasImagenes[i]);
-            imagenes.add(imagen);
+            imagenes[i] = imagen;
         }
         return imagenes;
     }
@@ -143,7 +145,7 @@ public class Tablero {
         return cantidadCartas;
     }
 
-    public ArrayList<ImageIcon> getImagenes() {
+    public ImageIcon[] getImagenes() {
         return imagenes;
     }
 }

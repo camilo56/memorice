@@ -18,17 +18,23 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     private final int anchoBoton = 200; // width
     private final int altoBoton = 20;// heigth
 
-    public Gui_MenuPrincipal(Container ventana) {
-        this.ventana = ventana;
-        this.panel = crearPanel(this.ventana);
-        this.panel.setVisible(true);
+    public Gui_MenuPrincipal(Container container) {
+        this.ventana = container;
         crearComponentes();
         panel.updateUI();
     }
 
     private void crearComponentes() {
+        crearPaneles();
         crearBotones();
 
+    }
+
+    private void crearPaneles() {
+        panel = new JPanel();
+        panel.setVisible(true);
+        panel.setLayout(null);
+        ventana.add(panel);
     }
 
     private void crearBotones() {
