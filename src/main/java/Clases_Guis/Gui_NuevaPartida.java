@@ -251,7 +251,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             panel.setVisible(false);
             panel.validate();
             combinacionJuego();
-            gestorDeVentanas.ejecutarJuego(ventana, filas, columnas);
+            gestorDeVentanas.ejecutarJuego(ventana, filas * columnas);
         }
 
 
