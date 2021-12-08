@@ -1,0 +1,5 @@
+ALGUNAS NOTAS DE LO QUE HACEN ALGUNOS METODOS
+
+JPanel.validate();          --> actualiza el panel (por si es necesario agregar cosas dentro del panel, sin salirse de este)
+    EJ. panel.validate();
+

@@ -3,31 +3,59 @@
 El readme es para la rama de desarrollo por las dudas, y es para estar al tanto con los avances y 
 desarrollo
 
-integrantes: Camilo Painenao,coloquen sus nombre creo
+integrantes: Camilo,sebatian,Pablo
 
 ### desarrollo:
+Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al dia con el codigo y discutir problemas y sus posibles solucoones con respecto a este. 
 
-Por ahora se esta haciendo el usuario
+El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
-**AVANCE:** 
+**AVANCE:**
+1 -> clase GUI_Juego (permitir jugabilidad); 2 -> Clase Modelo (generalizar metodos, para crear botones, etiquetas, etc); 3 -> Clase Gui_NuevaPartida (arreglar bug al seleccionar filas, columnas); 4 -> Clase Estadisticas (crear jugador, crear metodo que puntue el juego); 5 - > Clase Configuraciones (tratar de cambiar color a nivel global); 6 -> no se que clase (tratar de guardar datos de partida en txt o csv); 7 -> generar clase de estadisticas (mostrar las estadisticas)  ; 8 -> generar clase de partida guardada (guardar datos de partida para volver a jugar)  
 
-- Usuario: ______________           ![50%](https://progress-bar.dev/70) 
+01/10/21<----2.- se agregaron pruebas unitarias, se mejoraron metodos.
 
-- tableros de juego:_______  ![50%](https://progress-bar.dev/35)
+01/10/21<----1.- clases de test y su composicion subidos falta rellenar los test pero es dificil ya que muchos metodos importantes estan en void , y los metodos que tienen retorno les falta mejorarlo mas para recien hacer los test ya que nuestro trabajo esta muy avanzado y con muchos cambios como para hacer test por ahora. esto podemos decir en el video o en el informe ya que es verdad. 
 
-- cronometro :____________![50%](https://progress-bar.dev/30)**_logre hacer funcionar mi cronomtro :DDDD que felicidad:Dtujdf_**
+30/09/21<----3.- se agrego modo de juego personalizado, con esto se tiene cubierto todos las opciones del menu (todas las combinaciones MxN del menu)
 
-- modos de juego: ________    ![50%](https://progress-bar.dev/10)
+30/09/21<----2.- se arreglo problema de validaciones de coordenadas, falta atomizar metodos de clase "Tablero.java", ademas de aplicar pruebas unitarias para finalizar con lo solicitado para avance01 del proyecto
+
+30/09/21<----1.- efectividad de metodos--> se arreglo el problemas al generar el tablero (ahora no se repitan las 'cartas' mas que solo su carta par), se eliminaron, reemplazaron y arreglaron metodos poco efectivos, falta validar entrada de coordenada
+
+28/09/21<---- se trabajo en metodos, atomizacion y las buenas practicas. Se arreglo el menu para generar tableros NxM predefinidos.      
+
+26/09/21<----Se atomatizo algunos metodos de la clase Tablero, tambiense agrego la opcion de elegir coordenadas,aunque falta validaciones,se agregaron nuevos metodos a la clase tablero y se llego a un aposibe solucion al tema del cronometro pero aun falta trabajarlo, en resumen el codigo esta un poco disperos falta ordenarlo y dejarlo mas simple y legible, el modo facil es plenamente jugable :D Porfin.
+
+25/09/21<----nada.
+
+24/09/21<----Actuamente se esta trabajando en algun algoritmo para poder seleccionar la coordenada de la matriz, tambiem se propuso la idea de colocar el cronometro en otro package para poder trabajarlo como doble hilo, se debe trabajar en las validaciones en la nueva clase Validacones y hacer mas atomiticos los metodos y mas eficiente de acuerdo con las buenas praticas.:D
+
+23/09/21<----Cabros les informo que actualmente el trabajo esta estancado en dos problemas en agregar cronometro y hacer un tablero 
+dinámico que son dos clases aparte y se esta trabajando con la funcionalidad de doble hilo actualmente por ahora a menos que se 
+encuentre una mejor solución la documentación esta en la sección recursos en discor quien lo logre hacer tiene mi gratitud :D  si
+quieren avanzar o hacerse comité pueden trabajar en eso.:x
+
+- Documentacion:https://jarroba.com/multitarea-e-hilos-en-java-con-ejemplos-thread-runnable/
+
+- Usuario: _______________           ![50%](https://progress-bar.dev/70) 
+
+- tableros de juego:________  ![50%](https://progress-bar.dev/80) 
+
+- cronometro :____________   ![50%](https://progress-bar.dev/15) **_se esta tratando de hacer por medio de doble hilo y codigo  cliente/servidor
+  pero trabajarlo con timepo y dejarlo al final_**
+
+- modos de juego: ________    ![50%](https://progress-bar.dev/70)
 
 - estadisticas:____________      ![50%](https://progress-bar.dev/5)
 
-- graficos: _______________ ![50%](https://progress-bar.dev/2)
+- graficos: _______________ ![50%](https://progress-bar.dev/5)
 
-- configuracones: _________    ![50%](https://progress-bar.dev/0)
+- configuracones: _________   ![50%](https://progress-bar.dev/5)
 
-- cargar partida anterior:___ ![50%](https://progress-bar.dev/0)
+- cargar partida anterior:____ ![50%](https://progress-bar.dev/8)
 
-- validaciones_______   __    __   ![50%](https://progress-bar.dev/0)
+- validaciones_______   __    __   ![50%](https://progress-bar.dev/34)
 
 **prioridad desarrollo de sofware:** 
 
