@@ -9,33 +9,115 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 
-public class Gui_Juego extends Modelo implements ActionListener, MouseListener {
+public class Gui_Juego extends Modelo implements ActionListener, MouseListener, Runnable {
 
-    private GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
-    private Tablero tablero = new Tablero();
+    private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
     private Container ventana;
     private JPanel panelCentral, panelSuperior, panelInferior;
 
-    private ImageIcon question = new ImageIcon("src/main/java/Imagenes/question.png");
-    private ImageIcon[] imagenes;
+    private final ImageIcon question = new ImageIcon("src/main/java/Imagenes/question.png");
+    private final String rutaImagesAnimales =  "src/main/java/Imagenes/Animales/";
     private JLabel[] arregloEtiquetasImagenes;
-    private JLabel[] arregloEtiquetasIncognitas;
     private JButton botonVolver;
+    private JLabel mostrarPuntaje;
+    private JLabel tiempo;
+    private JLabel finalizadoJuego;
 
-    private final int filas;
-    private final int columnas;
+    private final int cartasTotales;
+    private int[] arregloCartas;
+    private int[] arregloControlPareja;
+    private int[] arregloCantidadClick;
+
     private final int altoCarta = 65;
     private final int anchoCarta = 65;
+    private int eleccion1 = 0;
+    private int eleccion2 = 0;
+    private int click = 0;
+    private int puntaje = 0;
 
-    public Gui_Juego(Container container, int filas, int columnas) {
+    Thread hilo;
+    boolean cronometroActivo;
+    boolean pausar;
+
+
+    public void iniciarCronometro() {
+        // Ajuste al código: se crea if esto para que cuando se vuelva oprimir iniciar no llame a otro hilo e impida que se vea como si estuviera en error.
+        hilo = new Thread(this);
+        cronometroActivo = true;
+        pausar = false;
+        hilo.start();
+    }
+
+    public void run() {
+        Integer minutos = 0, segundos = 0, milesimas = 0;
+        //min es minutos, seg es segundos y mil es milesimas de segundo
+        String min = "", seg = "", mil = "";
+        try {
+            //Mientras cronometroActivo sea verdadero entonces seguira
+            //aumentando el tiempo
+            while (cronometroActivo) {
+                // Ajuste al codigo: se elimina while y se anexa un if donde se niega la variable pausar
+                if (!pausar) {
+                    //**************************************************************************************
+                    Thread.sleep(4);
+                    //Incrementamos 4 milesimas de segundo
+                    milesimas += 4;
+                    //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
+                    //y las milesimas de segundo de nuevo a 0
+                    if (milesimas == 1000) {
+                        milesimas = 0;
+                        segundos += 1;
+                        //Si los segundos llegan a 60 entonces aumenta 1 los minutos
+                        //y los segundos vuelven a 0
+                        if (segundos == 60) {
+                            segundos = 0;
+                            minutos++;
+                        }
+                    }
+
+                    //Esto solamente es estetica para que siempre este en formato
+                    //00:00:000
+                    if (minutos < 10) min = "0" + minutos;
+                    else min = minutos.toString();
+                    if (segundos < 10) seg = "0" + segundos;
+                    else seg = segundos.toString();
+
+                    //Colocamos en la etiqueta la informacion
+                    tiempo.setText(min + ":" + seg);
+                }
+            }
+            tiempo.setText(min + ":" + seg);
+
+        } catch (Exception e) {
+            System.out.println("Error al correr metodo run");
+        }
+    }
+
+    public Gui_Juego(Container container, int cartasTotales)  {
         this.ventana = container;
-        this.filas = filas;
-        this.columnas = columnas;
-        arregloEtiquetasImagenes = new JLabel[this.filas * this.columnas];
-        arregloEtiquetasIncognitas = new JLabel[this.filas * this.columnas];
+        this.cartasTotales = cartasTotales;
+        arregloEtiquetasImagenes = new JLabel[this.cartasTotales];
+        arregloControlPareja = new int[this.cartasTotales];
+        llenarArregloConCeros(arregloControlPareja);
+        arregloCantidadClick = new int[this.cartasTotales];
+        llenarArregloConCeros(arregloCantidadClick);
+        traerArregloCartas();
         crearComponentes();
+        iniciarCronometro();
         actualizarPaneles();
+    }
+
+    private int[] llenarArregloConCeros(int[] arreglo) {
+        Arrays.fill(arreglo, 0);
+        return arreglo;
+    }
+
+    private void traerArregloCartas() {
+        Tablero tablero = new Tablero();
+        tablero.contruirArreglosCartas(cartasTotales);
+        this.arregloCartas = tablero.getArregloCartas();
     }
 
     private void crearComponentes() {
@@ -43,31 +125,19 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener {
         crearBotones();
         crearEtiquetas();
         crearCartasIncognitas();
-        crearCartas();
     }
 
-    private void crearCartasIncognitas() {
-        for (int i = 0; i < arregloEtiquetasIncognitas.length; i++) {
-            arregloEtiquetasIncognitas[i] = new JLabel();
-            arregloEtiquetasIncognitas[i].setBounds(0, 0,anchoCarta, altoCarta);
-            arregloEtiquetasIncognitas[i].setIcon(new ImageIcon(question.getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
-            arregloEtiquetasIncognitas[i].setOpaque(true);
-            arregloEtiquetasIncognitas[i].setBackground(Color.gray);
-            arregloEtiquetasIncognitas[i].addMouseListener(this);
-            panelCentral.add(arregloEtiquetasIncognitas[i]);
-        }
-    }
-
-    private void crearCartas() {
-        imagenes = tablero.dimensiones(filas, columnas);
-        for (int i = 0; i < imagenes.length; i++) {
+    private JLabel[] crearCartasIncognitas() {
+        for (int i = 0; i < arregloEtiquetasImagenes.length; i++) {
             arregloEtiquetasImagenes[i] = new JLabel();
-            arregloEtiquetasImagenes[i].setBounds(0,0,anchoCarta, altoCarta);
-            arregloEtiquetasImagenes[i].setIcon(new ImageIcon(imagenes[i].getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
+            arregloEtiquetasImagenes[i].setBounds(0, 0,anchoCarta, altoCarta);
+            arregloEtiquetasImagenes[i].setIcon(new ImageIcon(question.getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
             arregloEtiquetasImagenes[i].setOpaque(true);
-            arregloEtiquetasImagenes[i].setBackground(Color.white);
-            //panelCentral.add(arregloEtiquetasImagenes[i]);
+            arregloEtiquetasImagenes[i].setBackground(Color.gray);
+            arregloEtiquetasImagenes[i].addMouseListener(this);
+            panelCentral.add(arregloEtiquetasImagenes[i]);
         }
+        return arregloEtiquetasImagenes;
     }
 
     private void crearPaneles() {
@@ -99,13 +169,28 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener {
     }
 
     private void crearEtiquetas() {
-        JLabel etiquetaTiempo = new JLabel("Tiempo restante: ", SwingConstants.CENTER);
-        etiquetaTiempo = modelarEtiqueta(etiquetaTiempo, 160, 20, 140, 25, Color.white, getFuente());
+        JLabel etiquetaTiempo = new JLabel("Tiempo : ", SwingConstants.CENTER);
+        etiquetaTiempo = modelarEtiqueta(etiquetaTiempo, 160, 20, 100, 25, Color.white, getFuente());
         panelSuperior.add(etiquetaTiempo);
 
         JLabel etiquetaPuntaje = new JLabel("Puntaje: ", SwingConstants.CENTER);
         etiquetaPuntaje = modelarEtiqueta(etiquetaPuntaje, 0, 0, 140, 25, Color.white, getFuente());
         panelInferior.add(etiquetaPuntaje);
+
+        mostrarPuntaje = new JLabel(String.valueOf(puntaje), SwingConstants.CENTER);
+        mostrarPuntaje = modelarEtiqueta(mostrarPuntaje, 0 ,0, 50, 25 , Color.white, getFuente());
+        panelInferior.add(mostrarPuntaje);
+
+        finalizadoJuego = new JLabel("Has completado este nivel", SwingConstants.CENTER);
+        finalizadoJuego = modelarEtiqueta(finalizadoJuego, 0 ,0 ,250, 30, Color.YELLOW, getFuente());
+        finalizadoJuego.setVisible(false);
+        panelInferior.add(finalizadoJuego);
+
+        tiempo = new JLabel("00:00:000", SwingConstants.CENTER);
+        tiempo = modelarEtiqueta(tiempo, 0, 0, 100, 25, Color.white, getFuente());
+        panelSuperior.add(tiempo);
+        run();
+        iniciarCronometro();
     }
 
     private void actualizarPaneles() {
@@ -131,13 +216,65 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        for (int i = 0; i < arregloEtiquetasIncognitas.length; i++) {
-            if (e.getSource() == arregloEtiquetasIncognitas[i]) {
-                arregloEtiquetasIncognitas[i] = arregloEtiquetasImagenes[i];
-                panelCentral.add(arregloEtiquetasImagenes[i], i);
-                panelCentral.remove(i + 1);
+        for (int i = 0; i < arregloEtiquetasImagenes.length; i++) {
+            if (e.getSource() == arregloEtiquetasImagenes[i] && verificarParejasElegidas(i)) {
+                arregloCantidadClick[i]++;
+                if (arregloCantidadClick[i] < 2) {
+                    ImageIcon imagen = new ImageIcon(rutaImagesAnimales + arregloCartas[i] + ".png");
+                    arregloEtiquetasImagenes[i].setIcon(new ImageIcon(imagen.getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
+                    arregloEtiquetasImagenes[i].setBackground(Color.white);
+                    //
+                    click++;
+                    if (click == 1) {
+                        eleccion1 = i;
+                    } else {
+                        eleccion2 = i;
+                    }
+                }
                 actualizarPaneles();
             }
+        }
+    }
+
+    private boolean verificarParejasElegidas(int i) {
+        return arregloControlPareja[i] != 1;
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        for (int i = 0; i < arregloEtiquetasImagenes.length; i++) {
+            if (e.getSource() == arregloEtiquetasImagenes[i]) {
+                if (click == 2) {
+                    validarParejas();
+                    click = 0;
+                }
+            }
+            if (elementosArregloIguales(arregloControlPareja)) {
+                pausar = true;
+                tiempo.setBackground(Color.CYAN);
+                finalizadoJuego.setVisible(true);
+            }
+            actualizarPaneles();
+        }
+    }
+
+    private boolean elementosArregloIguales(int[] arreglo) {
+        return (Arrays.stream(arreglo).distinct().count() == 1) && arreglo[0] == 1;
+    }// retorna true si todos los elementos son igaules, y si el primer dato del arreglo es '1' (basicamente todos los elementos del arreglo deben ser '1')
+
+    private void validarParejas() {
+        if (arregloCartas[eleccion1] == arregloCartas[eleccion2]) {
+            arregloControlPareja[eleccion1] = 1;
+            arregloControlPareja[eleccion2] = 1;
+            puntaje += 10;
+            mostrarPuntaje.setText(String.valueOf(puntaje));
+        } else {
+            arregloEtiquetasImagenes[eleccion1].setIcon(new ImageIcon(question.getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
+            arregloEtiquetasImagenes[eleccion1].setBackground(Color.gray);
+            arregloEtiquetasImagenes[eleccion2].setIcon(new ImageIcon(question.getImage().getScaledInstance(anchoCarta, altoCarta, Image.SCALE_SMOOTH)));
+            arregloEtiquetasImagenes[eleccion2].setBackground(Color.gray);
+            arregloCantidadClick[eleccion1] = 0;
+            arregloCantidadClick[eleccion2] = 0;
         }
     }
 
@@ -149,7 +286,4 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) { }
-
-    @Override
-    public void mouseExited(MouseEvent e) { }
 }

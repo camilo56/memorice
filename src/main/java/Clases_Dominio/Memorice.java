@@ -37,6 +37,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+/*
 public class Memorice {
 
     private Datos datos = new Datos();
@@ -218,4 +220,4 @@ public class Memorice {
         System.out.println(cadena);
     }
 }
-
+*/

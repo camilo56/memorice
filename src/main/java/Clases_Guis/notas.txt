@@ -3,3 +3,39 @@ ALGUNAS NOTAS DE LO QUE HACEN ALGUNOS METODOS
 JPanel.validate();          --> actualiza el panel (por si es necesario agregar cosas dentro del panel, sin salirse de este)
     EJ. panel.validate();
 
+   panel.updateUI();   --> Restablece la propiedad de la interfaz de usuario con un valor de la apariencia actual.
+
+
+setBounds(x, y, 50, 30)     --> setBounds se utiliza para definir el rectángulo delimitador de un componente.
+    Esto incluye su posición y tamaño. El se usa en varios lugares dentro del marco. Lo utiliza el administrador de diseño para definir la posición y el tamaño
+        de un componente dentro de su contenedor principal.
+
+
+ jLabel.setOpaque(true);    --> Si es verdadero, el componente pinta cada píxel dentro de sus límites.
+          De lo contrario, es posible que el componente no pinte algunos o todos sus píxeles, permitiendo que los píxeles subyacentes se vean.
+          en resumen es la opacidad de un componente con respecto al color gtenral del jframe
+
+
+   jLabel.setFont(font)   --> La clase Font nos permite cambiar la familia de fuentes y el estilo de las letras que utilizamos para
+                   construir las palabras en la interfaz de usuario de nuestra aplicación, su uso es muy similar en forma a la clase Color
+                   y reside en el paquete java.
+
+setLocationRelativeTo(null)   -->opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
+
+
+ setDefaultCloseOperation(EXIT_ON_CLOSE);al cerrar la ventana, termina ejecucion de programa
+        La función del parámetro: 0: no se cerrará el cuadro de diálogo del botón Cerrar;
+        1: haga clic en el botón Cerrar para cerrar el cuadro de diálogo inmediatamente, pero el programa siempre está abierto;
+        2: el cuadro de diálogo se cerrará inmediatamente después de hacer clic en el botón Cerrar, pero el programa finalizará después de unos segundos;
+        3: Después de hacer clic en el botón Cerrar, tanto el cuadro de diálogo como el programa se cierran inmediatamente; otros números informarán un error de parámetro ilegal.
+
+  button.setHorizontalAlignment(SwingConstants.CENTER);  -->  Establece la alineación del contenido de la etiqueta a lo largo del eje X.JLabel
+
+   jLabel.setBackground(color);  -->  establecer el color de fondo
+
+   getSource() --> obtiene el objeto componente
+
+   getActionCommand() -->obtiene la cadena en el componente
+
+    Arrays.fill(arreglo, 0);   --> Cambia todos los valores del arreglo por un valor estatico en este caso 0
+

@@ -23,7 +23,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
     private final int [][] rangosTableros = {{2, 5}, {3, 4}, {4, 5}, {6, 6}, {5, 8}};
     private final int anchoBoton = 200; // width
-    private final int altoBoton = 20;// heigth  
+    private final int altoBoton = 20;// heigth
     private int filas;
     private int columnas;
     private boolean tiempoLimitado;
@@ -251,7 +251,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             panel.setVisible(false);
             panel.validate();
             combinacionJuego();
-            gestorDeVentanas.ejecutarJuego(ventana, filas, columnas);
+            gestorDeVentanas.ejecutarJuego(ventana, filas * columnas);
         }
 
 

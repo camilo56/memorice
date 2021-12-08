@@ -4,6 +4,12 @@ import Clases_Guis.*;
 
 import java.awt.*;
 
+
+
+import Clases_Guis.*;
+
+import java.awt.*;
+
 public class GestorDeVentanas {
 
     private Container ventana;
@@ -26,8 +32,8 @@ public class GestorDeVentanas {
         Gui_Configuraciones configuraciones = new Gui_Configuraciones(ventana);
     }
 
-    public void ejecutarJuego(Container ventana, int filas, int columnas) {
-        Gui_Juego juego = new Gui_Juego(ventana, filas, columnas);
+    public void ejecutarJuego(Container ventana, int cartasTotales) {
+        Gui_Juego juego = new Gui_Juego(ventana, cartasTotales);
     }
 
     public Container getVentana() {

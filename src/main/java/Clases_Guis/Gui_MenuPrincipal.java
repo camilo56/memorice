@@ -15,13 +15,14 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     private JPanel panel;
     private JButton botonNuevaPartida, botonCargarPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
 
-    private final int anchoBoton = 200; // width
-    private final int altoBoton = 20;// heigth
+    private final int anchoBoton = 200; // width-ancho
+    private final int altoBoton = 20;// heigth-alto
 
     public Gui_MenuPrincipal(Container container) {
         this.ventana = container;
         crearComponentes();
-        panel.updateUI();
+        panel.updateUI();//Restablece la propiedad de la interfaz de usuario con un valor de la apariencia actual.
+
     }
 
     private void crearComponentes() {
@@ -66,6 +67,8 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonNuevaPartida) {
+            //getSource () obtiene el objeto componente
+            // getActionCommand () obtiene la cadena en el componente
             panel.setVisible(false);
             panel.validate();
             gestorDeVentanas.ejecutarMenuElegirDificultad(ventana);

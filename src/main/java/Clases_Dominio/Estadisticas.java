@@ -1,34 +1,28 @@
 package Clases_Dominio;
 import Manejo_Archivos.GestorArchivo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Estadisticas {
 
     private Persona persona;
-    private int vecesJugadas = 0;
-    private List<Integer> puntajes;
+    private int idPartida = 0;
+    private int puntaje;
+
+    private String rutaArchivo = "Estadisticas.csv";
 
     public Estadisticas(String nick){
         this.persona = new Persona(nick);
-        this.vecesJugadas = getVecesJugadas();
-        this.puntajes = new ArrayList<>();
-    }
-
-    public void ingresarPuntaje(Integer puntaje){
-        puntajes.add(puntaje);
+        this.idPartida = getIdPartida();
+        this.puntaje = getPuntaje();
     }
 
     public Boolean guardarEstadisticas() {
         GestorArchivo gestorArchivo = new GestorArchivo();
-        String ruta = "Estadisticas.csv";
         try {
-            if(!gestorArchivo.existeArchivo(ruta)){
-                gestorArchivo.crearArchivo(ruta);
-                gestorArchivo.escribirEnArchivo(ruta, crearEstructuraArchivo());
+            if(!gestorArchivo.existeArchivo(rutaArchivo)){
+                gestorArchivo.crearArchivo(rutaArchivo);
+                gestorArchivo.escribirEnArchivo(rutaArchivo, crearEstructuraArchivo());
             }
-            gestorArchivo.escribirEnArchivo(ruta, crearDatos());
+            gestorArchivo.escribirEnArchivo(rutaArchivo, crearDatos());
             return true;
         } catch (Exception e) {
             System.out.println("Error al guardar datos");
@@ -37,28 +31,13 @@ public class Estadisticas {
         }
     }
 
-    /*
-    private String crearDatos(){
-        String datos = "Nick: " + getPersona().getNick() + "; Veces Jugadas: " + getVecesJugadas();
-        for(Integer puntaje : getPuntajes()){
-            datos += "; " + puntaje;
-        }
-        return datos;
-    }
-     */
     private String crearEstructuraArchivo(){
-        String nombresColumnas = "Nick;Veces Jugadas";
-        for (int i = 0; i < vecesJugadas; i++) {
-            nombresColumnas += ";Puntaje Jugada Nº" + (i + 1);
-        }
-        return  nombresColumnas;
+        String nombresColumnas = "Nick;Id Partida;Puntaje.";
+        return nombresColumnas;
     }
 
     private String crearDatos(){
-        String datos = getPersona().getNick() + ";" + getVecesJugadas();
-        for(Integer puntaje : getPuntajes()){
-            datos += ";" + puntaje;
-        }
+        String datos = getPersona().getNick() + ";" + getIdPartida() + ";" + getPuntaje();
         return datos;
     }
 
@@ -70,19 +49,19 @@ public class Estadisticas {
         this.persona = persona;
     }
 
-    public int getVecesJugadas() {
-        return vecesJugadas;
+    public int getIdPartida() {
+        return idPartida;
     }
 
-    public void setVecesJugadas(int vecesJugadas) {
-        this.vecesJugadas = vecesJugadas;
+    public void setIdPartida(int idPartida) {
+        this.idPartida = idPartida;
     }
 
-    public List<Integer> getPuntajes() {
-        return puntajes;
+    public int getPuntaje() {
+        return puntaje;
     }
 
-    public void setPuntajes(List<Integer> puntajes) {
-        this.puntajes = puntajes;
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
     }
 }
