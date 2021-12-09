@@ -12,8 +12,9 @@ setBounds(x, y, 50, 30)     --> setBounds se utiliza para definir el rectángulo
 
 
  jLabel.setOpaque(true);    --> Si es verdadero, el componente pinta cada píxel dentro de sus límites.
-          De lo contrario, es posible que el componente no pinte algunos o todos sus píxeles, permitiendo que los píxeles subyacentes se vean.
-          en resumen es la opacidad de un componente con respecto al color gtenral del jframe
+    En resumen es la opacidad de un componente con respecto al color general del jframe.
+
+          ej. panel.seOpaque(false) ---> vuelve transparente el jpanel
 
 
    jLabel.setFont(font)   --> La clase Font nos permite cambiar la familia de fuentes y el estilo de las letras que utilizamos para

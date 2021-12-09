@@ -16,6 +16,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
     private JPanel panel;
     private JButton botonVolver;
     private JComboBox listaDespegable;
+    private String Seleccion;
 
     private final String[] colores = {"gris claro", "gris", "azul", "verde-azulado", "verde", "rosa","amarillo", "blanco", "rojo"};
 
@@ -25,6 +26,8 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         panel.updateUI();
     }
 
+
+
     private void crearComponentes() {
         crearPaneles();
         crearBotones();
@@ -33,6 +36,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
     private void crearPaneles() {
         panel = new JPanel();
         panel.setVisible(true);
+        panel.setOpaque(false); //vuelve trasnparente el jpanel ay que hacerlo a todos los jpanel
         panel.setLayout(null);
         ventana.add(panel);
     }
@@ -43,34 +47,45 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         listaDespegable.addActionListener(this);
         panel.add(listaDespegable);
         cambiarColor();
+        cambiarColor();
+
 
         botonVolver = botonImagenVolver(botonVolver, 15, 15);
         botonVolver.addActionListener(this);
         panel.add(botonVolver);
     }
 
-    private void cambiarColor() {
+    public void cambiarColor() {
         String colorElegido = listaDespegable.getSelectedItem().toString();
-
         if (colorElegido.equals(colores[0])) {
-            panel.setBackground(Color.lightGray);
+            ventana.setBackground(Color.lightGray);
+            this.Seleccion ="0";
         } else if (colorElegido.equals(colores[1])) {
-            panel.setBackground(Color.gray);
+            ventana.setBackground(Color.gray);
+            this.Seleccion ="1";
         } else if (colorElegido.equals(colores[2])) {
-            panel.setBackground(Color.blue);
+            ventana.setBackground(Color.blue);
+            this.Seleccion ="2";
         } else if (colorElegido.equals(colores[3])) {
-            panel.setBackground(Color.cyan);
+            ventana.setBackground(Color.cyan);
+            this.Seleccion ="3";
         } else if (colorElegido.equals(colores[4])) {
-            panel.setBackground(Color.green);
+            ventana.setBackground(Color.green);
+            this.Seleccion ="4";
         } else if (colorElegido.equals(colores[5])) {
-            panel.setBackground(Color.pink);
+            ventana.setBackground(Color.pink);
+            this.Seleccion ="5";
         } else if (colorElegido.equals(colores[6])) {
-            panel.setBackground(Color.yellow);
+            ventana.setBackground(Color.yellow);
+            this.Seleccion ="6";
         } else if (colorElegido.equals(colores[7])) {
-            panel.setBackground(Color.white);
+            ventana.setBackground(Color.white);
+            this.Seleccion ="7";
         } else if (colorElegido.equals(colores[8])) {
-            panel.setBackground(Color.red);
+            ventana.setBackground(Color.red);
+            this.Seleccion ="8";
         }
+
 
 
         //System.out.println(panel.getBackground());
@@ -82,6 +97,12 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         //guardarColor(panel.getBackground());
 
     }
+
+
+
+
+
+
     /*
     private boolean guardarColor(Color color) {
         GestorArchivo gestorArchivo = new GestorArchivo();
@@ -101,6 +122,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         }
         if (e.getSource() == this.listaDespegable) {
             cambiarColor();
+
         }
     }
 }

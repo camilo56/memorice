@@ -12,7 +12,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
 
     private Container ventana;
-    private JPanel panel;
+    private  JPanel panel;
     private JButton botonNuevaPartida, botonCargarPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
 
     private final int anchoBoton = 200; // width-ancho
@@ -25,6 +25,8 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
 
     }
 
+
+
     private void crearComponentes() {
         crearPaneles();
         crearBotones();
@@ -34,6 +36,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     private void crearPaneles() {
         panel = new JPanel();
         panel.setVisible(true);
+        panel.setOpaque(false);
         panel.setLayout(null);
         ventana.add(panel);
     }
@@ -64,6 +67,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     }
 
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonNuevaPartida) {
@@ -83,4 +87,14 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         }
 
     }
+
+    @Override
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
 }
+
