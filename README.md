@@ -11,7 +11,7 @@ Nos juntamos desde **_8 de la tarde_** por lo menos 30 minutos para ponerse al d
 El usuario esta casi terminado, se esta trabajando tablero y cronometro.
 
 **AVANCE:**
-1 -> clase GUI_Juego (permitir jugabilidad); 2 -> Clase Modelo (generalizar metodos, para crear botones, etiquetas, etc); 3 -> Clase Gui_NuevaPartida (arreglar bug al seleccionar filas, columnas); 4 -> Clase Estadisticas (crear jugador, crear metodo que puntue el juego); 5 - > Clase Configuraciones (tratar de cambiar color a nivel global)Listo A espera de revision; 6 -> no se que clase (tratar de guardar datos de partida en txt o csv); 7 -> generar clase de estadisticas (mostrar las estadisticas)  ; 8 -> generar clase de partida guardada (guardar datos de partida para volver a jugar)  
+1 -> clase GUI_Juego (permitir jugabilidad); 2 -> Clase Modelo (generalizar metodos, para crear botones, etiquetas, etc); 3 -> Clase Gui_NuevaPartida (arreglar bug al seleccionar filas, columnas); 4 -> Clase Estadisticas (crear jugador, crear metodo que puntue el juego); 5 - > ~~Clase Configuraciones (tratar de cambiar color a nivel global~~Listo A espera de revision; 6 -> no se que clase (tratar de guardar datos de partida en txt o csv); 7 -> generar clase de estadisticas (mostrar las estadisticas)  ; 8 -> generar clase de partida guardada (guardar datos de partida para volver a jugar)  
 
 01/10/21<----2.- se agregaron pruebas unitarias, se mejoraron metodos.
 
