@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
@@ -17,17 +18,18 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private JCheckBox tiempoLimite;
     private JRadioButton nivelFacil, nivelDificil, nivelExperto, nivelIntermedio, nivelMuyDificil, nivelPersonalizado;
     private ButtonGroup grupoRadioBotones;
-    private JComboBox listaFilas, listaColumnas;
+    private JComboBox elegirCantidadCartas;
     private JTextField cajaNick;
+    private JLabel infoEleccionCartas;
 
-
-    private final int [][] rangosTableros = {{2, 5}, {3, 4}, {4, 5}, {6, 6}, {5, 8}};
+    private final int[] arregloCantidadCartas = {12, 16, 20, 36, 40};
+    private String[] arregloCantidadCartasPersonalizadas = new String[10];
+    private int cantidadCartas;
     private final int anchoBoton = 200; // width
-    private final int altoBoton = 20;// heigth  
-    private int filas;
-    private int columnas;
+    private final int altoBoton = 20;// heigth
     private boolean tiempoLimitado;
     private String nick;
+    private String dificultad;
 
     public Gui_NuevaPartida(Container container) {
         this.ventana = container;
@@ -84,7 +86,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         tiempoLimite.setBounds(300, 80, 150, 20);
         panel.add(tiempoLimite);
 
-        nivelFacil = new JRadioButton("Fácil", false);
+        nivelFacil = new JRadioButton("Fácil", true);
         nivelFacil.setBounds(100, 140, 100, 20);
         nivelFacil.addActionListener(this);
         panel.add(nivelFacil);
@@ -111,7 +113,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
         nivelPersonalizado = new JRadioButton("Personalizado", false);
         nivelPersonalizado.setBounds(300, 260, 110, 20);
-        nivelPersonalizado.setEnabled(false);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
+        nivelPersonalizado.setEnabled(true);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
         nivelPersonalizado.addActionListener(this);
         panel.add(nivelPersonalizado);
     }
@@ -126,95 +128,58 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         grupoRadioBotones.add(nivelPersonalizado);
     }
 
-    private void asignarFilas () {
-        ocultarColumnas();
-        String[] filas = {"1", "2", "3", "4", "5", "6"};// hasta el momento tendra que ser de max 6x6 ya que no tengo mas imagenes XD
-        listaFilas = new JComboBox(filas);
-        listaFilas.setBounds(300, 285, 60, 20);
-        listaFilas.setVisible(true);
-        listaFilas.addActionListener(this);
-        panel.add(listaFilas);
-
-        panel.updateUI();
-    }
-
-    private void ocultarFilasColumnas() {
-        ocultarFilas();
-        ocultarColumnas();
-        panel.updateUI();
-    }
-
-    private void ocultarFilas() {
-        if (listaFilas != null) {
-            if (listaFilas.getSelectedItem() != null) {
-                listaFilas.resetKeyboardActions();
+    private void ocultarListaElegirCartas() {
+        if (elegirCantidadCartas != null) {
+            infoEleccionCartas.setVisible(false);
+            if (elegirCantidadCartas.getSelectedItem() != null) {
+                elegirCantidadCartas.resetKeyboardActions();
             }
-            listaFilas.setVisible(false);
+            elegirCantidadCartas.setVisible(false);
         }
-        panel.validate();
+        panel.updateUI();
     }
 
-    private void ocultarColumnas() {
-        if (listaColumnas != null) {
-            if (listaColumnas.getSelectedItem() != null) {
-                listaColumnas.resetKeyboardActions();
-            }
-            listaColumnas.setVisible(false);
+    private void elegirCantidadCartas() {
+        infoEleccionCartas = new JLabel("Cantidad de cartas: ", SwingConstants.CENTER);
+        infoEleccionCartas = modelarEtiqueta(infoEleccionCartas, 300, 285, 120, 20, Color.white, getFont());
+        infoEleccionCartas.setVisible(true);
+        panel.add(infoEleccionCartas);
+        for (int i = 0; i < arregloCantidadCartasPersonalizadas.length; i++) {
+                arregloCantidadCartasPersonalizadas[i] = String.valueOf((i + 1) * 4);
         }
-        panel.validate();
-    }
-
-    private void asignarColumnas () {
-        String[] columnas;
-        /*
-        if ((Integer.parseInt(listaFilas.getSelectedItem().toString()) % 2) == 0) {
-            columnas = new String[]{"1", "2", "3", "4", "5", "6"};
-        } else {
-            columnas = new String[]{"2", "4", "6"};
-        }
-         */
-        columnas = new String[]{"2", "4", "6"};
-        listaColumnas = new JComboBox(columnas);
-        listaColumnas.setBounds(365, 285, 60, 20);
-        listaColumnas.addActionListener(this);
-        listaColumnas.setVisible(true);
-        panel.add(listaColumnas);
+        elegirCantidadCartas = new JComboBox(arregloCantidadCartasPersonalizadas);
+        elegirCantidadCartas.setBounds(425, 285, 60, 20);
+        elegirCantidadCartas.setVisible(true);
+        elegirCantidadCartas.addActionListener(this);
+        panel.add(elegirCantidadCartas);
 
         panel.updateUI();
     }
 
-    private void combinacionJuego() {
+    private void asignarVariablesJuego() {
         if (grupoRadioBotones.isSelected(nivelPersonalizado.getModel())) {
-            this.filas = Integer.parseInt(listaFilas.getSelectedItem().toString());
-            this.columnas = Integer.parseInt(listaColumnas.getSelectedItem().toString());
+            cantidadCartas = Integer.parseInt(Objects.requireNonNull(elegirCantidadCartas.getSelectedItem()).toString());
+            dificultad = "Personalizado";
         } else if (grupoRadioBotones.isSelected(nivelFacil.getModel())) {
-            this.filas = rangosTableros[0][0];
-            this.columnas = rangosTableros[0][1];
+            cantidadCartas = arregloCantidadCartas[0];
+            dificultad = "Facil";
         } else if (grupoRadioBotones.isSelected(nivelIntermedio.getModel())) {
-            this.filas = rangosTableros[1][0];
-            this.columnas = rangosTableros[1][1];
+            cantidadCartas = arregloCantidadCartas[1];
+            dificultad = "Intermedio";
         } else if (grupoRadioBotones.isSelected(nivelDificil.getModel())) {
-            this.filas = rangosTableros[2][0];
-            this.columnas = rangosTableros[2][1];
+            cantidadCartas = arregloCantidadCartas[2];
+            dificultad = "Dificil";
         } else if (grupoRadioBotones.isSelected(nivelMuyDificil.getModel())) {
-            this.filas = rangosTableros[3][0];
-            this.columnas = rangosTableros[3][1];
+            cantidadCartas = arregloCantidadCartas[3];
+            dificultad = "Muy Dificil";
         } else { // nivelExperto
-            this.filas = rangosTableros[4][0];
-            this.columnas = rangosTableros[4][1];
+            cantidadCartas = arregloCantidadCartas[4];
+            dificultad = "Experto";
         }
         this.tiempoLimitado = tiempoLimite.isSelected();
         this.nick = cajaNick.getText();
-        //System.out.println("filas: " + this.filas + "; columas: " + this.columnas + "; tiempo limitado: " + tiempoLimitado + "; nick: " + nick);
     }
 
-    public int getFilas() {
-        return filas;
-    }
-
-    public int getColumnas() {
-        return columnas;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -223,37 +188,25 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             panel.validate();
             gestorDeVentanas.ejecutarVentanaMenuPrincipal(ventana);
         }
-        if (e.getSource() == this.listaFilas) {
-            asignarColumnas();
-        }
-        if (e.getSource() == this.listaColumnas) {
-
-        }
-        if (e.getSource() == this.nivelFacil) {
-            ocultarFilasColumnas();
-        }
-        if (e.getSource() == this.nivelIntermedio) {
-            ocultarFilasColumnas();
-        }
-        if (e.getSource() == this.nivelDificil) {
-            ocultarFilasColumnas();
-        }
-        if (e.getSource() == this.nivelMuyDificil) {
-            ocultarFilasColumnas();
-        }
-        if (e.getSource() == this.nivelExperto) {
-            ocultarFilasColumnas();
-        }
-        if (e.getSource() == this.nivelPersonalizado) {
-            asignarFilas();
-        }
         if (e.getSource() == this.botonJugar) {
             panel.setVisible(false);
             panel.validate();
-            combinacionJuego();
-            gestorDeVentanas.ejecutarJuego(ventana, filas * columnas);
+            asignarVariablesJuego();
+            gestorDeVentanas.ejecutarJuego(ventana, cantidadCartas, nick, dificultad);
         }
+        if (e.getSource() == this.nivelFacil) ocultarListaElegirCartas();
+        if (e.getSource() == this.nivelIntermedio) ocultarListaElegirCartas();
+        if (e.getSource() == this.nivelDificil) ocultarListaElegirCartas();
+        if (e.getSource() == this.nivelMuyDificil) ocultarListaElegirCartas();
+        if (e.getSource() == this.nivelExperto) ocultarListaElegirCartas();
+        if (e.getSource() == this.nivelPersonalizado) elegirCantidadCartas();
+    }
 
+    public String getNick() {
+        return nick;
+    }
 
+    public String getDificultad() {
+        return dificultad;
     }
 }

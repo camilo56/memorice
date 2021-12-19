@@ -1,5 +1,6 @@
 package Clases_Guis;
 
+import Clases_Dominio.Datos;
 import Clases_Dominio.Tablero;
 import Manejo_Archivos.GestorDeVentanas;
 
@@ -24,7 +25,10 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     private JLabel mostrarPuntaje;
     private JLabel tiempo;
     private JLabel finalizadoJuego;
+    private JLabel jLabelCantidadClick;
 
+    private String nick;
+    private String dificultad;
     private final int cartasTotales;
     private int[] arregloCartas;
     private int[] arregloControlPareja;
@@ -36,8 +40,9 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     private int eleccion2 = 0;
     private int click = 0;
     private int puntaje = 0;
+    private int cantidadClick = 0;
 
-    Thread hilo;
+    private Thread hilo;
     boolean cronometroActivo;
     boolean pausar;
 
@@ -51,53 +56,36 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     }
 
     public void run() {
-        Integer minutos = 0, segundos = 0, milesimas = 0;
-        //min es minutos, seg es segundos y mil es milesimas de segundo
-        String min = "", seg = "", mil = "";
+        int minutos = 0, segundos = 0;
+        String min = "", seg = "";
+        tiempo.setText("00:00");
         try {
-            //Mientras cronometroActivo sea verdadero entonces seguira
-            //aumentando el tiempo
             while (cronometroActivo) {
-                // Ajuste al codigo: se elimina while y se anexa un if donde se niega la variable pausar
                 if (!pausar) {
-                    //**************************************************************************************
-                    Thread.sleep(4);
-                    //Incrementamos 4 milesimas de segundo
-                    milesimas += 4;
-                    //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
-                    //y las milesimas de segundo de nuevo a 0
-                    if (milesimas == 1000) {
-                        milesimas = 0;
-                        segundos += 1;
-                        //Si los segundos llegan a 60 entonces aumenta 1 los minutos
-                        //y los segundos vuelven a 0
-                        if (segundos == 60) {
-                            segundos = 0;
-                            minutos++;
-                        }
+                    Thread.sleep(1000);
+                    segundos += 1;
+                    if (segundos == 60) {
+                        segundos = 0;
+                        minutos++;
                     }
-
-                    //Esto solamente es estetica para que siempre este en formato
-                    //00:00:000
                     if (minutos < 10) min = "0" + minutos;
-                    else min = minutos.toString();
+                    else min = String.valueOf(minutos);
                     if (segundos < 10) seg = "0" + segundos;
-                    else seg = segundos.toString();
-
-                    //Colocamos en la etiqueta la informacion
+                    else seg = String.valueOf(segundos);
                     tiempo.setText(min + ":" + seg);
                 }
             }
             tiempo.setText(min + ":" + seg);
-
         } catch (Exception e) {
             System.out.println("Error al correr metodo run");
         }
     }
 
-    public Gui_Juego(Container container, int cartasTotales)  {
+    public Gui_Juego(Container container, int cartasTotales, String nick, String dificultad)  {
         this.ventana = container;
         this.cartasTotales = cartasTotales;
+        this.nick = nick;
+        this.dificultad = dificultad;
         arregloEtiquetasImagenes = new JLabel[this.cartasTotales];
         arregloControlPareja = new int[this.cartasTotales];
         llenarArregloConCeros(arregloControlPareja);
@@ -143,17 +131,14 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     private void crearPaneles() {
         panelCentral = new JPanel();
         panelCentral.setVisible(true);
-        panelCentral.setBackground(Color.pink);//ELIMINAR ESTO DESPUES
         panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER));//new BoxLayout(panelCentral, BoxLayout.PAGE_AXIS)
 
         panelSuperior = new JPanel();
         panelSuperior.setVisible(true);
-        panelSuperior.setBackground(Color.green);//ELIMINAR ESTO DESPUES
         panelSuperior.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         panelInferior = new JPanel();
         panelInferior.setVisible(true);
-        panelInferior.setBackground(Color.cyan);//ELIMINAR ESTO DESPUES
         panelInferior.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 
@@ -170,11 +155,11 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
 
     private void crearEtiquetas() {
         JLabel etiquetaTiempo = new JLabel("Tiempo : ", SwingConstants.CENTER);
-        etiquetaTiempo = modelarEtiqueta(etiquetaTiempo, 160, 20, 100, 25, Color.white, getFuente());
+        etiquetaTiempo = modelarEtiqueta(etiquetaTiempo, 160, 20, 100, 25, null, getFuente());
         panelSuperior.add(etiquetaTiempo);
 
         JLabel etiquetaPuntaje = new JLabel("Puntaje: ", SwingConstants.CENTER);
-        etiquetaPuntaje = modelarEtiqueta(etiquetaPuntaje, 0, 0, 140, 25, Color.white, getFuente());
+        etiquetaPuntaje = modelarEtiqueta(etiquetaPuntaje, 0, 0, 140, 25, null, getFuente());
         panelInferior.add(etiquetaPuntaje);
 
         mostrarPuntaje = new JLabel(String.valueOf(puntaje), SwingConstants.CENTER);
@@ -186,11 +171,19 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         finalizadoJuego.setVisible(false);
         panelInferior.add(finalizadoJuego);
 
-        tiempo = new JLabel("00:00:000", SwingConstants.CENTER);
+        tiempo = new JLabel("00:00", SwingConstants.CENTER);
         tiempo = modelarEtiqueta(tiempo, 0, 0, 100, 25, Color.white, getFuente());
         panelSuperior.add(tiempo);
         run();
         iniciarCronometro();
+
+        JLabel infoCartasRotadas = new JLabel("Cartas Rotadas: ");
+        infoCartasRotadas = modelarEtiqueta(infoCartasRotadas,0,0,0,0, null, getFuente());
+        panelSuperior.add(infoCartasRotadas);
+
+        jLabelCantidadClick = new JLabel("0");
+        jLabelCantidadClick = modelarEtiqueta(jLabelCantidadClick, 0 ,0 ,0, 0, Color.white, getFuente());
+        panelSuperior.add(jLabelCantidadClick);
     }
 
     private void actualizarPaneles() {
@@ -209,6 +202,9 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonVolver) {
             visibilidadPaneles(false);
+            if (pausar == true) {
+                DatosJugador();
+            }
             actualizarPaneles();
             gestorDeVentanas.ejecutarVentanaMenuPrincipal(ventana);
         }
@@ -230,6 +226,8 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
                     } else {
                         eleccion2 = i;
                     }
+                    cantidadClick++;
+                    jLabelCantidadClick.setText(String.valueOf(cantidadClick));
                 }
                 actualizarPaneles();
             }
@@ -255,6 +253,17 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
                 finalizadoJuego.setVisible(true);
             }
             actualizarPaneles();
+        }
+    }
+
+    private boolean DatosJugador() {
+        Datos datos = new Datos();
+        try {
+            datos.crearJugador(nick, dificultad, puntaje, tiempo.getText());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
