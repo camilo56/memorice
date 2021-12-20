@@ -1,74 +1,34 @@
 package Clases_Guis;
 
+import Clases_Dominio.Tablero;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Gui_JuegoTest {
 
     @Test
-    void iniciarCronometro() {
+    void llenarArregloConCeros() {
+        Gui_Juego dato = new Gui_Juego();
+        int[] arregloEsperado =new int[10];
+        int[] arregloActual =new int[10];
 
+        Arrays.fill(arregloEsperado, 0);
 
+        assertArrayEquals(arregloEsperado,dato.llenarArregloConCeros(arregloActual));
     }
 
     @Test
-    void run() {
+    void testCrearCartasIncognitas() {
+        Gui_Juego dato = new Gui_Juego();
+        assertNotNull(dato.crearCartasIncognitas());
     }
 
     @Test
-    void actionPerformed() {
-    }
-
-    @Test
-    void mouseClicked() {
-    }
-
-    @Test
-    void mouseExited() {
-    }
-
-    @Test
-    void mousePressed() {
-    }
-
-    @Test
-    void mouseReleased() {
-    }
-
-    @Test
-    void mouseEntered() {
-    }
-
-    @Test
-    void testIniciarCronometro() {
-    }
-
-    @Test
-    void testRun() {
-    }
-
-    @Test
-    void testActionPerformed() {
-    }
-
-    @Test
-    void testMouseClicked() {
-    }
-
-    @Test
-    void testMouseExited() {
-    }
-
-    @Test
-    void testMousePressed() {
-    }
-
-    @Test
-    void testMouseReleased() {
-    }
-
-    @Test
-    void testMouseEntered() {
+    void testDatosJugador() {
+        Gui_Juego dato = new Gui_Juego();
+        assertTrue(dato.DatosJugador());
     }
 }

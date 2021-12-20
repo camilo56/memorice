@@ -9,6 +9,7 @@ public class Datos {
     private String datosJugador;
     private String rutaArchivo = "src/main/java/Datos/EstadisticasJugadores.csv";
     private String nombresColumnas = "Nick;Id Partida;Dificultad;Puntaje;Tiempo";
+
     public void crearJugador(String nick, String dificultad, int puntaje, String tiempo) {
         Jugador jugador = new Jugador(nick,dificultad,puntaje,tiempo);
         jugador.setIdPartida(1);
@@ -33,7 +34,7 @@ public class Datos {
 
      */
 
-    private boolean guardarDatosJugador() {
+    public boolean guardarDatosJugador() {
         try {
             if(!gestorArchivo.existeArchivo(rutaArchivo)){
                 gestorArchivo.crearArchivo(rutaArchivo);

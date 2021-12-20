@@ -12,7 +12,7 @@ public class Tablero {
         secuenciaCartas(cartasTotales);
     }
 
-    public void secuenciaCartas(int cartas) {
+    private void secuenciaCartas(int cartas) {
         arregloCartas = new int[cartas];
         arregloControlRepeticion = new int[cartas / 2];
         trabajarArreglos();
@@ -34,7 +34,7 @@ public class Tablero {
         }
     }
 
-    private int[] llenarArregloCeros(int[] arreglo) {
+    public int[] llenarArregloCeros(int[] arreglo) {
         Arrays.fill(arreglo, 0);
         return arreglo;
     }
@@ -42,4 +42,6 @@ public class Tablero {
     public int[] getArregloCartas() {
         return arregloCartas;
     }
+
+
 }

@@ -26,8 +26,23 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
     private JButton botonVolver;
     private JScrollPane scrollPane;
     private JTable tabla;
+    private int x=8;
+    private int y=15;
+
 
     String[][] datosTabla;
+
+
+    public Gui_Estadisticas() {
+        this.ventana = ventana;
+        this.panelPrincipal = panelPrincipal;
+        this.panelSuperior = panelSuperior;
+        this.panelCentral = panelCentral;
+        this.botonVolver = botonVolver;
+        this.scrollPane = scrollPane;
+        this.tabla = tabla;
+        this.datosTabla = datosTabla;
+    }
 
     public Gui_Estadisticas(Container container) {
         this.ventana = container;
@@ -107,8 +122,8 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
         panelCentral.updateUI();
     }
 
-    private void crearBotones() {
-        botonVolver = botonImagenVolver(botonVolver,15, 15);
+    public void crearBotones() {
+        botonVolver = botonImagenVolver(botonVolver,x, y);
         botonVolver.addActionListener(this);
         panelSuperior.add(botonVolver, FlowLayout.LEFT);
     }
@@ -121,5 +136,24 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
             panelSuperior.validate();
             gestorDeVentanas.ejecutarVentanaMenuPrincipal(ventana);
         }
+    }
+
+
+    @Override
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    @Override
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }

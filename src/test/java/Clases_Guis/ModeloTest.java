@@ -4,17 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Gui_NuevaPartidaTest {
+class ModeloTest {
 
     @Test
-    void getFilas() {
+    void testCrearBoton() {
+        Modelo dato =new Modelo();
+
     }
 
     @Test
-    void getColumnas() {
+    void botonImagenVolver() {
     }
 
     @Test
-    void actionPerformed() {
+    void modelarEtiqueta() {
     }
 }

@@ -81,6 +81,10 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         }
     }
 
+    public  Gui_Juego(){
+        this.cartasTotales=8;
+    }
+
     public Gui_Juego(Container container, int cartasTotales, String nick, String dificultad)  {
         this.ventana = container;
         this.cartasTotales = cartasTotales;
@@ -97,7 +101,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         actualizarPaneles();
     }
 
-    private int[] llenarArregloConCeros(int[] arreglo) {
+    public int[] llenarArregloConCeros(int[] arreglo) {
         Arrays.fill(arreglo, 0);
         return arreglo;
     }
@@ -115,7 +119,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         crearCartasIncognitas();
     }
 
-    private JLabel[] crearCartasIncognitas() {
+    public JLabel[] crearCartasIncognitas() {
         for (int i = 0; i < arregloEtiquetasImagenes.length; i++) {
             arregloEtiquetasImagenes[i] = new JLabel();
             arregloEtiquetasImagenes[i].setBounds(0, 0,anchoCarta, altoCarta);
@@ -259,7 +263,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         }
     }
 
-    private boolean DatosJugador() {
+    public boolean DatosJugador() {
         Datos datos = new Datos();
         try {
             datos.crearJugador(nick, dificultad, puntaje, tiempo.getText());

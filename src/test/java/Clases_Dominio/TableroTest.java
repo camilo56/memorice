@@ -2,19 +2,20 @@ package Clases_Dominio;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class TableroTest {
 
     @Test
-    void contruirArreglosCartas() {
-    }
+    void testLlenarArregloCeros() {
+        Tablero dato = new Tablero();
+        int[] arreglo =dato.getArregloCartas();
+        int[] arreglo2 =dato.getArregloCartas();
 
-    @Test
-    void secuenciaCartas() {
-    }
+        Arrays.fill(arreglo, 0);
 
-    @Test
-    void getArregloCartas() {
+        assertArrayEquals(arreglo,dato.llenarArregloCeros(arreglo2));
     }
 }
