@@ -48,7 +48,6 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
 
 
     public void iniciarCronometro() {
-        // Ajuste al código: se crea if esto para que cuando se vuelva oprimir iniciar no llame a otro hilo e impida que se vea como si estuviera en error.
         hilo = new Thread(this);
         cronometroActivo = true;
         pausar = false;

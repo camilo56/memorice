@@ -1,6 +1,5 @@
 package Clases_Guis;
 
-import Manejo_Archivos.GestorArchivo;
 import Manejo_Archivos.GestorDeVentanas;
 
 import javax.swing.*;
@@ -72,26 +71,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         } else if (colorElegido.equals(colores[8])) {
             ventana.setBackground(Color.red);
         }
-
-
-        //System.out.println(panel.getBackground());
-        /*
-        setColor(panel.getBackground());
-        System.out.println("color: " + getColor());
-         */
-
-        //guardarColor(panel.getBackground());
-
     }
-    /*
-    private boolean guardarColor(Color color) {
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        String rutaColor = "src/main/java/Datos/color.txt";
-        gestorArchivo.reEscribirArchivo(rutaColor, String.valueOf(color.get));
-        return true;
-    }
-
-     */
 
     @Override
     public void actionPerformed(ActionEvent e) {

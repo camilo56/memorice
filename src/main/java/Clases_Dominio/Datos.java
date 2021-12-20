@@ -12,10 +12,22 @@ public class Datos {
 
     public void crearJugador(String nick, String dificultad, int puntaje, String tiempo) {
         Jugador jugador = new Jugador(nick,dificultad,puntaje,tiempo);
-        jugador.setIdPartida(1);
-        //int i = buscarIdPartida();
+        jugador.setIdPartida(buscarIdPartida(nick) + 1);
         datosJugador = jugador.generarDatos();
         guardarDatosJugador();
+    }
+
+    private int buscarIdPartida(String nick) {
+        String[] lista = gestorArchivo.obtenerLineasArchivo(rutaArchivo);
+        int contador = 0;
+        if (lista.length > 0){
+            for (int i = 1; i < lista.length; i++) {
+                if (lista[i].contains(nick)) {
+                    contador++;
+                }
+            }
+        }
+        return contador;
     }
 
     private boolean guardarDatosJugador() {

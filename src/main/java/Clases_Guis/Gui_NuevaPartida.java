@@ -206,12 +206,4 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         if (e.getSource() == this.nivelExperto) ocultarListaElegirCartas();
         if (e.getSource() == this.nivelPersonalizado) elegirCantidadCartas();
     }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public String getDificultad() {
-        return dificultad;
-    }
 }
