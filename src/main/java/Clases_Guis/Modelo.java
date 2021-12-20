@@ -14,13 +14,13 @@ public class Modelo extends JFrame {
     private final Font fuente = new Font("arial",2, 15);
 
     public Container crearVentana() {
-        setTitle(titulo);// definir titulo de ventana
-        setSize(ancho, alto);// definir tamaño de ventana
-        setIconImage(logoMeMO.getImage());// cambia icono de JFrame
-        setResizable(false);// opcion de maximizar/minimizar ventana
-        setVisible(true);// opcion de visibilidad de la ventana
-        setLocationRelativeTo(null);// opcion de "donde quieres que aparezca la ventana", el "null" centra la ventana a la pantalla
-        setDefaultCloseOperation(EXIT_ON_CLOSE);//al cerrar la ventana, termina ejecucion de programa
+        setTitle(titulo);
+        setSize(ancho, alto);
+        setIconImage(logoMeMO.getImage());
+        setResizable(false);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         return getContentPane();
     }
 

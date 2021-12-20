@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class GestorArchivo {
 
-    //SE CREARON MÉTODOS BOOLEANOS PARA CONFIRMAR SI LO QUE HACE CADA MÉTODO SE REALIZO CON ÉXITO
 
     public boolean crearArchivo(String ruta){
         File archivoNuevo = new File(ruta);
@@ -23,7 +22,7 @@ public class GestorArchivo {
             System.out.println("Error, archivo ya existe.");
             return false;
         }
-    }//CREA ARCHIVO(confirma si se creo, o no -> por algún error o si ya existe)
+    }
 
     public boolean existeArchivo(String ruta){
         File archivo = new File(ruta);
@@ -32,7 +31,7 @@ public class GestorArchivo {
         }else{
             return false;
         }
-    }//VERIFICA SI EXISTE EL ARCHIVO
+    }
 
     public boolean mostrarArchivo(String ruta){
         try {
@@ -45,7 +44,7 @@ public class GestorArchivo {
             System.out.println("archivo no encontrado");
             return false;
         }
-    }//LEE EL ARCHIVO LINEA POR LINA(confirma si se puede leer)
+    }
 
     public String[] obtenerLineasArchivo(String ruta){
         String[] lineasDatos = new String[cantidadLineasArchivo(ruta)];
@@ -60,7 +59,7 @@ public class GestorArchivo {
             System.out.println("archivo no encontrado");
         }
         return lineasDatos;
-    }//DEVUELVE TODO EL ARCHIVO EN UN STRING
+    }
 
     public boolean renombrarArchivo(String rutaActual, String rutaNueva){
         File archivoActual = new File(rutaActual);
@@ -71,7 +70,7 @@ public class GestorArchivo {
         }else{
             return false;
         }
-    }//RENOMBRA ARCHIVO, cambia rutaActual por rutaNueva
+    }
 
     public boolean escribirEnArchivo(String ruta, String datos){
         File archivo = new File(ruta);
@@ -93,7 +92,7 @@ public class GestorArchivo {
         }else{
             return false;
         }
-    }//ESCRIBE EN ARCHIVO (agrega lineas según las lineas que contenga el archivo)
+    }
 
     public boolean reEscribirArchivo(String ruta, String datos) {
         File archivo = new File(ruta);
@@ -112,7 +111,7 @@ public class GestorArchivo {
             return false;
         }
 
-    }// RE-ESCRIBE CAD VEZ EN ARCHIVO (ELIMINA LO QUE ESTA, ESCRIBIENDO ALGO NUEVO)
+    }
 
     public int cantidadLineasArchivo(String ruta){
         try {

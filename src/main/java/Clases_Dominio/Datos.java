@@ -17,22 +17,7 @@ public class Datos {
         datosJugador = jugador.generarDatos();
         guardarDatosJugador();
     }
-    /*
-    private int buscarIdPartida() {
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        String datos = gestorArchivo.obtenerLineasArchivo(rutaArchivo);
-        for (int i = 0; i < ; i++) {
 
-        }
-
-    }
-    private String nick;
-    private int idPartida = 0;
-    private String dificultad;
-    private int puntaje;
-    private String tiempo;
-
-     */
 
     public boolean guardarDatosJugador() {
         try {
@@ -52,17 +37,7 @@ public class Datos {
     public String getNombresColumnas() {
         return nombresColumnas;
     }
-    /*
-    public String obtenerEstadisticas(){
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        String datos =  "****************************************\n";
-        datos += "               Esdisticas               \n";
-        datos += gestorArchivo.obtenerLineasArchivo(rutaArchivo);
-        datos = datos.replace(";", "    ");
-        datos += "****************************************\n";
-        return datos;
-    }
-    */
+
 
     public String getRutaArchivo() {
         return rutaArchivo;

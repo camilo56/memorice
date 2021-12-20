@@ -1,6 +1,5 @@
 package Clases_Guis;
 
-import Clases_Dominio.Tablero;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

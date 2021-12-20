@@ -1,5 +1,4 @@
 package Clases_Dominio;
-import Manejo_Archivos.GestorArchivo;
 
 public class Jugador {
 

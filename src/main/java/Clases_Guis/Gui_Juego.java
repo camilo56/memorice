@@ -48,7 +48,6 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
 
 
     public void iniciarCronometro() {
-        // Ajuste al código: se crea if esto para que cuando se vuelva oprimir iniciar no llame a otro hilo e impida que se vea como si estuviera en error.
         hilo = new Thread(this);
         cronometroActivo = true;
         pausar = false;
@@ -276,7 +275,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
 
     private boolean elementosArregloIguales(int[] arreglo) {
         return (Arrays.stream(arreglo).distinct().count() == 1) && arreglo[0] == 1;
-    }// retorna true si todos los elementos son igaules, y si el primer dato del arreglo es '1' (basicamente todos los elementos del arreglo deben ser '1')
+    }
 
     private void validarParejas() {
         if (arregloCartas[eleccion1] == arregloCartas[eleccion2]) {
