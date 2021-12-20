@@ -13,7 +13,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
 
     private Container ventana;
     private JPanel panel;
-    private JButton botonNuevaPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
+    private JButton botonNuevaPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonSalir;
 
     private final int anchoBoton = 200; // width
     private final int altoBoton = 20;// heigth
@@ -50,10 +50,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         botonConfiguraciones.addActionListener(this);
         panel.add(botonConfiguraciones);
 
-        botonCreditos = crearBoton(botonCreditos, "Creditos", getFuente(), 200, 140  , anchoBoton, altoBoton);
-        panel.add(botonCreditos);
-
-        botonSalir = crearBoton(botonSalir, "Salir", getFuente(), 200,180, anchoBoton, altoBoton);
+        botonSalir = crearBoton(botonSalir, "Salir", getFuente(), 200, 140, anchoBoton, altoBoton);
         botonSalir.addActionListener(this);
         panel.add(botonSalir);
     }
