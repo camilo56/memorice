@@ -50,6 +50,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(null);
+        panel.setOpaque(false);
         ventana.add(panel);
     }
 
@@ -177,7 +178,11 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             dificultad = "Experto";
         }
         this.tiempoLimitado = tiempoLimite.isSelected();
-        this.nick = cajaNick.getText();
+        if (cajaNick.getText().length() > 0) {
+            this.nick = cajaNick.getText();
+        } else {
+            this.nick = "Invitado";
+        }
     }
 
 

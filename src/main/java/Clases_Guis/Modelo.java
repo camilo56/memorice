@@ -47,18 +47,6 @@ public class Modelo extends JFrame {
         return jLabel;
     }
 
-    public int getAncho() {
-        return ancho;
-    }
-
-    public int getAlto() {
-        return alto;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
     public Font getFuente() {
         return fuente;
     }

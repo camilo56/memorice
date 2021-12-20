@@ -34,6 +34,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(null);
+        panel.setOpaque(false);
         ventana.add(panel);
     }
 
@@ -53,23 +54,23 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         String colorElegido = listaDespegable.getSelectedItem().toString();
 
         if (colorElegido.equals(colores[0])) {
-            panel.setBackground(Color.lightGray);
+            ventana.setBackground(Color.lightGray);
         } else if (colorElegido.equals(colores[1])) {
-            panel.setBackground(Color.gray);
+            ventana.setBackground(Color.gray);
         } else if (colorElegido.equals(colores[2])) {
-            panel.setBackground(Color.blue);
+            ventana.setBackground(Color.blue);
         } else if (colorElegido.equals(colores[3])) {
-            panel.setBackground(Color.cyan);
+            ventana.setBackground(Color.cyan);
         } else if (colorElegido.equals(colores[4])) {
-            panel.setBackground(Color.green);
+            ventana.setBackground(Color.green);
         } else if (colorElegido.equals(colores[5])) {
-            panel.setBackground(Color.pink);
+            ventana.setBackground(Color.pink);
         } else if (colorElegido.equals(colores[6])) {
-            panel.setBackground(Color.yellow);
+            ventana.setBackground(Color.yellow);
         } else if (colorElegido.equals(colores[7])) {
-            panel.setBackground(Color.white);
+            ventana.setBackground(Color.white);
         } else if (colorElegido.equals(colores[8])) {
-            panel.setBackground(Color.red);
+            ventana.setBackground(Color.red);
         }
 
 

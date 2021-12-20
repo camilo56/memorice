@@ -131,14 +131,17 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     private void crearPaneles() {
         panelCentral = new JPanel();
         panelCentral.setVisible(true);
+        panelCentral.setOpaque(false);
         panelCentral.setLayout(new FlowLayout(FlowLayout.CENTER));//new BoxLayout(panelCentral, BoxLayout.PAGE_AXIS)
 
         panelSuperior = new JPanel();
         panelSuperior.setVisible(true);
+        panelSuperior.setOpaque(false);
         panelSuperior.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         panelInferior = new JPanel();
         panelInferior.setVisible(true);
+        panelInferior.setOpaque(false);
         panelInferior.setLayout(new FlowLayout(FlowLayout.CENTER));
 
 
