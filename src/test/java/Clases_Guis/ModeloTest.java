@@ -20,7 +20,6 @@ class ModeloTest {
         int y=45;
         int width=65;
         int height=54;
-        Modelo.crearBoton( button,  text,  fuente,  x,  y,  width,  height);
     }
 
     @Test

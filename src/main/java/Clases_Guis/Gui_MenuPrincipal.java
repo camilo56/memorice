@@ -12,25 +12,21 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
     private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
 
     private Container ventana;
-    private  JPanel panel;
-    private JButton botonNuevaPartida, botonCargarPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
+    private JPanel panel;
+    private JButton botonNuevaPartida, botonVerEstadisticasPartida, botonConfiguraciones, botonCreditos, botonSalir;
 
-    private final int anchoBoton = 200; // width-ancho
-    private final int altoBoton = 20;// heigth-alto
+    private final int anchoBoton = 200; // width
+    private final int altoBoton = 20;// heigth
 
     public Gui_MenuPrincipal(Container container) {
         this.ventana = container;
         crearComponentes();
-        panel.updateUI();//Restablece la propiedad de la interfaz de usuario con un valor de la apariencia actual.
-
+        panel.updateUI();
     }
-
-
 
     private void crearComponentes() {
         crearPaneles();
         crearBotones();
-
     }
 
     private void crearPaneles() {
@@ -46,55 +42,42 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         botonNuevaPartida.addActionListener(this);
         panel.add(botonNuevaPartida);
 
-        botonCargarPartida = crearBoton(botonCargarPartida,"Cargar Partida", getFuente(), 200,60  , anchoBoton, altoBoton);
-        panel.add(botonCargarPartida);
-
-        botonVerEstadisticasPartida = crearBoton(botonVerEstadisticasPartida, "Ver Estadisticas", getFuente(),200,100  , anchoBoton, altoBoton);
+        botonVerEstadisticasPartida = crearBoton(botonVerEstadisticasPartida, "Ver Estadisticas", getFuente(),200,60  , anchoBoton, altoBoton);
+        botonVerEstadisticasPartida.addActionListener(this);
         panel.add(botonVerEstadisticasPartida);
 
-        botonConfiguraciones = crearBoton(botonConfiguraciones, "Configuraciones", getFuente(), 200, 140 , anchoBoton, altoBoton);
+        botonConfiguraciones = crearBoton(botonConfiguraciones, "Configuraciones", getFuente(), 200,100 , anchoBoton, altoBoton);
         botonConfiguraciones.addActionListener(this);
         panel.add(botonConfiguraciones);
 
-        botonCreditos = crearBoton(botonCreditos, "Creditos", getFuente(), 200,180  , anchoBoton, altoBoton);
+        botonCreditos = crearBoton(botonCreditos, "Creditos", getFuente(), 200, 140  , anchoBoton, altoBoton);
         panel.add(botonCreditos);
 
-        botonSalir = crearBoton(botonSalir, "Salir", getFuente(), 200,220, anchoBoton, altoBoton);
+        botonSalir = crearBoton(botonSalir, "Salir", getFuente(), 200,180, anchoBoton, altoBoton);
         botonSalir.addActionListener(this);
         panel.add(botonSalir);
-
-        panel.validate();
     }
-
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonNuevaPartida) {
-            //getSource () obtiene el objeto componente
-            // getActionCommand () obtiene la cadena en el componente
             panel.setVisible(false);
-            panel.validate();
+            panel.updateUI();
             gestorDeVentanas.ejecutarMenuElegirDificultad(ventana);
         }
         if (e.getSource() == this.botonConfiguraciones) {
             panel.setVisible(false);
-            panel.validate();
+            panel.updateUI();
             gestorDeVentanas.ejecutarConfiguraciones(ventana);
+        }
+        if (e.getSource() == this.botonVerEstadisticasPartida) {
+            panel.setVisible(false);
+            panel.updateUI();
+            gestorDeVentanas.ejecutarEstadisticas(ventana);
         }
         if (e.getSource() == this.botonSalir) {
             System.exit(0);
         }
 
     }
-
-    @Override
-    public JPanel getPanel() {
-        return panel;
-    }
-
-    public void setPanel(JPanel panel) {
-        this.panel = panel;
-    }
 }
-

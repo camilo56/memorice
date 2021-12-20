@@ -16,7 +16,7 @@ public class Tablero {
         arregloCartas = new int[cartas];
         arregloControlRepeticion = new int[cartas / 2];
         trabajarArreglos();
-    }//¿?
+    }
 
     private void trabajarArreglos() {
         llenarArregloCeros(arregloCartas);
@@ -35,9 +35,9 @@ public class Tablero {
     }
 
     private int[] llenarArregloCeros(int[] arreglo) {
-        Arrays.fill(arreglo, 0);//Cambia todos los valores del arreglo por un valor estatico en este caso 0
+        Arrays.fill(arreglo, 0);
         return arreglo;
-    }//Este metodo se usa en trabajarArreglos()
+    }
 
     public int[] getArregloCartas() {
         return arregloCartas;

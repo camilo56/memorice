@@ -26,8 +26,6 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         panel.updateUI();
     }
 
-
-
     private void crearComponentes() {
         crearPaneles();
         crearBotones();
@@ -55,8 +53,9 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         panel.add(botonVolver);
     }
 
-    public void cambiarColor() {
+    private void cambiarColor() {
         String colorElegido = listaDespegable.getSelectedItem().toString();
+
         if (colorElegido.equals(colores[0])) {
             ventana.setBackground(Color.lightGray);
             this.Seleccion ="0";
@@ -87,7 +86,6 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         }
 
 
-
         //System.out.println(panel.getBackground());
         /*
         setColor(panel.getBackground());
@@ -97,12 +95,6 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         //guardarColor(panel.getBackground());
 
     }
-
-
-
-
-
-
     /*
     private boolean guardarColor(Color color) {
         GestorArchivo gestorArchivo = new GestorArchivo();
@@ -122,7 +114,6 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         }
         if (e.getSource() == this.listaDespegable) {
             cambiarColor();
-
         }
     }
 }

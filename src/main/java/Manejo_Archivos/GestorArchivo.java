@@ -47,18 +47,19 @@ public class GestorArchivo {
         }
     }//LEE EL ARCHIVO LINEA POR LINA(confirma si se puede leer)
 
-    public String obtenerLineasArchivo(String ruta){
-        String datos = "";
+    public String[] obtenerLineasArchivo(String ruta){
+        String[] lineasDatos = new String[cantidadLineasArchivo(ruta)];
         try {
             Scanner scanner = new Scanner(new File(ruta));
+            int contador = 0;
             while (scanner.hasNextLine()){
-                datos += scanner.nextLine() + "\n";
+                lineasDatos[contador] = scanner.nextLine();
+                contador++;
             }
-            return datos;
         } catch (FileNotFoundException e) {
             System.out.println("archivo no encontrado");
-            return "Error al leer el archivo";
         }
+        return lineasDatos;
     }//DEVUELVE TODO EL ARCHIVO EN UN STRING
 
     public boolean renombrarArchivo(String rutaActual, String rutaNueva){
@@ -124,3 +125,4 @@ public class GestorArchivo {
         }
     }
 }
+
