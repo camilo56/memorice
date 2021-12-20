@@ -9,6 +9,7 @@ public class Datos {
     private String datosJugador;
     private String rutaArchivo = "src/main/java/Datos/EstadisticasJugadores.csv";
     private String nombresColumnas = "Nick;Id Partida;Dificultad;Puntaje;Tiempo";
+
     public void crearJugador(String nick, String dificultad, int puntaje, String tiempo) {
         Jugador jugador = new Jugador(nick,dificultad,puntaje,tiempo);
         jugador.setIdPartida(1);
@@ -16,22 +17,6 @@ public class Datos {
         datosJugador = jugador.generarDatos();
         guardarDatosJugador();
     }
-    /*
-    private int buscarIdPartida() {
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        String datos = gestorArchivo.obtenerLineasArchivo(rutaArchivo);
-        for (int i = 0; i < ; i++) {
-
-        }
-
-    }
-    private String nick;
-    private int idPartida = 0;
-    private String dificultad;
-    private int puntaje;
-    private String tiempo;
-
-     */
 
     private boolean guardarDatosJugador() {
         try {
@@ -51,17 +36,6 @@ public class Datos {
     public String getNombresColumnas() {
         return nombresColumnas;
     }
-    /*
-    public String obtenerEstadisticas(){
-        GestorArchivo gestorArchivo = new GestorArchivo();
-        String datos =  "****************************************\n";
-        datos += "               Esdisticas               \n";
-        datos += gestorArchivo.obtenerLineasArchivo(rutaArchivo);
-        datos = datos.replace(";", "    ");
-        datos += "****************************************\n";
-        return datos;
-    }
-    */
 
     public String getRutaArchivo() {
         return rutaArchivo;

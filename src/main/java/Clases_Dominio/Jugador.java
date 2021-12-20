@@ -1,5 +1,4 @@
 package Clases_Dominio;
-import Manejo_Archivos.GestorArchivo;
 
 public class Jugador {
 
@@ -26,24 +25,12 @@ public class Jugador {
         return nick;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
     public String getDificultad() {
         return dificultad;
     }
 
-    public void setDificultad(String dificultad) {
-        this.dificultad = dificultad;
-    }
-
     public String getTiempo() {
         return tiempo;
-    }
-
-    public void setTiempo(String tiempo) {
-        this.tiempo = tiempo;
     }
 
     public int getIdPartida() {
@@ -56,9 +43,5 @@ public class Jugador {
 
     public int getPuntaje() {
         return puntaje;
-    }
-
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
     }
 }

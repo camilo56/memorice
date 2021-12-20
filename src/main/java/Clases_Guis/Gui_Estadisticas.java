@@ -29,10 +29,6 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
 
     String[][] datosTabla;
 
-    private final int anchoBoton = 200; // width
-    private final int altoBoton = 20;// heigth
-
-
     public Gui_Estadisticas(Container container) {
         this.ventana = container;
         crearComponentes();
@@ -68,14 +64,14 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
     private void crearJScrollPane() {
         scrollPane = new JScrollPane(tabla);
         scrollPane.setBorder(new TitledBorder("Estadisticas"));
+        scrollPane.setOpaque(false);
         panelCentral.add(scrollPane, BorderLayout.CENTER);
-
-
     }
 
     private void crearTabla() {
         DefaultTableModel model = new DefaultTableModel(definirDatos(), definirColumnas());
         tabla = new JTable(model);
+        tabla.setOpaque(false);
     }
 
     private void crearEtiquetas() {
@@ -88,19 +84,19 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
         panelPrincipal = new JPanel();
         panelPrincipal.setVisible(true);
         panelPrincipal.setLayout(new BorderLayout());
-        panelPrincipal.setBackground(Color.green);
+        panelPrincipal.setOpaque(false);
         ventana.add(panelPrincipal);
 
 
         panelSuperior = new JPanel();
         panelSuperior.setVisible(true);
-        panelSuperior.setBackground(Color.red);
+        panelSuperior.setOpaque(false);
         panelSuperior.setLayout(new FlowLayout(FlowLayout.LEFT));
         panelPrincipal.add(panelSuperior, BorderLayout.NORTH);
 
         panelCentral = new JPanel();
         panelCentral.setVisible(true);
-        panelCentral.setBackground(Color.blue);
+        panelCentral.setOpaque(false);
         panelCentral.setLayout(new BorderLayout());
         panelPrincipal.add(panelCentral, BorderLayout.CENTER);
     }

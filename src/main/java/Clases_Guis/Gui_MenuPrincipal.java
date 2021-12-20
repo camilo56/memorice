@@ -33,6 +33,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         panel = new JPanel();
         panel.setVisible(true);
         panel.setLayout(null);
+        panel.setOpaque(false);
         ventana.add(panel);
     }
 
