@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="memorice" />
         <module name="drgdg" />
       </profile>
     </annotationProcessing>
@@ -14,6 +13,7 @@
       <module name="datos" target="15" />
       <module name="guis" target="15" />
       <module name="progCronometro" target="15" />
+      <module name="test" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

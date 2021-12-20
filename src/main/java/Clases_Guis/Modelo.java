@@ -3,7 +3,7 @@ package Clases_Guis;
 import javax.swing.*;
 import java.awt.*;
 
-public class Modelo extends JFrame {
+public abstract class Modelo extends JFrame {
 
     //private Color color;
     private final int ancho = 600;
@@ -13,8 +13,6 @@ public class Modelo extends JFrame {
     private final ImageIcon imagenVolver = new ImageIcon("src/main/java/Imagenes/volver.png");
 
     private final Font fuente = new Font("arial",2, 15);
-
-    private JPanel panel;
 
     public Container crearVentana() {
         setTitle(titulo);// definir titulo de ventana
@@ -42,7 +40,7 @@ public class Modelo extends JFrame {
     }
      */
 
-    public JButton crearBoton(JButton button, String text,  Font font, int x, int y, int width, int height) {
+    public static JButton crearBoton(JButton button, String text, Font font, int x, int y, int width, int height) {
         button = new JButton(text);
         button.setBounds(x, y, width, height);
         button.setHorizontalAlignment(SwingConstants.CENTER);//Establece la alineación del contenido de la etiqueta a lo largo del eje X.JLabel
@@ -97,9 +95,7 @@ public class Modelo extends JFrame {
         return fuente;
     }
 
-    public JPanel getPanel() {
-        return panel;
-    }
+
 
     /*
     public Color getColor() {
@@ -115,4 +111,6 @@ public class Modelo extends JFrame {
     public ImageIcon getImagenVolver() {
         return imagenVolver;
     }
+
+    public abstract JPanel getPanel();
 }

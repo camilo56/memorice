@@ -112,7 +112,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
         nivelPersonalizado = new JRadioButton("Personalizado", false);
         nivelPersonalizado.setBounds(300, 260, 110, 20);
-        nivelPersonalizado.setEnabled(false);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
+        nivelPersonalizado.setEnabled(true);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
         nivelPersonalizado.addActionListener(this);
         panel.add(nivelPersonalizado);
     }

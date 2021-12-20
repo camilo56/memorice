@@ -1,5 +1,6 @@
 package Clases_Guis;
 
+import Clases_Dominio.Estadisticas;
 import Clases_Dominio.Tablero;
 import Manejo_Archivos.GestorDeVentanas;
 
@@ -10,10 +11,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Arrays;
+import java.util.List;
 
 public class Gui_Juego extends Modelo implements ActionListener, MouseListener, Runnable {
 
     private final GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
+
     private Container ventana;
     private JPanel panelCentral, panelSuperior, panelInferior;
 
@@ -36,6 +39,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     private int eleccion2 = 0;
     private int click = 0;
     private int puntaje = 0;
+    private String nick = "";
 
     Thread hilo;
     boolean cronometroActivo;
@@ -96,6 +100,8 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
     }
 
     public Gui_Juego(Container container, int cartasTotales)  {
+
+
         this.ventana = container;
         this.cartasTotales = cartasTotales;
         arregloEtiquetasImagenes = new JLabel[this.cartasTotales];
@@ -107,11 +113,25 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         crearComponentes();
         iniciarCronometro();
         actualizarPaneles();
+        Estadisticas();
+
+
+    }
+
+    private void Estadisticas(){
+
+        Estadisticas datos =new Estadisticas(this.nick,this.click,this.puntaje);
+        datos.setPuntaje(this.puntaje);
+        datos.setnick(this.nick);
+        datos.setIdPartida(this.click);
+
     }
 
     private int[] llenarArregloConCeros(int[] arreglo) {
         Arrays.fill(arreglo, 0);
         return arreglo;
+
+
     }
 
     private void traerArregloCartas() {

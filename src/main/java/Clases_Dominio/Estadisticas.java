@@ -3,16 +3,16 @@ import Manejo_Archivos.GestorArchivo;
 
 public class Estadisticas {
 
-    private Persona persona;
+    private String nick="";
     private int idPartida = 0;
-    private int puntaje;
+    private int puntaje=0;
 
-    private String rutaArchivo = "Estadisticas.csv";
+    private String rutaArchivo = "src/main/java/Datos/Estadisticas.csv";
 
-    public Estadisticas(String nick){
-        this.persona = new Persona(nick);
-        this.idPartida = getIdPartida();
-        this.puntaje = getPuntaje();
+    public Estadisticas(String nick, int idPartida, int puntaje ){
+        this.nick = nick;
+        this.idPartida = idPartida;
+        this.puntaje = puntaje;
     }
 
     public Boolean guardarEstadisticas() {
@@ -37,16 +37,16 @@ public class Estadisticas {
     }
 
     private String crearDatos(){
-        String datos = getPersona().getNick() + ";" + getIdPartida() + ";" + getPuntaje();
+        String datos = getnick() + ";" + getIdPartida() + ";" + getPuntaje();
         return datos;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public String getnick() {
+        return nick;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setnick(String nick) {
+        this.nick = nick;
     }
 
     public int getIdPartida() {
