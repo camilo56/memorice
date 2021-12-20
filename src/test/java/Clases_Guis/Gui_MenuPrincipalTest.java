@@ -10,11 +10,10 @@ class Gui_MenuPrincipalTest {
     void actionPerformed() {
     }
 
-    @Test
-    void getPanel() {
-    }
 
     @Test
-    void setPanel() {
+    void crearPaneles(){
+
+
     }
 }

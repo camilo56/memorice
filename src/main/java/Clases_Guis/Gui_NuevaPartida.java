@@ -49,8 +49,8 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private void crearPaneles() {
         panel = new JPanel();
         panel.setVisible(true);
-        panel.setOpaque(false);
         panel.setLayout(null);
+        panel.setOpaque(false);
         ventana.add(panel);
     }
 
@@ -146,7 +146,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         infoEleccionCartas.setVisible(true);
         panel.add(infoEleccionCartas);
         for (int i = 0; i < arregloCantidadCartasPersonalizadas.length; i++) {
-                arregloCantidadCartasPersonalizadas[i] = String.valueOf((i + 1) * 4);
+            arregloCantidadCartasPersonalizadas[i] = String.valueOf((i + 1) * 4);
         }
         elegirCantidadCartas = new JComboBox(arregloCantidadCartasPersonalizadas);
         elegirCantidadCartas.setBounds(425, 285, 60, 20);
@@ -178,7 +178,11 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
             dificultad = "Experto";
         }
         this.tiempoLimitado = tiempoLimite.isSelected();
-        this.nick = cajaNick.getText();
+        if (cajaNick.getText().length() > 0) {
+            this.nick = cajaNick.getText();
+        } else {
+            this.nick = "Invitado";
+        }
     }
 
 
