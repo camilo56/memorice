@@ -128,6 +128,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         return arregloEtiquetasImagenes;
     }
 
+
     private void crearPaneles() {
         panelCentral = new JPanel();
         panelCentral.setVisible(true);

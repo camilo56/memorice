@@ -25,6 +25,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         panel.updateUI();
     }
 
+
     private void crearComponentes() {
         crearPaneles();
         crearBotones();

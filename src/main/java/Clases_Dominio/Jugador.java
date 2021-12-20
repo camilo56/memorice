@@ -10,7 +10,7 @@ public class Jugador {
 
     public Jugador(String nick, String dificultad, int puntaje, String tiempo){
         this.nick = nick;
-        this.idPartida = getIdPartida();
+        this.idPartida =getIdPartida();
         this.dificultad = dificultad;
         this.puntaje = puntaje;
         this.tiempo = tiempo;

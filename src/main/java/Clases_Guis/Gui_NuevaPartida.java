@@ -21,7 +21,6 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private JComboBox elegirCantidadCartas;
     private JTextField cajaNick;
     private JLabel infoEleccionCartas;
-
     private final int[] arregloCantidadCartas = {12, 16, 20, 36, 40};
     private String[] arregloCantidadCartasPersonalizadas = new String[10];
     private int cantidadCartas;

@@ -58,6 +58,7 @@ public class Gui_MenuPrincipal extends Modelo implements ActionListener {
         panel.add(botonSalir);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.botonNuevaPartida) {

@@ -25,6 +25,7 @@ public class GestorArchivo {
         }
     }//CREA ARCHIVO(confirma si se creo, o no -> por algún error o si ya existe)
 
+
     public boolean existeArchivo(String ruta){
         File archivo = new File(ruta);
         if(!ruta.equals(".")) {

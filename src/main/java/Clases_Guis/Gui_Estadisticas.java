@@ -27,6 +27,7 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
     private JScrollPane scrollPane;
     private JTable tabla;
 
+
     String[][] datosTabla;
 
     public Gui_Estadisticas(Container container) {

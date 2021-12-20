@@ -34,6 +34,7 @@ public class Tablero {
         }
     }
 
+
     private int[] llenarArregloCeros(int[] arreglo) {
         Arrays.fill(arreglo, 0);
         return arreglo;

@@ -24,6 +24,7 @@ public class Modelo extends JFrame {
         return getContentPane();
     }
 
+
     public JButton crearBoton(JButton button, String text,  Font font, int x, int y, int width, int height) {
         button = new JButton(text);
         button.setBounds(x, y, width, height);

@@ -13,7 +13,6 @@ public class Datos {
     public void crearJugador(String nick, String dificultad, int puntaje, String tiempo) {
         Jugador jugador = new Jugador(nick,dificultad,puntaje,tiempo);
         jugador.setIdPartida(1);
-        //int i = buscarIdPartida();
         datosJugador = jugador.generarDatos();
         guardarDatosJugador();
     }

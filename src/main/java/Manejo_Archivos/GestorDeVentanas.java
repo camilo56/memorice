@@ -25,7 +25,6 @@ public class GestorDeVentanas {
     public void ejecutarConfiguraciones(Container ventana) {
         Gui_Configuraciones configuraciones = new Gui_Configuraciones(ventana);
     }
-
     public void ejecutarJuego(Container ventana, int cartasTotales, String nick, String dificultad) {
         Gui_Juego juego = new Gui_Juego(ventana, cartasTotales, nick, dificultad);
     }
