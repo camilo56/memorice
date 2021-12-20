@@ -180,7 +180,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         run();
         iniciarCronometro();
 
-        JLabel infoCartasRotadas = new JLabel("Cartas Rotadas: ");
+        JLabel infoCartasRotadas = new JLabel("Cartas Rotadas:");
         infoCartasRotadas = modelarEtiqueta(infoCartasRotadas,0,0,0,0, null, getFuente());
         panelSuperior.add(infoCartasRotadas);
 
