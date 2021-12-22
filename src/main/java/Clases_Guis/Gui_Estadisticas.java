@@ -63,7 +63,7 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
 
     private void crearJScrollPane() {
         scrollPane = new JScrollPane(tabla);
-        scrollPane.setBorder(new TitledBorder("Estadisticas"));
+        //scrollPane.setBorder(new TitledBorder("Estadisticas"));
         scrollPane.setOpaque(false);
         panelCentral.add(scrollPane, BorderLayout.CENTER);
     }
@@ -75,7 +75,7 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
     }
 
     private void crearEtiquetas() {
-        JLabel jLabelEstadistica = new JLabel("Estadistica", SwingConstants.CENTER);
+        JLabel jLabelEstadistica = new JLabel("Estadísticas", SwingConstants.CENTER);
         jLabelEstadistica = modelarEtiqueta(jLabelEstadistica, 200, 20, 200, 25, Color.white, getFuente());
         panelSuperior.add(jLabelEstadistica, BorderLayout.CENTER);
     }

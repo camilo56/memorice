@@ -18,16 +18,21 @@ public class Datos {
     }
 
     private int buscarIdPartida(String nick) {
-        String[] lista = gestorArchivo.obtenerLineasArchivo(rutaArchivo);
-        int contador = 0;
-        if (lista.length > 0){
-            for (int i = 1; i < lista.length; i++) {
-                if (lista[i].contains(nick)) {
-                    contador++;
+        if (gestorArchivo.existeArchivo(rutaArchivo)) {
+            String[] lista = gestorArchivo.obtenerLineasArchivo(rutaArchivo);
+            int contador = 0;
+            if (lista.length > 0){
+                for (int i = 1; i < lista.length; i++) {
+                    if (lista[i].contains(nick)) {
+                        contador++;
+                    }
                 }
             }
+            return contador;
         }
-        return contador;
+        else {
+            return 0;
+        }
     }
 
     private boolean guardarDatosJugador() {

@@ -83,7 +83,8 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     }
 
     private void crearRadioBotones() {
-        tiempoLimite = new JCheckBox("¿Tiempo Limitado?", false);
+        tiempoLimite = new JCheckBox("¿Tiempo Limitado?", true);
+        tiempoLimite.setEnabled(false);
         tiempoLimite.setBounds(300, 80, 150, 20);
         panel.add(tiempoLimite);
 
