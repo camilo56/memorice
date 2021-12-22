@@ -8,9 +8,6 @@ public class Launcher {
         GestorDeVentanas gestorDeVentanas = new GestorDeVentanas();
         gestorDeVentanas.ejecutar();
 
-        //Tablero tablero = new Tablero();
-            //tablero.dimensiones(4, 6);
 
-        //tablero.mostrarArreglo();
     }
 }

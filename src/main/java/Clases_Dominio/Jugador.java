@@ -16,6 +16,10 @@ public class Jugador {
         this.tiempo = tiempo;
     }
 
+    public Jugador() {
+
+    }
+
     public String generarDatos() {
         String datos = getNick()+ ";" + getIdPartida() + ";" + getDificultad() + ";" + getPuntaje() + ";" + getTiempo();
         return datos;

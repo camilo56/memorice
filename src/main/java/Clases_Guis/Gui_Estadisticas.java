@@ -35,6 +35,10 @@ public class Gui_Estadisticas extends Modelo implements ActionListener {
         actualizarPaneles();
     }
 
+    public Gui_Estadisticas() {
+
+    }
+
     private void crearComponentes() {
         crearPaneles();
         crearTabla();

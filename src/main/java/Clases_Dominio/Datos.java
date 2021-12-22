@@ -35,7 +35,7 @@ public class Datos {
         }
     }
 
-    private boolean guardarDatosJugador() {
+    public boolean guardarDatosJugador() {
         try {
             if(!gestorArchivo.existeArchivo(rutaArchivo)){
                 gestorArchivo.crearArchivo(rutaArchivo);
