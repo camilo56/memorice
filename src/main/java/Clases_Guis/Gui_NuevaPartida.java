@@ -25,8 +25,8 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private final int[] arregloCantidadCartas = {12, 16, 20, 36, 40};
     private String[] arregloCantidadCartasPersonalizadas = new String[10];
     private int cantidadCartas;
-    private final int anchoBoton = 200;
-    private final int altoBoton = 20;
+    private final int anchoBoton = 200; // width
+    private final int altoBoton = 20;// heigth
     private boolean tiempoLimitado;
     private String nick;
     private String dificultad;
@@ -67,7 +67,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     private void crearCajaTexto() {
         cajaNick = new JTextField();
         cajaNick.setBounds(160, 80, 100, 20);
-        cajaNick.setOpaque(true);
+        cajaNick.setOpaque(true);//opcion de poder editar componentes internos de un JTextField
         cajaNick.setBackground(Color.white);
         panel.add(cajaNick);
     }
@@ -83,7 +83,8 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
     }
 
     private void crearRadioBotones() {
-        tiempoLimite = new JCheckBox("¿Tiempo Limitado?", false);
+        tiempoLimite = new JCheckBox("¿Tiempo Limitado?", true);
+        tiempoLimite.setEnabled(false);
         tiempoLimite.setBounds(300, 80, 150, 20);
         panel.add(tiempoLimite);
 
@@ -114,7 +115,7 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
 
         nivelPersonalizado = new JRadioButton("Personalizado", false);
         nivelPersonalizado.setBounds(300, 260, 110, 20);
-        nivelPersonalizado.setEnabled(true);
+        nivelPersonalizado.setEnabled(true);// YA QUE AUN NO ESTA DISPONIBLE LAS DEMAS, ESTA ES LA MAS COMPLICADA
         nivelPersonalizado.addActionListener(this);
         panel.add(nivelPersonalizado);
     }
@@ -205,13 +206,5 @@ public class Gui_NuevaPartida extends Modelo implements ActionListener {
         if (e.getSource() == this.nivelMuyDificil) ocultarListaElegirCartas();
         if (e.getSource() == this.nivelExperto) ocultarListaElegirCartas();
         if (e.getSource() == this.nivelPersonalizado) elegirCantidadCartas();
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public String getDificultad() {
-        return dificultad;
     }
 }

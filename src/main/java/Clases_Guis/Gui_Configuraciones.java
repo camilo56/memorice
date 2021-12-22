@@ -39,7 +39,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
 
     private void crearBotones() {
         listaDespegable = new JComboBox(colores);
-        listaDespegable.setBounds(200, 40, 100, 50);
+        listaDespegable.setBounds(200, 30, 150, 20);
         listaDespegable.addActionListener(this);
         panel.add(listaDespegable);
         cambiarColor();
@@ -71,12 +71,7 @@ public class Gui_Configuraciones extends  Modelo implements ActionListener {
         } else if (colorElegido.equals(colores[8])) {
             ventana.setBackground(Color.red);
         }
-
-
-
-
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {

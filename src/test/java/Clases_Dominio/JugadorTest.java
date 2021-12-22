@@ -11,7 +11,6 @@ class JugadorTest {
         Jugador dato=new Jugador();
         String datoActual = dato.generarDatos();
         String datoEsperado=  dato.getNick()+ ";" + dato.getIdPartida() + ";" + dato.getDificultad() + ";" + dato.getPuntaje() + ";" + dato.getTiempo();
-
-        assertSame(datoEsperado,datoActual);
+        assertEquals(datoEsperado,datoActual);
     }
 }

@@ -118,7 +118,7 @@ public class Gui_Juego extends Modelo implements ActionListener, MouseListener, 
         crearCartasIncognitas();
     }
 
-    public JLabel[] crearCartasIncognitas() {
+    private JLabel[] crearCartasIncognitas() {
         for (int i = 0; i < arregloEtiquetasImagenes.length; i++) {
             arregloEtiquetasImagenes[i] = new JLabel();
             arregloEtiquetasImagenes[i].setBounds(0, 0,anchoCarta, altoCarta);
